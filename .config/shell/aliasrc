@@ -18,6 +18,9 @@ alias \
 # bashrc/other configs
  alias s="$EDITOR ~/.config/sxhkd/sxhkdrc"
 
+ # Expand sudo to work with aliases
+ alias sudo="sudo "
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -44,13 +47,13 @@ alias \
         ka="killall" \
         g="git" \
 	      i="sxiv -q -a -t" \
-	      sdn="sudo shutdown -h now" \
-        mk="sudo make install" \
+	      sdn="shutdown -h now" \
+        mk="make install" \
         df='df -lH ' \
         mps="mpv --shuffle" \
-        p="sudo pacman" \
-        pn="sudo pacman -S --needed" \
-        pu="sudo pacman -Syu" \
+        p="pacman" \
+        pn="pacman -S --needed" \
+        pu="pacman -Syu" \
         pa="paru" \
         ne="neofetch" \
         h="htop" \
