@@ -46,7 +46,7 @@ alias \
 	z="zathura" \
         ka="killall" \
         g="git" \
-	      i="sxiv -q -a -t" \
+	      i="nsxiv -q -a -t" \
 	      sdn="shutdown -h now" \
         mk="make install" \
         df='df -lH ' \
