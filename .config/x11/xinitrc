@@ -14,4 +14,5 @@ else
 	. "$HOME/.xprofile"
 fi
 
-ssh-agent bspwm
+dbus-update-activation-environment --all
+dbus-launch ssh-agent bspwm

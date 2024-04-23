@@ -12,8 +12,8 @@ URxvt.scrollBar:	false
 URxvt.cursorColor:	#aeafad
 URxvt.termname:         rxvt-unicode
 
-Sxiv.foreground: #eeeeee
-Sxiv.background: #000000
+window.foreground: #8ec07c
+window.background: #222222
 
 dmenu.font: monospace
 dmenu.background: #222222

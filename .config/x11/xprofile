@@ -8,9 +8,8 @@ setbg &			# set the background with the `setbg` script
 hwclock --systohc      # sets time with hwclock
 inactivity.sh & # locks screen when inactvie
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 
-autostart="mpd xcompmgr unclutter dunst udiskie pipewire" # transmission-daemon
+autostart="mpd xcompmgr unclutter dunst udiskie pipewire remapd" # transmission-daemon
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &
@@ -18,8 +17,3 @@ done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
 [ -n "$xrdbpid" ] && wait "$xrdbpid"
-
-export GTK_IM_MODULE='fcitx5'
-export QT_IM_MODULE='fcitx5'
-export SDL_IM_MODULE='fcitx5'
-export XMODIFIERS=@im='fcitx5'
