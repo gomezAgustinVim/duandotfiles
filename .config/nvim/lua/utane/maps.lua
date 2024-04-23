@@ -16,14 +16,15 @@ map('n', '<C-Q>', '<CMD>q<CR>')
 -- Save neovim
 map('n', '<C-s>', '<CMD>w<CR>')
 
--- Quit and save neovim
-map('n', '<C-w>', '<CMD>x<CR>')
+-- Save and quit neovim
+map('n', '<C-z>', '<CMD>x<CR>')
+
 
 -- Shortcut to yank register
 map({ 'n', 'x' }, '<leader>p', '"0p')
 
--- Spell-check set to <leader>o, 'o' for 'orthography':
 map('n', '<leader>o', '<CMD>setlocal spell! spelllang=es_ar<CR>')
+map('n', '<leader>O', '<CMD>setlocal spell! spelllang=en_us<CR>')
 
 -- Nerd tree
 map('n', '<c-n>', '<CMD>NERDTreeToggle<CR>')
@@ -31,6 +32,7 @@ map('n', '<c-n>', '<CMD>NERDTreeToggle<CR>')
 ------------------------------------------------
 -- ==>   Splits
 ------------------------------------------------
+
 -- Shortcutting split navigation, saving a keypress:
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
@@ -66,6 +68,12 @@ map('x', '.', ':normal .<CR>')
 
 -- Mapping to open VimwikiIndex
 map('n', '<leader>ww', ':VimwikiIndex<CR>', { noremap = true })
+
+local builtin = require('telescope.builtin')
+map('n', '<leader>ff', builtin.find_files, {})
+map('n', '<leader>fg', builtin.live_grep, {})
+map('n', '<leader>fb', builtin.buffers, {})
+map('n', '<leader>fh', builtin.help_tags, {})
 
 -- Open corresponding .pdf/.html or preview
 -- map('n', '<leader>p', ':!opout <c-r>%<CR><CR>')

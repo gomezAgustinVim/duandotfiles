@@ -19,7 +19,7 @@ packer.startup(function(use)
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.6",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use("nvim-telescope/telescope-file-browser.nvim")
@@ -59,6 +59,7 @@ use "lukas-reineke/indent-blankline.nvim"
 	-- File management --
 	use("scrooloose/nerdtree")
 	use("tiagofumo/vim-nerdtree-syntax-highlight")
+    use ("nvim-tree/nvim-web-devicons")
 	use("ryanoasis/vim-devicons")
 
 	-- Tim Pope Plugins --

@@ -17,7 +17,7 @@ else
     NERDTreeBookmarksFile = vim.fn.expand('~/.vim') .. '/NERDTreeBookmarks'
 end
 
--- numToStr's config
+-- numToStrs config
 
 -- Custom filetypes
 vim.filetype.add({
