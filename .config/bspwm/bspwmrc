@@ -13,7 +13,7 @@ xsetroot -cursor_name left_ptr
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ### Monitors ###
-bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9
+bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
 
 ### BSPWM config ###
 bspc config border_width          2
@@ -43,15 +43,16 @@ bspc rule -a Gimp desktop=^4 follow=on state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Screenkey manage=off
-bspc rule -a Virt-manager desktop=^2 follow=on state=floating
+bspc rule -a Virt-manager desktop=^2 state=floating
 bspc rule -a obs desktop=^7 follow=on
 bspc rule -a Zathura state=tiled
-bspc rule -a SoulseekQt desktop=^3 follow=on
+bspc rule -a SoulseekQt desktop=^3
 bspc rule -a FileZilla desktop=^6 follow=on
 bspc rule -a Galculator state=floating
 bspc rule -a Anki follow=on
 bspc rule -a KeePassXC desktop=^5 follow=on
 bspc rule -a firefox desktop=^1
+bspc rule -a Brave-browser desktop=^1
 bspc rule -a transmission-gtk desktop=^9 state=tiled follow=off
 bspc rule -a kanjitomo-reader-Launcher follow=on state=floating desktop=^3
 
