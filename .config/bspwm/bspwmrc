@@ -1,12 +1,12 @@
 #!/bin/sh
 
+$HOME/.config/x11/xinitrc
+$HOME/.config/polybar/launch.sh
 pgrep -x sxhkd || sxhkd &
 pgrep -x nm-applet || nm-applet &
 pgrep -x redshift-gtk || redshift-gtk &
 numlockx on &
 fcitx5 -dr &
-$HOME/.config/polybar/launch.sh
-$HOME/.config/x11/xinitrc
 xsetroot -cursor_name left_ptr
 
 # Polkit
@@ -17,8 +17,8 @@ bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
 
 ### BSPWM config ###
 bspc config border_width          2
-bspc config window_gap            5
-bspc config top_padding           22
+bspc config window_gap            10
+bspc config top_padding           20
 bspc config bottom_padding        2
 bspc config left_padding          2
 bspc config right_padding         2
@@ -26,7 +26,7 @@ bspc config split_ratio           0.50
 bspc config single_monocle        false
 bspc config borderless_monocle    true
 bspc config gapless_monocle       true
-# bspc config focus_by_distance     true
+bspc config focus_by_distance     true
 # bspc config click_to_focus        true
 bspc config focus_follows_pointer true
 

@@ -9,7 +9,7 @@ hwclock --systohc      # sets time with hwclock
 inactivity.sh & # locks screen when inactvie
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 
-autostart="mpd xcompmgr unclutter dunst udiskie pipewire remapd" # transmission-daemon
+autostart="mpd xcompmgr unclutter dunst udiskie pipewire remapd " # transmission-daemon
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &
