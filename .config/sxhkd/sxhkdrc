@@ -6,12 +6,12 @@ alt + k; {s,m,k,z,p,f}
 	{pkill -USR1 -x sxhkd,pkill -USR1 mpd && mpd,pkill -USR1 screenkey, kill -USR1 $(pidof obs), launch.sh, fcitx5 -dr}
 
 # open GUI
-alt + g; {a,b,g,o,d,n,e,x,m,t,f,k,v}
-    {anki,$BROWSER,gimp,virt-manager,obs, soulseekqt,electrum,monero-wallet-gui,sqlitebrowser, transmission-gtk, filezilla, keepassxc,code}
+alt + g; {b,g,o,d,n,e,t,f,k,v}
+    {$BROWSER,gimp,virt-manager,obs,soulseekqt,electrum, transmission-gtk, filezilla, keepassxc,code}
 
 # open CLI
-alt + c; {s,m,h,t,c}
-    {screenkey,st -e ncmpcpp,st -e htop,st -e tremc,st -e calcurse}
+alt + c; {s,m,h,c}
+    {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse}
 
 # open terminal itself
 super + Return
