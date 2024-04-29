@@ -31,7 +31,7 @@ alias \
   rmd="rmdir -v" \
   du="du -h" \
   rsync="rsync -Pvrluz" \
-  # lf="lfub" \
+  lf="lfub" \
   ft="rsync --no-recursive"
 
 # ffmpeg commands
