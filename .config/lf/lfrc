@@ -160,3 +160,4 @@ map Y $printf "%s" "$fx" | xclip -selection clipboard
 
 # Source Bookmarks
 source "~/.config/lf/shortcutrc"
+source "~/.config/lf/icons"
