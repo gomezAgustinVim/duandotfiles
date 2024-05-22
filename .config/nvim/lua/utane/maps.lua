@@ -19,7 +19,6 @@ map('n', '<C-s>', '<CMD>w<CR>')
 -- Save and quit neovim
 map('n', '<C-z>', '<CMD>x<CR>')
 
-
 -- Shortcut to yank register
 map({ 'n', 'x' }, '<leader>p', '"0p')
 
@@ -32,6 +31,11 @@ map('n', '<c-n>', '<CMD>NERDTreeToggle<CR>')
 ------------------------------------------------
 -- ==>   Splits
 ------------------------------------------------
+
+-- Make splits
+-- Either vertical or horizontal
+map('n', '<Leader>vs', '<CMD>vs<CR>')
+map('n', '<Leader>hs', '<CMD>split<CR>')
 
 -- Shortcutting split navigation, saving a keypress:
 map('n', '<C-h>', '<C-w>h')
@@ -60,8 +64,6 @@ map('n', '<leader>c', ':w! | !compiler "<c-r>%"<CR>')
 
 -- Compile slide with pandoc
 map('n', '<leader>e', ':!pandoc % -t beamer -o %.pdf<CR>')
-
-map('n', 'c', '"_c')
 
 -- Perform dot commands over visual blocks:
 map('x', '.', ':normal .<CR>')
