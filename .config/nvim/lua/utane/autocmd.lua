@@ -2,12 +2,12 @@ local A = vim.api
 local C = vim.cmd
 
 -- Autocmd to close NERDTree buffer when entering the first window
--- C([[
--- augroup CloseNERDTree
---     autocmd!
---     autocmd BufEnter * if winnr('$') == 1 and exists('b:NERDTree') and b:NERDTree.isTabTree() | q | endif
--- augroup END
--- ]])
+C([[
+    augroup CloseNERDTree
+    autocmd!
+    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | q | endif
+    augroup END
+]])
 
 -- Set NERDTreeBookmarksFile based on the environment
 local NERDTreeBookmarksFile
@@ -132,7 +132,7 @@ C([[
     autocmd BufRead,BufNewFile *.tex set filetype=tex
 ]])
 
-C('colorscheme base16-gruvbox-material-dark-medium')
+C('colorscheme base16-gruvbox-material-dark-hard')
 
 -- C(autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE)
 
