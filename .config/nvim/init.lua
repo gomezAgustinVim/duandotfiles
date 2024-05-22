@@ -1,4 +1,5 @@
 -- Vanilla config
+print("Los duanes venceremos NWN")
 require("utane.settings")
 require("utane.autocmd")
 require("utane.plugins")

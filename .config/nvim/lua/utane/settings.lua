@@ -2,8 +2,6 @@ local g = vim.g
 local o = vim.o
 local opt = vim.opt
 
--- g.polyglot_disabled = {'markdown'}
-
 -- Uncomment the next line to make Vim more Vi-compatible
 -- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 -- options, so any other options should be set AFTER setting 'compatible'.
@@ -18,15 +16,15 @@ vim.cmd('syntax on')
 -- The following are commented out as they cause vim to behave a lot
 -- differently from regular Vi. They are highly recommended though.
 -- o.ic = true			-- Ignore case
-o.showmatch = true		-- Show matching brackets.
-o.ignorecase = true		-- Do case insensitive matching
-o.smartcase = true		-- Do smart case matching
-o.incsearch = true		-- Incremental search
-o.autowrite = true		-- Automatically save before commands like :next and :make
-o.hidden = true		-- Hide buffers when they are abandoned
+o.showmatch = true  -- Show matching brackets.
+o.ignorecase = true -- Do case insensitive matching
+o.smartcase = true  -- Do smart case matching
+o.incsearch = true  -- Incremental search
+o.autowrite = true  -- Automatically save before commands like :next and :make
+o.hidden = true     -- Hide buffers when they are abandoned
 
 -- Better editing experience
-o.expandtab = true		-- Turn tab into spaces
+o.expandtab = true -- Turn tab into spaces
 o.smarttab = true
 o.cindent = true
 o.autoindent = true
@@ -67,24 +65,10 @@ o.history = 50
 -- Preserve view while jumping
 o.jumpoptions = 'view'
 
-opt.mouse = 'a'		-- Enable mouse usage (all modes)
+opt.mouse = 'a' -- Enable mouse usage (all modes)
 
 -- Enable autocompletion:
 o.wildmode = 'longest,list,full'
-
--- Define file extensions to syntax mappings for Vimwiki
-g.vimwiki_ext2syntax = {
-    ['.Rmd'] = 'markdown',
-    ['.rmd'] = 'markdown',
-    ['.md'] = 'markdown',
-    ['.markdown'] = 'markdown',
-    ['.mdown'] = 'markdown',
-}
-
--- Configure Vimwiki
-g.vimwiki_list = {
-    { path = '~/.local/share/vimwiki', syntax = 'markdown', ext = '.md' },
-}
 
 -- Set global variables
 g.hidden_all = 0
@@ -101,17 +85,34 @@ if not vim.fn.has('gui_running') then
     o.t_Co = 256
 end
 
+----------------------------------Vimwiki------------------------------------------
+-- Define file extensions to syntax mappings for Vimwiki
+g.vimwiki_list = {
+    {
+        path = '~/.local/share/vimwiki',
+        syntax = 'markdown',
+        ext = '.md',
+    }
+}
+
+g.vimwiki_ext2syntax = {
+    ['.md'] = 'markdown',
+    ['.Rmd'] = 'markdown',
+    ['.rmd'] = 'markdown',
+    ['.markdown'] = 'markdown',
+    ['.mdown'] = 'markdown',
+}
+
+-- This will make sure vimwiki will only set the filetype of markdown files inside a wiki directory, rather than globally.
+g.vimwiki_global_ext = 0
+
+------------------------------------------------
+
 -- Activate plugins
 require('lualine').setup()
 require("ibl").setup()
 g.rainbow_active = 1
 g.python_highlight_all = 1
-
-require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  }
-}
 
 -- add option map_cr
 require('nvim-autopairs').setup({ map_cr = true })
