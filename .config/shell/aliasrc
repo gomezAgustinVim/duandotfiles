@@ -55,7 +55,7 @@ alias \
         pn="pacman -S --needed" \
         pu="pacman -Syu" \
         pa="paru" \
-        ne="neofetch" \
+        fas="fastfetch" \
         h="htop" \
         c="cointop" \
         src="source ~/.config/shell/profile && source ~/.zshrc && source ~/.config/shell/aliasrc"
