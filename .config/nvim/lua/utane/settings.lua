@@ -118,3 +118,9 @@ require('nvim-autopairs').setup({ map_cr = true })
 
 g.mapleader = ' '
 g.maplocalleader = ' '
+
+if g.vscode then
+    -- VSCode extension
+else
+    -- ordinary Neovim
+end
