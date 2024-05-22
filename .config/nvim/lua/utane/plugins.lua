@@ -24,11 +24,10 @@ packer.startup(function(use)
 	})
 	use("nvim-telescope/telescope-file-browser.nvim")
 
-	use("nvim-treesitter/nvim-treesitter") -- Treesitter Syntax Highlighting
+	use("nvim-treesitter/nvim-treesitter", {run = 'TSUpdate'}) -- Treesitter Syntax Highlighting
 
 	-- Productivity
 	use("vimwiki/vimwiki")
-	-- use("jreybert/vimagit")
     use 'sheerun/vim-polyglot'
     -- Lua
     use {
@@ -68,12 +67,9 @@ use "lukas-reineke/indent-blankline.nvim"
 	-- Syntax Highlighting and Colors --
 	use("PotatoesMaster/i3-vim-syntax")
 	use("kovetskiy/sxhkd-vim")
-	use("vim-python/python-syntax")
 	use("ap/vim-css-color")
 
 	-- Junegunn Choi Plugins --
-	use("junegunn/goyo.vim")
-	use("junegunn/limelight.vim")
 	use("junegunn/vim-emoji")
 
 	-- Colorschemes --
@@ -81,6 +77,31 @@ use "lukas-reineke/indent-blankline.nvim"
 
 	-- Other stuff --
 	use("frazrepo/vim-rainbow")
+
+    -- LSP usage
+use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  requires = {
+    --- Uncomment the two plugins below if you want to manage the language servers from neovim
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-buffer'},
+    {'hrsh7th/cmp-cmdline'},
+    {'hrsh7th/cmp-path'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'saadparwaiz1/cmp_luasnip'},
+
+    -- Snippets
+    {'L3MON4D3/LuaSnip'},
+    {'rafamadriz/friendly-snippets'},
+  }
+}
 
 	if packer_bootstrap then
 		packer.sync()

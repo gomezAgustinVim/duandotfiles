@@ -2,7 +2,7 @@ local g = vim.g
 local o = vim.o
 local opt = vim.opt
 
--- g.polyglot_disabled = {'markdown'}
+g.polyglot_disabled = {'markdown'}
 
 -- Uncomment the next line to make Vim more Vi-compatible
 -- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
@@ -72,20 +72,6 @@ opt.mouse = 'a'		-- Enable mouse usage (all modes)
 -- Enable autocompletion:
 o.wildmode = 'longest,list,full'
 
--- Define file extensions to syntax mappings for Vimwiki
-g.vimwiki_ext2syntax = {
-    ['.Rmd'] = 'markdown',
-    ['.rmd'] = 'markdown',
-    ['.md'] = 'markdown',
-    ['.markdown'] = 'markdown',
-    ['.mdown'] = 'markdown',
-}
-
--- Configure Vimwiki
-g.vimwiki_list = {
-    { path = '~/.local/share/vimwiki', syntax = 'markdown', ext = '.md' },
-}
-
 -- Set global variables
 g.hidden_all = 0
 -- g.lightline = { colorscheme = 'gruvbox' }
@@ -101,17 +87,26 @@ if not vim.fn.has('gui_running') then
     o.t_Co = 256
 end
 
+-- Vimwiki
+-- Define file extensions to syntax mappings for Vimwiki
+g.vimwiki_ext2syntax = {
+    ['.Rmd'] = 'markdown',
+    ['.rmd'] = 'markdown',
+    ['.md'] = 'markdown',
+    ['.markdown'] = 'markdown',
+    ['.mdown'] = 'markdown',
+}
+
+-- Configure Vimwiki
+g.vimwiki_list = {
+    { path = '~/.local/share/vimwiki', syntax = 'markdown', ext = '.md' },
+}
+
 -- Activate plugins
 require('lualine').setup()
 require("ibl").setup()
 g.rainbow_active = 1
 g.python_highlight_all = 1
-
-require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  }
-}
 
 -- add option map_cr
 require('nvim-autopairs').setup({ map_cr = true })
