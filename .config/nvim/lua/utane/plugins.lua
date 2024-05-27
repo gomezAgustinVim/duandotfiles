@@ -24,19 +24,11 @@ packer.startup(function(use)
     })
     use("nvim-telescope/telescope-file-browser.nvim")
 
-<<<<<<< HEAD
     use("nvim-treesitter/nvim-treesitter", { run = 'TSUpdate' }) -- Treesitter Syntax Highlighting
     use('nvim-treesitter/playground')
 
     -- Productivity
     use("vimwiki/vimwiki")
-=======
-	use("nvim-treesitter/nvim-treesitter", {run = 'TSUpdate'}) -- Treesitter Syntax Highlighting
-
-	-- Productivity
-	use("vimwiki/vimwiki")
-    use 'sheerun/vim-polyglot'
->>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
     -- Lua
     use {
         "folke/which-key.nvim",
@@ -72,7 +64,6 @@ packer.startup(function(use)
     -- Tim Pope Plugins --
     use("tpope/vim-surround")
 
-<<<<<<< HEAD
     -- Syntax Highlighting and Colors --
     use("PotatoesMaster/i3-vim-syntax")
     use("kovetskiy/sxhkd-vim")
@@ -80,15 +71,6 @@ packer.startup(function(use)
 
     -- Junegunn Choi Plugins --
     use("junegunn/vim-emoji")
-=======
-	-- Syntax Highlighting and Colors --
-	use("PotatoesMaster/i3-vim-syntax")
-	use("kovetskiy/sxhkd-vim")
-	use("ap/vim-css-color")
-
-	-- Junegunn Choi Plugins --
-	use("junegunn/vim-emoji")
->>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
 
     -- Colorschemes --
     use("RRethy/nvim-base16")
@@ -97,7 +79,6 @@ packer.startup(function(use)
     use("frazrepo/vim-rainbow")
 
     -- LSP usage
-<<<<<<< HEAD
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -125,33 +106,4 @@ packer.startup(function(use)
     if packer_bootstrap then
         packer.sync()
     end
-=======
-use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  requires = {
-    --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
-
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-cmdline'},
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'saadparwaiz1/cmp_luasnip'},
-
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},
-    {'rafamadriz/friendly-snippets'},
-  }
-}
-
-	if packer_bootstrap then
-		packer.sync()
-	end
->>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
 end)
