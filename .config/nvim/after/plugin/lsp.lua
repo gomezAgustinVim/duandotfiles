@@ -16,6 +16,10 @@ require('mason-lspconfig').setup({
         'lua_ls',
         'pylsp',
         'bashls',
+<<<<<<< HEAD
+=======
+        'ltex',
+>>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
         'jsonls',
     },
 

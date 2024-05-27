@@ -2,6 +2,11 @@ local g = vim.g
 local o = vim.o
 local opt = vim.opt
 
+<<<<<<< HEAD
+=======
+g.polyglot_disabled = {'markdown'}
+
+>>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
 -- Uncomment the next line to make Vim more Vi-compatible
 -- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 -- options, so any other options should be set AFTER setting 'compatible'.
@@ -85,6 +90,7 @@ if not vim.fn.has('gui_running') then
     o.t_Co = 256
 end
 
+<<<<<<< HEAD
 ----------------------------------Vimwiki------------------------------------------
 -- Define file extensions to syntax mappings for Vimwiki
 g.vimwiki_list = {
@@ -99,14 +105,29 @@ g.vimwiki_ext2syntax = {
     ['.md'] = 'markdown',
     ['.Rmd'] = 'markdown',
     ['.rmd'] = 'markdown',
+=======
+-- Vimwiki
+-- Define file extensions to syntax mappings for Vimwiki
+g.vimwiki_ext2syntax = {
+    ['.Rmd'] = 'markdown',
+    ['.rmd'] = 'markdown',
+    ['.md'] = 'markdown',
+>>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
     ['.markdown'] = 'markdown',
     ['.mdown'] = 'markdown',
 }
 
+<<<<<<< HEAD
 -- This will make sure vimwiki will only set the filetype of markdown files inside a wiki directory, rather than globally.
 g.vimwiki_global_ext = 0
 
 ------------------------------------------------
+=======
+-- Configure Vimwiki
+g.vimwiki_list = {
+    { path = '~/.local/share/vimwiki', syntax = 'markdown', ext = '.md' },
+}
+>>>>>>> 3e976b89493235c71816150b7dfe4bff924a6439
 
 -- Activate plugins
 require('lualine').setup()
