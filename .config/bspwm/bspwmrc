@@ -2,6 +2,7 @@
 
 $HOME/.config/x11/xinitrc
 $HOME/.config/polybar/launch.sh
+floating-environment.sh & # Set up a desktop where all windows are floating
 pgrep -x sxhkd || sxhkd &
 pgrep -x nm-applet || nm-applet &
 pgrep -x redshift-gtk || redshift-gtk &
@@ -49,10 +50,9 @@ bspc rule -a Zathura state=tiled
 bspc rule -a SoulseekQt desktop=^4
 bspc rule -a FileZilla desktop=^6 follow=on
 bspc rule -a Galculator state=floating
-bspc rule -a Anki follow=on
 bspc rule -a KeePassXC desktop=^5 follow=on
 bspc rule -a Brave-browser desktop=^1
-bspc rule -a transmission-gtk desktop=^9 state=tiled follow=off
+bspc rule -a transmission-gtk desktop=^9
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr
