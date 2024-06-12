@@ -10,10 +10,10 @@
 
 # youtube-dl
 alias \
- yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
- yta='yt -x -f bestaudio/best -o "~/Musica/dl-music/%(title)s.%(ext)s"' \
- ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
- ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
+    yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
+    yta='yt -x -f bestaudio/best -o "~/Musica/dl-music/%(title)s.%(ext)s"' \
+    ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
+    ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
 # bashrc/other configs
  alias s="$EDITOR ~/.config/sxhkd/sxhkdrc"
@@ -27,45 +27,45 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
     rmlog="rm -vI *.log *.tex" \
-	mkd="mkdir -pv" \
-  rmd="rmdir -v" \
-  du="du -h" \
-  rsync="rsync -Pvrluz" \
-  lf="lfub" \
-  ft="rsync --no-recursive"
+    mkd="mkdir -pv" \
+    rmd="rmdir -v" \
+    du="du -h" \
+    rsync="rsync -Pvrluz" \
+    lf="lfub" \
+    ft="rsync --no-recursive"
 
 # ffmpeg commands
 alias \
-	ffmpeg="ffmpeg -hide_banner" \
-  ffconvert='find -maxdepth 1 -mindepth 1 -type f -name "*.mkv" -print -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;' \
-  tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
+    ffmpeg="ffmpeg -hide_banner" \
+    ffconvert='find -maxdepth 1 -mindepth 1 -type f -name "*.mkv" -print -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;' \
+    tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
 
 
 # These common commands are just too long! Abbreviate them.
 alias \
 	z="zathura" \
-        ka="killall" \
-        g="git" \
-	      i="nsxiv -q -a -t" \
-	      sdn="shutdown -h now" \
-        mk="make install" \
-        df='df -lH ' \
-        mps="mpv --shuffle" \
-        p="pacman" \
-        pn="pacman -S --needed" \
-        pu="pacman -Syu" \
-        pa="paru" \
-        fas="fastfetch" \
-        h="htop" \
-        c="cointop" \
-        src="source ~/.config/shell/profile && source ~/.zshrc && source ~/.config/shell/aliasrc"
+    ka="killall" \
+    g="git" \
+	i="nsxiv -q -a -t" \
+	sdn="shutdown -h now" \
+    mk="make install" \
+    df='df -lH ' \
+    mps="mpv --shuffle" \
+    p="pacman" \
+    pn="pacman -S --needed" \
+    pu="pacman -Syu" \
+    pa="paru" \
+    fas="fastfetch" \
+    h="htop" \
+    c="cointop" \
+    src="source ~/.config/shell/profile && source ~/.zshrc && source ~/.config/shell/aliasrc"
 
-        # tmux commands
+# tmux commands
 alias \
-        t="tmux" \
-        tn="t new-session -swk" \
-        tbg="t new-session -sbg" \
-        tk="t kill-session"
+    t="tmux" \
+    tn="t new-session -swk" \
+    tbg="t new-session -sbg" \
+    tk="t kill-session"
 
 # enable color support of ls and also add handy aliases
 alias \
