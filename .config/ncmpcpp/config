@@ -58,4 +58,4 @@ current_item_suffix = $/r$(end)$/b
 current_item_inactive_column_prefix = $(magenta)$r
 current_item_inactive_column_suffix = $/r$(end)
 
-execute_on_song_change = notify-send --urgency=low "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+execute_on_song_change = notify-send --urgency=low --expire-time=5000 "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
