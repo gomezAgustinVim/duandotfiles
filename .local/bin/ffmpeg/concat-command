@@ -1,2 +1,3 @@
 #!/bin/sh
-ffmpeg -f concat -safe 0 -i file.txt -c copy $1
+[ -z "$1" || "$2" ] && echo -e "\nBad option. Please fill all the arguments with the filenames you want" && exit 1
+ffmpeg -f concat -safe 0 -i $1  -c copy $2
