@@ -2,7 +2,7 @@
 
 $HOME/.config/x11/xinitrc
 $HOME/.config/polybar/launch.sh
-floating-environment.sh & # Set up a desktop where all windows are floating
+floating_environment.sh & # Set up a desktop where all windows are floating
 pgrep -x sxhkd || sxhkd &
 pgrep -x nm-applet || nm-applet &
 pgrep -x redshift-gtk || redshift-gtk &
