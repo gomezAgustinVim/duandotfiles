@@ -2,7 +2,7 @@
 # config
 
 # Kill a process
-alt + k; {s,m,k,z,p,r,f}
+alt + k; {s,m,k,z,p,r,f,w}
 	{pkill -USR1 -x sxhkd,pkill -USR1 mpd && mpd,pkill -USR1 screenkey, kill -USR1 $(pidof obs), launch.sh, remapd, fcitx5 -dr}
 
 # open GUI
