@@ -1,12 +1,16 @@
-# Controls
+# Theme
 include ./zathura-gruvbox-dark-soft
 include ./zathura-gruvbox-light-soft
+
+# Other
 set sandbox none
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 set selection-clipboard "clipboard"
 set window-title-basename "true"
+
+# Controls
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
