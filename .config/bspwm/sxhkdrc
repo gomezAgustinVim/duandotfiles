@@ -22,7 +22,7 @@ super + Return
     $TERMINAL
 
 # Change transparency on focused window
-ctrl + alt + {plus,minus,t}
+ctrl + alt + {period,comma,t}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
 # open dmenu
@@ -129,7 +129,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
+super + ctrl + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
