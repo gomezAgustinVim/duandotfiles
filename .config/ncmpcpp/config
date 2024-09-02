@@ -1,61 +1,79 @@
-#  _ __   ___ _ __ ___  _ __   ___ _ __  _ __
-# | '_ \ / __| '_ ` _ \| '_ \ / __| '_ \| '_ \
-# | | | | (__| | | | | | |_) | (__| |_) | |_) |
-# |_| |_|\___|_| |_| |_| .__/ \___| .__/| .__/
-#                      |_|        |_|   |_|
+##############################################################
+## This is an example configuration file. Copy it to        ##
+## $XDG_CONFIG_HOME/ncmpcpp/config or $HOME/.ncmpcpp/config ##
+## and set up your preferences.                             ##
+##############################################################
 
-% egrep -v '^#' .ncmpcpp/config
-ncmpcpp_directory = "/home/utane/.config/ncmpcpp"
-lyrics_directory = "/home/utane/.local/share/lyrics"
-mpd_music_dir = "/home/utane/Musica"
+mpd_host = "127.0.0.1"
+mpd_port = 6600
+mpd_connection_timeout = "5"
+mpd_crossfade_time = "5"
+mpd_music_dir = ~/Musica
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing.." "$(mpc --format '%title% \n%artist%' current)""
 
-message_delay_time = "1"
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = my_fifo
+
 visualizer_in_stereo = "yes"
-visualizer_data_source = "/tmp/mpd.fifo"
-visualizer_output_name = "my_fifo"
-visualizer_type = "spectrum"
-visualizer_look = "+|"
+visualizer_fps = "60"
+visualizer_type = "ellipse"
+visualizer_look = ●●
+visualizer_color = "magenta,cyan,blue,red,white,green,yellow,black,magenta"
+visualizer_spectrum_smooth_look = "yes"
+
+# GENERAL
+# ---
+connected_message_on_startup = "yes"
+cyclic_scrolling = "yes"
+mouse_support = "no"
+mouse_list_scroll_whole_page = "yes"
+lines_scrolled = "1"
+message_delay_time = "1"
 playlist_shorten_total_times = "yes"
 playlist_display_mode = "columns"
-browser_display_mode =  "columns"
-progressbar_look = "->"
+browser_display_mode = "columns"
 search_engine_display_mode = "columns"
 playlist_editor_display_mode = "columns"
 autocenter_mode = "yes"
 centered_cursor = "yes"
-user_interface = "alternative"
+user_interface = "classic"
 follow_now_playing_lyrics = "yes"
-locked_screen_width_part = "60"
+locked_screen_width_part = "50"
+ask_for_locked_screen_width_part = "yes"
 display_bitrate = "yes"
-media_library_primary_tag = "album_artist"
-media_library_albums_split_by_date = "no"
-startup_screen = "media_library"
-display_volume_level = "yes"
-ignore_leading_the = "yes"
 external_editor = "nvim"
-use_console_editor = "yes"
-empty_tag_color = magenta
-main_window_color = white
-progressbar_color = black:b
-progressbar_elapsed_color = blue:b
-statusbar_color = red
-statusbar_time_color = cyan:b
+main_window_color = "default"
+startup_screen = "playlist"
 
-mpd_host = "127.0.0.1"
-mpd_port = "6600"
+# PROGRESS BAR
+# ---
+progressbar_look = "▪▪▪"
+#progressbar_look = "▃▃▃"
+progressbar_elapsed_color = "magenta"
+progressbar_color = "black"
 
-mouse_list_scroll_whole_page = "yes"
-lines_scrolled = "1"
+# UI VISIBILITY
+# ---
+header_visibility = "no"
+statusbar_visibility = "yes"
+titles_visibility = "yes"
 enable_window_title = "yes"
-song_columns_list_format = "(25)[cyan]{a} (40)[]{f} (30)[red]{b} (7f)[green]{l}"
-song_list_format = {$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
-song_status_format = $b{{$8"%t"}} $3by {$4%a{ $3in $7%b{ (%y)}} $3}|{$8%f}
-song_library_format = {%n - }{%t}|{%f}
-alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
-alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
-current_item_prefix = $(cyan)$r$b
-current_item_suffix = $/r$(end)$/b
-current_item_inactive_column_prefix = $(magenta)$r
-current_item_inactive_column_suffix = $/r$(end)
 
-execute_on_song_change = notify-send --urgency=low --expire-time=5000 "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+# COLORS
+# ---
+statusbar_color = "white"
+color1 = "white"
+color2 = "blue"
+
+# UI APPEARANCE
+# ---
+now_playing_prefix = "$b$2$7 "
+now_playing_suffix = "  $/b$8"
+current_item_prefix = "$b$7$/b$3 "
+current_item_suffix = "  $8"
+
+song_columns_list_format = "(50)[]{t|fr:Title} (0)[magenta]{a}"
+song_list_format = " {%t $R   $8%a$8}|{%f $R   $8%l$8} $8"
+song_status_format = "$b$2󰣐 $7 {$b$6$8 %t $6} $7 $8"
+song_window_title_format = "Now Playing .."
