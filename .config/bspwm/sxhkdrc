@@ -109,7 +109,7 @@ super + g
 	bspc node -s biggest
 
 # Hide/Unhide Window
-ctrl + alt + h
+super + alt + h
 	BspHideNode
 
 # STATE/FLAGS
