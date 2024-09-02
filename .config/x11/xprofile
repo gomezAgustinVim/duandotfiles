@@ -10,7 +10,7 @@ inactivity.sh & # locks screen when inactive
 pipewrapper.sh # starts all pipewire services
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 
-autostart="mpd xcompmgr unclutter dunst udiskie remapd"
+autostart="mpd unclutter dunst udiskie remapd"
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &
