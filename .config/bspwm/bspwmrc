@@ -34,7 +34,6 @@ pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-g
 
 # Load current theme
 "${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
-
 # Default 1 monitor with 6 workspaces
 for monitor in $(xrandr -q | grep -w 'connected' | cut -d' ' -f1); do
     bspc monitor "$monitor" -d '1' '2' '3' '4' '5' '6' '7' '8' '9'
@@ -72,9 +71,9 @@ bspc config urgent_border_color 	"#cc241d"
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP1)
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI1)
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI2)
+#xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP1)
+#xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI1)
+#xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI2)
 
 ###External rules
 ##Pseudo automatic mode: always splits focused window when opening new window

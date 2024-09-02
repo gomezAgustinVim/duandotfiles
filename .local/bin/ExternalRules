@@ -26,7 +26,7 @@ case "$class" in
     Virt-manager)
         result "state=floating desktop=^4 follow=on center=on"
         ;;
-    Transmission-gtk)
+    transmission-gtk)
         result "desktop=^9 follow=on"
         ;;
     obs)
@@ -35,7 +35,7 @@ case "$class" in
     Zathura)
         result "state=tiled"
         ;;
-    SoulseeqQt)
+    SoulseekQt)
         result "desktop=^4"
         ;;
     FileZilla)
