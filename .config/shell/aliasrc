@@ -16,7 +16,7 @@ alias \
     ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
 # bashrc/other configs
- alias s="$EDITOR ~/.config/sxhkd/sxhkdrc"
+ alias s="$EDITOR ~/.config/bspwm/sxhkdrc"
 
  # Expand sudo to work with aliases
  alias sudo="sudo "
@@ -58,7 +58,7 @@ alias \
     fas="fastfetch" \
     h="htop" \
     c="cointop" \
-    src="source ~/.config/zsh/.zshrc && source ~/.config/shell/aliasrc && echo 'sourceado nwn!'"
+    src="source ~/.config/zsh/.zshrc && echo 'sourceado nwn!'"
 
 # tmux commands
 alias \
