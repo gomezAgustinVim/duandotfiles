@@ -1,0 +1,59 @@
+#!/bin/sh
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+result() {
+    eval "$consequences"
+    [ "$state" ] || echo "$1"
+}
+
+case "$class" in
+    Gimp)
+        result "desktop=^4 follow=on"
+        ;;
+    Screenkey)
+        result "manage off"
+        ;;
+    mpv)
+        result "state=floating focus=on rectangle=849x477+0+0 center=on"
+        ;;
+    pavucontrol)
+        result "state=floating center=on"
+        ;;
+    Virt-manager)
+        result "state=floating desktop=^4 follow=on center=on"
+        ;;
+    Transmission-gtk)
+        result "desktop=^9 follow=on"
+        ;;
+    obs)
+        result "desktop=^4 follow=on"
+        ;;
+    Zathura)
+        result "state=tiled"
+        ;;
+    SoulseeqQt)
+        result "desktop=^4"
+        ;;
+    FileZilla)
+        result "desktop=^6 follow=on"
+        ;;
+    Galculator)
+        result "state=floating"
+        ;;
+    KeePassXC)
+        result "desktop=^5 follow=on"
+        ;;
+    Brave-browser)
+        result "desktop=^1"
+        ;;
+esac
+
+case "$instance" in
+    Toolkit)
+        result "state=floating sticky=on rectangle=500x290+1054+593"
+        ;;
+esac
