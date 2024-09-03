@@ -1,7 +1,7 @@
 #include "/home/utane/.local/share/repos/Xresources-themes/base16-gruvbox-dark-hard-256.Xresources"
 
 !! alpha value for st
-*.alpha: 0.8
+*.alpha: 1.0
 
 URxvt.background:	[80]#1d2021
 !! URxvt.foreground:       #e4e4e4
@@ -16,7 +16,7 @@ window.foreground: #8ec07c
 window.background: #222222
 
 dmenu.font: monospace
-dmenu.background: #222222
-dmenu.foreground: #8ec07c
-dmenu.selbackground: #458588
+dmenu.background: #1d2021
+dmenu.foreground: #b8bb26
+dmenu.selbackground: #d3869b
 dmenu.selforeground: #fb4934
