@@ -84,9 +84,9 @@ ctrl + period
 
 # bspwm bindings
 
-# Scratchpad
-super + alt + o
-	tdrop -a -w 70% -h 35% -y 0 -x 15%  --class scratch st --class=scratch
+# Ask for zathura theme
+super + alt + t
+	chosen_zathura_theme.sh
 
 # quit/restart bspwm
 super + shift + {q,r}
