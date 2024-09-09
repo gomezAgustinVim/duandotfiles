@@ -45,7 +45,7 @@ alias \
 alias \
 	z="zathura" \
     ka="killall" \
-    g="git" \
+    g="git status" \
 	i="nsxiv -q -a -t" \
 	sdn="shutdown -h now" \
     mk="make install" \
@@ -70,6 +70,7 @@ alias \
 # enable color support of ls and also add handy aliases
 alias \
     ls="ls -hN --color=auto --group-directories-first" \
+    cat="bat --theme=base16" \
     dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
     dir="dir --color=auto" \
     vdir="vdir --color=auto" \
