@@ -14,8 +14,8 @@ alt + g; {b,g,o,d,n,e,t,f,k,v}
     {$BROWSER,gimp,virt-manager,obs,soulseekqt,electrum, transmission-gtk, filezilla, keepassxc,code}
 
 # open CLI
-alt + c; {s,m,h,c}
-    {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse}
+alt + c; {s,m,h,c,l}
+    {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse, st -e lfub}
 
 # open terminal itself
 super + Return
