@@ -5,7 +5,7 @@ local opt = vim.opt
 -- Uncomment the next line to make Vim more Vi-compatible
 -- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 -- options, so any other options should be set AFTER setting 'compatible'.
-o.nocompatible = true
+-- o.nocompatible = true
 
 -- Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 o.splitbelow = true
@@ -29,7 +29,7 @@ o.smarttab = true
 o.cindent = true
 o.autoindent = true
 o.hidden = true
-o.nobackup = true
+-- o.nobackup = true
 o.wrap = true
 o.textwidth = 300
 o.tabstop = 4
@@ -47,7 +47,7 @@ o.cursorline = true
 
 o.clipboard = 'unnamedplus'
 o.title = true
-o.nohlsearch = true
+-- o.nohlsearch = true
 o.encoding = 'utf-8'
 -- o.noruler = true
 

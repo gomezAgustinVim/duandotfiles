@@ -29,7 +29,7 @@ map('n', '<C-z>', '<CMD>x<CR>')
 map({ 'n', 'x' }, '<leader>py', '"0p')
 
 map('n', '<leader>o', '<CMD>setlocal spell! spelllang=es_ar<CR>')
-map('n', '<leader>O', '<CMD>setlocal spell! spelllang=en_us<CR>')
+map('n', '<leader>O', '<CMD>setlocal spell! spelllang=ja_jp<CR>')
 
 -- Nerd tree
 map('n', '<c-n>', '<CMD>NERDTreeToggle<CR>')
