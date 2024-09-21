@@ -58,7 +58,7 @@ alias \
     fas="fastfetch" \
     h="htop" \
     c="cointop" \
-    src="source ~/.config/zsh/.zshrc && echo 'sourceado nwn!'"
+    src="source ~/.zshrc && echo 'sourceado nwn!'"
 
 # tmux commands
 alias \
