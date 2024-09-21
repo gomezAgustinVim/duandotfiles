@@ -1,22 +1,26 @@
 #include "/home/utane/.local/share/repos/Xresources-themes/base16-gruvbox-dark-hard-256.Xresources"
+#define background_opacity 80
 
 !! alpha value for st
-*.alpha: 1.0
+st.alpha: 0.93
+st.alphaOffset: 0.13
+st.font: monospace
 
-URxvt.background:	[80]#1d2021
+st.termname: st-256color
+st.borderpx: 2
+
+URxvt.background:	[background_opacity]base00
 !! URxvt.foreground:       #e4e4e4
-URxvt.intensityStyles:	true
+URxvt.intensityStyles: true
 URxvt.depth:            32
-URxvt.font:	xft:monospace:size=11
-URxvt.scrollBar:	false
-URxvt.cursorColor:	#aeafad
+URxvt.font:	xft:monospace:size=9
+URxvt.scrollBar:    false
+!! URxvt.cursorColor: #aeafad
 URxvt.termname:         rxvt-unicode
 
-window.foreground: #8ec07c
-window.background: #222222
+!! window.foreground: #8ec07c
+!! window.background: #222222
 
 dmenu.font: monospace
-dmenu.background: #1d2021
-dmenu.foreground: #b8bb26
-dmenu.selbackground: #d3869b
-dmenu.selforeground: #fb4934
+dmenu.foreground: base0C
+dmenu.selbackground: base0B
