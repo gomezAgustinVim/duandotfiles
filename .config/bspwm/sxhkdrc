@@ -27,7 +27,7 @@ ctrl + alt + {period,comma,t}
 
 # open dmenu
 super + @d
-    dmenu_run
+    dmenu_run -nf '#8ec07c' -sb '#b8bb26'
 
 # lock screen
 alt + x; {x, s}
