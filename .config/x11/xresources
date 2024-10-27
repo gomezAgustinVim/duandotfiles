@@ -4,7 +4,6 @@
 !! alpha value for st
 st.alpha: 0.93
 st.alphaOffset: 0.13
-st.font: monospace
 
 st.termname: st-256color
 st.borderpx: 2
