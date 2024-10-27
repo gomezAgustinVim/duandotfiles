@@ -3,7 +3,7 @@
 
 # Kill sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd;dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!'
+	pkill -USR1 -x sxhkd && sxhkd -c ~/.config/bspwm/sxhkdrc;dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!'
 
 # Kill a process
 alt + k + {m,k,z,p,r,f}
