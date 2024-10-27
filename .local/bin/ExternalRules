@@ -36,7 +36,7 @@ case "$class" in
         result "state=tiled"
         ;;
     SoulseekQt)
-        result "desktop=^4"
+        result "desktop=^4 follow=on"
         ;;
     FileZilla)
         result "desktop=^6 follow=on"

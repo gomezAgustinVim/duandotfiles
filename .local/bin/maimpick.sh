@@ -8,11 +8,11 @@
 output="$(date '+%y%m%d-%H%M-%S').png"
 xclip_cmd="xclip -sel clip -t image/png"
 
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
-    "a selected area") maim -s -u pic-selected-"${output}" ;;
-    "current window") maim -u -q -d 0.2 -i "$(xdotool getactivewindow)" pic-window-"${output}" ;;
-    "full screen") maim -u -q -d 0.2 pic-full-"${output}" ;;
-    "a selected area (copy)") maim -s -u | ${xclip_cmd} ;;
-    "current window (copy)") maim -u -q -d 0.2 -i "$(xdotool getactivewindow)" | ${xclip_cmd} ;;
-    "full screen (copy)") maim -u -q -d 0.2 | ${xclip_cmd} ;;
+case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\narea seleccionada (copiar)\\nventana actual (copiar)\\npantalla completa (copiar)" | dmenu -nf '#8ec07c' -sb '#b8bb26' -l 6 -i -p "Tipo de selección")" in
+    "area seleccionada") maim -s -u pic-selected-"${output}" ;;
+    "ventana actual") maim -u -q -d 0.2 -i "$(xdotool getactivewindow)" pic-window-"${output}" ;;
+    "pantalla completa") maim -u -q -d 0.2 pic-full-"${output}" ;;
+    "area seleccionada (copiar)") maim -s -u | ${xclip_cmd} ;;
+    "ventana actual (copiar)") maim -u -q -d 0.2 -i "$(xdotool getactivewindow)" | ${xclip_cmd} ;;
+    "pantalla completa (copiar)") maim -u -q -d 0.2 | ${xclip_cmd} ;;
 esac
