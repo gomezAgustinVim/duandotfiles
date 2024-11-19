@@ -13,5 +13,5 @@ if [[ $rta = 'y' ]]; then
     notify-send "Conversion de flac a mp3 completada nwn"
 elif [[ $rta = 'n' ]]; then
     echo "Chau"
-    exit 1
+    exit 0
 fi
