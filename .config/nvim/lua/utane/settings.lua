@@ -38,7 +38,6 @@ o.list = true
 o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 
 -- Better editor UI
-o.number = true
 o.numberwidth = 5
 o.relativenumber = true
 -- o.signcolumn = 'yes:2'
