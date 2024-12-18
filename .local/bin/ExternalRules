@@ -48,7 +48,10 @@ case "$class" in
         result "desktop=^5 follow=on"
         ;;
     Brave-browser)
-        result "desktop=^1"
+        result "desktop=^4"
+        ;;
+    firefox-esr)
+        result "desktop=^1 follow=on"
         ;;
 esac
 
