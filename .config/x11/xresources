@@ -2,7 +2,7 @@
 #define background_opacity 80
 
 !! alpha value for st
-st.alpha: 0.93
+st.alpha: 1
 st.alphaOffset: 0.13
 
 st.termname: st-256color
