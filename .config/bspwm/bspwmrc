@@ -53,7 +53,7 @@ bspc config borderless_monocle        false
 bspc config gapless_monocle           false
 
 bspc config focus_follows_pointer     true
-bspc config pointer_follows_focus     true
+bspc config pointer_follows_focus     false
 bspc config pointer_motion_interval   5
 bspc config pointer_modifier          mod4
 bspc config pointer_action1           move
