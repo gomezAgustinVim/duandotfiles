@@ -141,6 +141,17 @@ if [[ "$TERM" == (st*|alacritty*|tmux*|screen*|xterm*) ]]; then
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
+## workaround for handling TERM variable in multiple tmux sessions properly (by Nicholas Marriott)
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
+        case $(tmux showenv TERM 2>/dev/null) in
+                *256color) ;&
+                TERM=fbterm)
+                        TERM=screen-256color ;;
+                *)
+                        TERM=screen
+        esac
+fi
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
