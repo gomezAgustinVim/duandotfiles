@@ -24,7 +24,7 @@ packer.startup(function(use)
     })
     use("nvim-telescope/telescope-file-browser.nvim")
 
-    use("nvim-treesitter/nvim-treesitter", { run = 'TSUpdate' }) -- Treesitter Syntax Highlighting
+    use("nvim-treesitter/nvim-treesitter", { run = 'TSUpdate all' }) -- Treesitter Syntax Highlighting
     use('nvim-treesitter/playground')
 
     -- Productivity
