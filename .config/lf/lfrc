@@ -11,15 +11,18 @@
 #    called directly instead of normal lf.
 
 # Basic vars
-set shellopts '-eu'
+set shell zsh
+set shellopts '-euy'
 set ifs "\n"
 set scrolloff 10
+set info size:time
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/preview'
 set autoquit true
+set cursorpreviewfmt "\033[7;90m"
 
 # cmds/functions
 cmd open ${{
@@ -111,7 +114,7 @@ cmd moveto ${{
 cmd copyto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	clear; echo "Copy to where?"
+	clear; echo "Copiar a donde?"
 	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
 	for x in $fx; do
 		eval cp -ivr \"$x\" \"$dest\"
@@ -142,11 +145,29 @@ cmd bulkrename ${{
     lf -remote "send $id unselect"
 }}
 
+# Draw
+# You can configure the on-redraw hook command to set
+# the number of columns based on the current terminal width:
+
+cmd on-redraw %{{
+    if [ "$lf_width" -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    else
+        lf -remote "send $id set ratios 1:2:3"
+    fi
+}}
+
+# Follow symbolic links
+
+cmd follow-link %{{
+  lf -remote "send $id select \"$(readlink -- "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+
 # Bindings
 map <c-f> $lf -remote "send $id select \"$(fzf)\""
-map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
 map H cd ~
 map g top
+map gL follow-link
 map D trash
 map E extract
 map C copyto
@@ -159,15 +180,17 @@ map x $$f
 map X !$f
 map o &mimeopen "$f"
 map O $mimeopen --ask "$f"
+map p :paste; clear     # clears copied files list after paste
 
-map A :rename; cmd-end # at the very end
-map c push A<c-u> # new rename
-map I :rename; cmd-home # at the very beginning
-map i :rename # before extension
-map a :rename; cmd-right # after extension
+map r       # unmap the default rename keybinding
+map i rename
+map I :rename; cmd-home
+map A :rename; cmd-end
+map c :rename; cmd-delete-home
+map C :rename; cmd-end; cmd-delete-home
+
 map B bulkrename
 map b $setbg $f
-
 map <c-e> down
 map <c-y> up
 map V push :!nvim<space>
@@ -176,10 +199,12 @@ map W $setsid -f $TERMINAL >/dev/null 2>&1
 
 map U $printf "%s" "$fx" | xclip -selection clipboard
 map u $printf "%s" "$fx" | sed 's/.*\///' | xclip -selection clipboard
-map . $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/www.youtube.com\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
+map . :read; cmd-history-prev; cmd-enter        # repeat previous command
 map <gt> $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/piped.video\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
 map T $nsxiv -t "$(pwd)" # opens thumbnail mode
 map <c-l> unselect
+# map . $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/www.youtube.com\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
+# map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
 
 # Source Bookmarks
 source "~/.config/lf/shortcutrc"
