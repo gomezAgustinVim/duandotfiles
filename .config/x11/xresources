@@ -21,5 +21,6 @@ URxvt.termname:         rxvt-unicode
 !! window.background: #222222
 
 dmenu.font: monospace
+dmenu.alpha: 1
 dmenu.foreground: base0C
 dmenu.selbackground: base0B
