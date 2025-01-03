@@ -75,22 +75,19 @@ expand-or-complete-with-dots() {
   zle expand-or-complete
   zle redisplay
 }
+
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
-
-# ------------------ Agregado del otro config ---------------------------
 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
 
-# Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
-
+# command not found
+command_not_found_handler() {
+	printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
+    return 127
+}
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
@@ -98,22 +95,24 @@ function zle-keymap-select () {
         viins|main) echo -ne '\e[5 q';; # beam
     esac
 }
+
 zle -N zle-keymap-select
+
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
+
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# bindkey -s '^a' '^ubc -lq\n'
 
 bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
 
 #  ┌─┐┬ ┬┌─┐┌┐┌┌─┐┌─┐  ┌┬┐┌─┐┬─┐┌┬┐┬┌┐┌┌─┐┬  ┌─┐  ┌┬┐┬┌┬┐┬  ┌─┐
 #  │  ├─┤├─┤││││ ┬├┤    │ ├┤ ├┬┘│││││││├─┤│  └─┐   │ │ │ │  ├┤
 #  └─┘┴ ┴┴ ┴┘└┘└─┘└─┘   ┴ └─┘┴└─┴ ┴┴┘└┘┴ ┴┴─┘└─┘   ┴ ┴ ┴ ┴─┘└─┘
+
 function xterm_title_precmd () {
 	print -Pn -- '\e]2;%n@%m %~\a'
 	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
@@ -124,20 +123,24 @@ function xterm_title_preexec () {
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
-if [[ "$TERM" == (st*|alacritty*|tmux*|screen*|xterm*) ]]; then
+if [[ "$TERM" == (st*|tmux*|screen*|xterm*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
-## workaround for handling TERM variable in multiple tmux sessions properly (by Nicholas Marriott)
-if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
-        case $(tmux showenv TERM 2>/dev/null) in
-                *256color) ;&
-                TERM=fbterm)
-                        TERM=screen-256color ;;
-                *)
-                        TERM=screen
-        esac
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
+    case $(tmux showenv TERM 2>/dev/null) in
+        st-256color)
+            TERM=st-256color ;;
+        tmux-256color)
+            TERM=tmux-256color ;;
+        *256color)
+            TERM=screen-256color ;;
+        fbterm)
+            TERM=screen-256color ;;
+        *)
+            TERM=screen ;;
+    esac
 fi
 
 # Load syntax highlighting; should be last.
