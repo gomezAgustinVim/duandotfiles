@@ -27,7 +27,7 @@ Videos
 *.ini
 *.zip
 *.rar
-*.7z
+*.7z*
 *.xls
 *.xml
 *.xcf
