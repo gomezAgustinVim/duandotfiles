@@ -36,7 +36,7 @@ case "$class" in
         result "state=tiled"
         ;;
     SoulseekQt)
-        result "desktop=^4 follow=on"
+        result "desktop=^8"
         ;;
     FileZilla)
         result "desktop=^6 follow=on"
@@ -48,7 +48,7 @@ case "$class" in
         result "desktop=^5 follow=on"
         ;;
     Brave-browser)
-        result "desktop=^4"
+        result "desktop=^3"
         ;;
     firefox-esr)
         result "desktop=^1 follow=on"
