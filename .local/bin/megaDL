@@ -5,7 +5,7 @@ MEGAPATH="$2"
 
 # Verificar si se proporcionaron los argumentos necesarios
 if [[ -z "$LINKS" || -z "$MEGAPATH" ]]; then
-    echo "Uso: $0 <archivo_de_links> <ruta_de_descarga>"
+    echo "Uso: $(basename $0) <archivo_de_links> <ruta_de_descarga>"
     exit 1
 fi
 
