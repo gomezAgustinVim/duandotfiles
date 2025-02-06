@@ -32,6 +32,7 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
+print("Los duanes venceremos NWN")
 
 vim.schedule(function()
     require "mappings"
