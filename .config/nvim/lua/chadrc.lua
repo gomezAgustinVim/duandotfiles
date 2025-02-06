@@ -6,19 +6,32 @@
 local M = {}
 
 M.base46 = {
-    theme = "gruvchad",
+  theme = "gruvchad",
 
-    hl_override = {
-        Comment = { italic = true },
-        ["@comment"] = { italic = true },
-    },
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
+}
+
+-- lazyload it when there are 1+ buffers
+M.ui = {
+  tabufline = {
+    enabled = true,
+    lazyload = true,
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+    modules = nil,
+    bufwidth = 21,
+  },
 }
 
 M.nvdash = { load_on_startup = true }
-M.ui = {
-    tabufline = {
-        lazyload = true
-    }
+
+M.colorify = {
+  enabled = true,
+  mode = "virtual", -- fg, bg, virtual
+  virt_text = "󱓻 ",
+  highlight = { hex = true, lspvars = true },
 }
 
 return M
