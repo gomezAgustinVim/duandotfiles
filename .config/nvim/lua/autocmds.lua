@@ -132,7 +132,7 @@ C([[
     autocmd BufRead,BufNewFile *.tex set filetype=tex
 ]])
 
-C('colorscheme base16-gruvbox-material-dark-hard')
+-- C('colorscheme base16-gruvbox-material-dark-hard')
 
 -- C(autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE)
 

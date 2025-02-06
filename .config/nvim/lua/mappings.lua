@@ -1,6 +1,15 @@
+require "nvchad.mappings"
+
+-- add yours here
+
+-- local map = vim.keymap.set
+
 local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true, noremap = true })
 end
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
 
 -- Mimic shell movements
 map('i', '<C-E>', '<C-o>$')
@@ -82,3 +91,5 @@ map('n', '<leader>p', ':!opout <c-r>%<CR><CR>')
 
 -- Format a file
 map("n", "<leader>fm", vim.lsp.buf.format)
+
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

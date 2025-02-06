@@ -1,6 +1,15 @@
+require "nvchad.options"
+
+-- add yours here!
+
+-- local o = vim.o
+
 local g = vim.g
 local o = vim.o
 local opt = vim.opt
+
+-- g.mapleader = ' '
+-- g.maplocalleader = ' '
 
 -- Uncomment the next line to make Vim more Vi-compatible
 -- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
@@ -42,6 +51,7 @@ o.numberwidth = 5
 o.relativenumber = true
 -- o.signcolumn = 'yes:2'
 o.cursorline = true
+o.cursorlineopt = 'both' -- to enable cursorline!
 
 o.clipboard = 'unnamedplus'
 o.title = true
@@ -49,7 +59,6 @@ o.hlsearch = false
 o.encoding = 'utf-8'
 
 -- Colors
-
 o.termguicolors = true
 o.background = 'dark'
 
@@ -82,31 +91,8 @@ if not vim.fn.has('gui_running') then
     o.t_Co = 256
 end
 
-----------------------------------Vimwiki------------------------------------------
--- Define file extensions to syntax mappings for Vimwiki
-g.vimwiki_list = {
-    {
-        path = '~/.local/share/vimwiki',
-        syntax = 'markdown',
-        ext = '.md',
-    }
-}
-
-g.vimwiki_ext2syntax = {
-    ['.md'] = 'markdown',
-    ['.Rmd'] = 'markdown',
-    ['.rmd'] = 'markdown',
-    ['.markdown'] = 'markdown',
-    ['.mdown'] = 'markdown',
-}
-
--- This will make sure vimwiki will only set the filetype of markdown files inside a wiki directory, rather than globally.
-g.vimwiki_global_ext = 0
-
-------------------------------------------------
-
 -- Activate plugins
-require('lualine').setup()
+-- require('lualine').setup()
 require("ibl").setup()
 g.rainbow_active = 1
 g.python_highlight_all = 1
@@ -114,11 +100,8 @@ g.python_highlight_all = 1
 -- add option map_cr
 require('nvim-autopairs').setup({ map_cr = true })
 
-g.mapleader = ' '
-g.maplocalleader = ' '
-
-if g.vscode then
-    -- VSCode extension
-else
-    -- ordinary Neovim
-end
+-- if g.vscode then
+-- VSCode extension
+-- else
+-- ordinary Neovim
+-- end
