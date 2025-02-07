@@ -22,9 +22,15 @@ return {
         "vimdoc",
         "html",
         "css",
+        "markdown",
+        "c",
       },
+
+ highlight = {
+    enable = true,
     },
   },
+},
 
   -- Productivity
   {
