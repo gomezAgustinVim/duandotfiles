@@ -914,22 +914,22 @@ Language=
 Label=brl
 
 [keyboard-brai-left_hand]
-Description="キーボード - Braille - Braille (zurdo)"
+Description="キーボード - Braille - Braille (one-handed, left)"
 Language=
 Label="brai (left_hand)"
 
 [keyboard-brai-left_hand_invert]
-Description="キーボード - Braille - Braille (pulgar izquierdo  invertido)"
+Description="キーボード - Braille - Braille (one-handed, left, inverted thumb)"
 Language=
 Label="brai (left_hand_invert)"
 
 [keyboard-brai-right_hand]
-Description="キーボード - Braille - Braille (diestro)"
+Description="キーボード - Braille - Braille (one-handed, right)"
 Language=
 Label="brai (right_hand)"
 
 [keyboard-brai-right_hand_invert]
-Description="キーボード - Braille - Braille (pulgar derecho invertido)"
+Description="キーボード - Braille - Braille (one-handed, right, inverted thumb)"
 Language=
 Label="brai (right_hand_invert)"
 
@@ -2079,12 +2079,12 @@ Language=en
 Label="us (dvorak-alt-intl)"
 
 [keyboard-us-dvorak-l]
-Description="キーボード - Inglés (EE. UU.) - Inglés (Dvorak, para zurdos)"
+Description="キーボード - Inglés (EE. UU.) - English (Dvorak, one-handed, left)"
 Language=en
 Label="us (dvorak-l)"
 
 [keyboard-us-dvorak-r]
-Description="キーボード - Inglés (EE. UU.) - Inglés (Dvorak para diestros)"
+Description="キーボード - Inglés (EE. UU.) - English (Dvorak, one-handed, right)"
 Language=en
 Label="us (dvorak-r)"
 
@@ -3142,6 +3142,11 @@ Label="de (neo_qwertz)"
 Description="キーボード - Alemán - Alemán (Neo,QWERTY)"
 Language=de
 Label="de (neo_qwerty)"
+
+[keyboard-de-noted]
+Description="キーボード - Alemán - German (Noted)"
+Language=de
+Label="de (noted)"
 
 [keyboard-de-ru-recom]
 Description="キーボード - Alemán - Ruso (Alemán, recomendado)"
