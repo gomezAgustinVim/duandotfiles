@@ -26,6 +26,9 @@ case "$class" in
     Virt-manager)
         result "state=floating desktop=^4 follow=on center=on"
         ;;
+    VirtualBox)
+        result "state=floating desktop=^4 follow=on center=on"
+        ;;
     transmission-gtk)
         result "desktop=^9 follow=on"
         ;;
