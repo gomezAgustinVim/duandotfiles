@@ -30,9 +30,8 @@ alias \
     mkd="mkdir -pv" \
     rmd="rmdir -v" \
     du="du -h" \
-    rsync="rsync -Pvrluz" \
-    lf="lfub" \
-    ft="rsync --no-recursive"
+    rs="rsync -Pav" \
+    lf="lfub" 
 
 # ffmpeg commands
 alias \
