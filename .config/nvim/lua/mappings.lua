@@ -9,7 +9,8 @@ local map = vim.keymap.set
 -- end
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+
+-- map("i", "jk", "<ESC>")
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")

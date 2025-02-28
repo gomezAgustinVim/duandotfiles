@@ -90,15 +90,6 @@ if vim.o.diff then
   C "highlight! link DiffText MatchParen"
 end
 
--- Uncomment the following to have Vim load indentation rules and plugins
--- according to the detected filetype.
-C "filetype plugin indent on"
-
--- Disables automatic commenting on newline:
-C [[
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-]]
-
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
 C [[
 augroup deleteWhitespace
@@ -115,12 +106,3 @@ C [[
     autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
     autocmd BufRead,BufNewFile *.tex set filetype=tex
 ]]
-
--- C('colorscheme base16-gruvbox-material-dark-hard')
-
--- C(autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE)
-
--- Recompile dwmblocks on config edit.
--- C([[
--- autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid -f dwmblocks }
--- ]])
