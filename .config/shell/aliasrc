@@ -16,22 +16,21 @@ alias \
     ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
 # bashrc/other configs
- alias s="$EDITOR ~/.config/bspwm/sxhkdrc"
+alias s="$EDITOR ~/.config/bspwm/sxhkdrc"
 
- # Expand sudo to work with aliases
- alias sudo="sudo "
+# Expand sudo to work with aliases
+alias sudo="sudo "
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-    rmlog="rm -vI *.log *.tex" \
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -vI" \
     mkd="mkdir -pv" \
     rmd="rmdir -v" \
     du="du -h" \
     rs="rsync -Pav" \
-    lf="lfub" 
+    lf="lfub"
 
 # ffmpeg commands
 alias \
@@ -42,14 +41,14 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
-	z="zathura" \
+    z="zathura" \
     ka="killall" \
     g="git status" \
-	i="nsxiv -q -a -t" \
-	sdn="shutdown -h now" \
+    gm="git commit -m" \
+    i="nsxiv -q -a -t" \
+    sdn="shutdown -h now" \
     mk="make install" \
     df='df -lH ' \
-    mps="mpv --shuffle" \
     p="pacman" \
     pn="pacman -S --needed" \
     pu="pacman -Syu" \
@@ -80,7 +79,7 @@ alias \
     ip="ip --color=auto"
 
 # alias \
-	# ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+    # ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
 # javascript related alias
 alias \
