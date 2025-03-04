@@ -90,6 +90,10 @@ if vim.o.diff then
   C "highlight! link DiffText MatchParen"
 end
 
+-- Uncomment the following to have Vim load indentation rules and plugins
+-- according to the detected filetype.
+C "filetype plugin indent on"
+
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
 C [[
 augroup deleteWhitespace
@@ -98,11 +102,4 @@ augroup deleteWhitespace
    	autocmd BufWritePre * %s/\n\+\%$//e
    	autocmd BufWritePre *.[ch] %s/\%$/\r/e
 augroup END
-]]
-
--- Set filetypes based on patterns
-C [[
-    autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-    autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-    autocmd BufRead,BufNewFile *.tex set filetype=tex
 ]]

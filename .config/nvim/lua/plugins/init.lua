@@ -5,32 +5,18 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
+-- In order to modify the `lspconfig` configuration:
+{
+  "neovim/nvim-lspconfig",
+   config = function()
       require "configs.lspconfig"
-    end,
-  },
+   end,
+},
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "markdown",
-        "c",
-      },
-
- highlight = {
-    enable = true,
-    },
+    opts = require "configs.treesitter"
   },
-},
 
   -- Productivity
   {
@@ -62,12 +48,15 @@ return {
   },
 
   "lukas-reineke/indent-blankline.nvim",
+  "nvim-tree/nvim-web-devicons",
   "ryanoasis/vim-devicons",
 
   -- Syntax Highlighting and Colors --
-  "PotatoesMaster/i3-vim-syntax",
   "kovetskiy/sxhkd-vim",
 
   -- Junegunn Choi Plugins --
   "junegunn/vim-emoji",
+
+  -- Other stuff --
+  "frazrepo/vim-rainbow",
 }

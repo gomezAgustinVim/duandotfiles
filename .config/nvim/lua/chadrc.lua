@@ -35,4 +35,13 @@ M.colorify = {
   highlight = { hex = true, lspvars = true },
 }
 
+M.mason = {
+  pkgs = {
+    "lua-language-server",
+    "eslint-lsp",
+    "prettierd",
+    "prettier",
+  },
+}
+
 return M

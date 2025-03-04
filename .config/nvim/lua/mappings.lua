@@ -77,7 +77,7 @@ map("n", "<Leader>tk", "<C-w>t<C-w>K")
 map("n", "Q", "gq")
 
 -- Check file in shellcheck:
--- map('n', '<leader>s', ':!clear && shellcheck -x %<CR>')
+map("n", "<leader>s", ":!clear && shellcheck -x %<CR>")
 
 -- Compile document, be it groff/LaTeX/markdown/etc.
 map("n", "<leader>c", ':w! | !compiler "<c-r>%"<CR>')
@@ -93,9 +93,6 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", { noremap = true })
 
 -- Open corresponding .pdf/.html or preview
 map("n", "<leader>p", ":!opout <c-r>%<CR><CR>")
-
--- Format a file
-map("n", "<leader>fm", vim.lsp.buf.format)
 
 map("n", "K", function()
   vim.lsp.buf.hover()
