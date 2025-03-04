@@ -5,14 +5,6 @@ return {
     opts = require "configs.conform",
   },
 
-  -- In order to modify the `lspconfig` configuration:
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "configs.treesitter",

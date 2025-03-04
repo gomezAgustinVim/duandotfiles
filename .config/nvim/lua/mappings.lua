@@ -30,7 +30,13 @@ map("n", "<C-s>", "<CMD>w<CR>")
 map("n", "<C-z>", "<CMD>x<CR>")
 
 -- Create new tab
-map("n", "<C-T>", "<CMD>tabnew<CR>")
+map("n", "tn", "<CMD>tabnew<CR>")
+
+-- Close tab
+map("n", "tc", "<CMD>tabclose<CR>")
+
+-- Get tabs
+map("n", "tt", "<CMD>tabs<CR>")
 
 -- Shortcut to yank register
 map({ "n", "x" }, "<leader>py", '"0p')
@@ -39,7 +45,7 @@ map({ "n", "x" }, "<leader>py", '"0p')
 map("n", "<leader>o", "<CMD>setlocal spell! spelllang=es_ar<CR>")
 map("n", "<leader>O", "<CMD>setlocal spell! spelllang=ja_jp<CR>")
 
--- Nerd tree
+-- Vim tree
 map("n", "<c-n>", "<CMD>NvimTreeToggle<CR>")
 
 ------------------------------------------------
@@ -84,24 +90,3 @@ map("x", ".", ":normal .<CR>")
 
 -- Mapping to open VimwikiIndex
 map("n", "<leader>ww", ":VimwikiIndex<CR>", { noremap = true })
-
--- Open corresponding .pdf/.html or preview
-map("n", "<leader>p", ":!opout <c-r>%<CR><CR>")
-
-map("n", "K", function()
-  vim.lsp.buf.hover()
-end)
-map("n", "gd", function()
-  vim.lsp.buf.definition()
-end)
-map("n", "gD", function()
-  vim.lsp.buf.declaration()
-end)
-map("n", "gi", function()
-  vim.lsp.buf.implementation()
-end)
-map("n", "<F2>", function()
-  vim.lsp.buf.rename()
-end)
-
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

@@ -1,4 +1,3 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
@@ -10,6 +9,7 @@ local servers = {
   "cssls",
   "bashls",
   "markdown_oxide",
+  "lua_ls",
   "eslint",
 }
 
