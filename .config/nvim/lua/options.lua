@@ -1,35 +1,26 @@
 require "nvchad.options"
 
--- add yours here!
-
--- local o = vim.o
-
 local g = vim.g
 local o = vim.o
-local opt = vim.opt
 
 -- g.mapleader = ' '
 -- g.maplocalleader = ' '
-
--- Uncomment the next line to make Vim more Vi-compatible
--- NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
--- options, so any other options should be set AFTER setting 'compatible'.
 
 -- Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 o.splitbelow = true
 o.splitright = true
 
-vim.cmd('syntax on')
+vim.cmd "syntax on"
 
 -- The following are commented out as they cause vim to behave a lot
 -- differently from regular Vi. They are highly recommended though.
 -- o.ic = true			-- Ignore case
-o.showmatch = true  -- Show matching brackets.
+o.showmatch = true -- Show matching brackets.
 o.ignorecase = true -- Do case insensitive matching
-o.smartcase = true  -- Do smart case matching
-o.incsearch = true  -- Incremental search
-o.autowrite = true  -- Automatically save before commands like :next and :make
-o.hidden = true     -- Hide buffers when they are abandoned
+o.smartcase = true -- Do smart case matching
+o.incsearch = true -- Incremental search
+o.autowrite = true -- Automatically save before commands like :next and :make
+o.hidden = true -- Hide buffers when they are abandoned
 
 -- Better editing experience
 o.expandtab = true -- Turn tab into spaces
@@ -51,16 +42,16 @@ o.numberwidth = 5
 o.relativenumber = true
 -- o.signcolumn = 'yes:2'
 o.cursorline = true
-o.cursorlineopt = 'both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 o.title = true
 o.hlsearch = false
-o.encoding = 'utf-8'
+o.encoding = "utf-8"
 
 -- Colors
 o.termguicolors = true
-o.background = 'dark'
+o.background = "dark"
 
 -- Smooth scrolling
 o.smoothscroll = true
@@ -69,12 +60,12 @@ o.smoothscroll = true
 o.history = 50
 
 -- Preserve view while jumping
-o.jumpoptions = 'view'
+o.jumpoptions = "view"
 
-opt.mouse = 'a' -- Enable mouse usage (all modes)
+vim.opt.mouse = "a" -- Enable mouse usage (all modes)
 
 -- Enable autocompletion:
-o.wildmode = 'longest,list,full'
+o.wildmode = "longest,list,full"
 
 -- Set global variables
 g.hidden_all = 0
@@ -87,21 +78,15 @@ o.ruler = true
 o.laststatus = 2
 
 -- Check if not running in a GUI
-if not vim.fn.has('gui_running') then
-    o.t_Co = 256
+if not vim.fn.has "gui_running" then
+  o.t_Co = 256
 end
 
 -- Activate plugins
 -- require('lualine').setup()
-require("ibl").setup()
-g.rainbow_active = 1
-g.python_highlight_all = 1
+-- require("ibl").setup()
+-- g.rainbow_active = 1
+-- g.python_highlight_all = 1
 
 -- add option map_cr
-require('nvim-autopairs').setup({ map_cr = true })
-
--- if g.vscode then
--- VSCode extension
--- else
--- ordinary Neovim
--- end
+-- require("nvim-autopairs").setup { map_cr = true }

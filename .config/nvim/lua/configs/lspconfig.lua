@@ -8,6 +8,8 @@ local servers = {
   "rust_analyzer",
   "html",
   "cssls",
+  "bashls",
+  "markdown_oxide",
   "eslint",
 }
 

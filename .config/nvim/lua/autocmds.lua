@@ -1,3 +1,5 @@
+require "nvchad.autocmds"
+
 local A = vim.api
 local C = vim.cmd
 
@@ -44,17 +46,6 @@ A.nvim_create_autocmd("TermOpen", {
       A.nvim_set_option_value("relativenumber", false, { scope = "local" })
       A.nvim_set_option_value("signcolumn", "no", { scope = "local" })
       A.nvim_command "startinsert"
-    end
-  end,
-})
-
--- Jump to the last place in the file before exiting
-A.nvim_create_autocmd("BufReadPost", {
-  group = num_au,
-  callback = function(data)
-    local last_pos = A.nvim_buf_get_mark(data.buf, '"')
-    if last_pos[1] > 0 and last_pos[1] <= A.nvim_buf_line_count(data.buf) then
-      A.nvim_win_set_cursor(0, last_pos)
     end
   end,
 })

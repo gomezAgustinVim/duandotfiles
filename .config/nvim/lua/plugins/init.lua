@@ -5,17 +5,17 @@ return {
     opts = require "configs.conform",
   },
 
--- In order to modify the `lspconfig` configuration:
-{
-  "neovim/nvim-lspconfig",
-   config = function()
+  -- In order to modify the `lspconfig` configuration:
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
       require "configs.lspconfig"
-   end,
-},
+    end,
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "configs.treesitter"
+    opts = require "configs.treesitter",
   },
 
   -- Productivity
@@ -46,10 +46,6 @@ return {
       vim.g.vimwiki_global_ext = 0
     end,
   },
-
-  "lukas-reineke/indent-blankline.nvim",
-  "nvim-tree/nvim-web-devicons",
-  "ryanoasis/vim-devicons",
 
   -- Syntax Highlighting and Colors --
   "kovetskiy/sxhkd-vim",

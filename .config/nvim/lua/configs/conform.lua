@@ -18,7 +18,6 @@ local options = {
     lsp_fallback = true,
     async = false, -- not recommended to change
     quiet = false, -- not recommended to change
-    lsp_format = "fallback", -- not recommended to chang
   },
 }
 
