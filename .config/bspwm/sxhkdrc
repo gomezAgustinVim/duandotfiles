@@ -2,12 +2,11 @@
 # config
 
 # Kill sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd && sxhkd -c ~/.config/bspwm/sxhkdrc;dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!'
+# pkill -USR1 -x sxhkd && sxhkd -c ~/.config/bspwm/sxhkdrc && dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!'
 
 # Kill a process
-alt + k + {m,k,z,p,r,f}
-	{pkill -USR1 mpd && mpd,pkill -USR1 screenkey,kill -USR1 $(pidof obs),launch.sh,remapd,fcitx5 -dr}
+alt + k + {m,y,z,p,r}
+	{pkill -USR1 mpd && mpd,pkill -USR1 screenkey,kill -USR1 $(pidof obs),launch.sh,remapd}
 
 # open GUI
 alt + g; {b,g,o,d,n,e,t,f,k,v}
