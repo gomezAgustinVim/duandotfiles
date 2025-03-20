@@ -1,18 +1,27 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 # Works with runit
 # Parameters for RSYNC
 # Name of USB drive
-readonly NOMBRE="$1"
-readonly COPIADOS="$2"
+NOMBRE="$1"
+COPIADOS="${@:2}"
 # My filter rules
-readonly BACKUP_FILTER="$HOME/Documentos/backup.filter"
+BACKUP_FILTER="$HOME/Documentos/backup.filter"
 # File to store backup history
-readonly BACKUP_HISTORY="$XDG_DATA_HOME/backup_history.txt"
-readonly DAY=$(date +%y%d%m-%H-%M)
+DAY=$(date +%y%d%m-%H-%M)
 # USB PATH GOES HERE
-readonly DESTINO="/run/media/utane/$NOMBRE/backup"
-readonly DESTINO_FINAL="$DESTINO/$DAY"
+DESTINO="/run/media/utane/$NOMBRE/backup"
+DESTINO_FINAL="$DESTINO/$DAY"
+
+# A better handle of the backup history file
+ls -t1r $DESTINO | head -n 1 > /tmp/backup_history.txt
+BACKUP_HISTORY=$(cat /tmp/backup_history.txt)
+
+if [ -z "$BACKUP_HISTORY" ]; then
+    notify-send "Aun no hay un directorio creado en $DESTINO." "Creando..."
+    mkdir -p $DESTINO_FINAL
+    notify-send "Directorio creado con éxito nwn"
+fi
 
 # Append the current backup directory to the history file
 echo "$DAY" >> "$BACKUP_HISTORY"
@@ -24,13 +33,10 @@ if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DAY" ]; then
     # The reason I do this is because I don't care about incr backups
     # It's not really necesary for my use case
     mv "$DESTINO/$DIRECTORIO_PREVIO" "$DESTINO_FINAL"
-    echo "$DAY" > "$BACKUP_HISTORY"
-else
-    # Create the backup directory for today
-    mkdir -p "$DESTINO_FINAL"
 fi
 
-rsync -Pav --update --delete-after --filter="merge $BACKUP_FILTER" "$COPIADOS" "$DESTINO_FINAL"
+rsync -Pav --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS "$DESTINO_FINAL"
+rm /tmp/backup_history.txt
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO_FINAL"
