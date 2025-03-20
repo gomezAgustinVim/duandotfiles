@@ -11,21 +11,24 @@ DAY=$(date +%y%d%m-%H-%M)
 # USB PATH GOES HERE
 DESTINO="$HOME/Publico/backup"
 DESTINO_FINAL="$DESTINO/$DAY"
+# Backup history file
+BACKUP_HISTORY_FILE="/tmp/backup_history.txt"
 
-ls -t1r $DESTINO | head -n 1 > /tmp/backup_history.txt
-BACKUP_HISTORY=$(cat /tmp/backup_history.txt)
+# Get the oldest backup directory
+ls -t1r "$DESTINO" | head -n 1 > "$BACKUP_HISTORY_FILE"
+BACKUP_HISTORY_CONTENT=$(cat "$BACKUP_HISTORY_FILE")
 
-if [ -z "$BACKUP_HISTORY" ]; then
+if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
     notify-send "Aun no hay un directorio creado en $DESTINO." "Creando..."
     mkdir -p $DESTINO_FINAL
     notify-send "Directorio creado con éxito nwn"
 fi
 #
 # Append the current backup directory to the history file
-echo "$DAY" >> "$BACKUP_HISTORY"
+echo "$DAY" >> "$BACKUP_HISTORY_FILE"
 
 # Get the previous backup directory from the history file
-DIRECTORIO_PREVIO=$(head -n 1 "$BACKUP_HISTORY")
+DIRECTORIO_PREVIO=$(head -n 1 "$BACKUP_HISTORY_FILE")
 
 if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DAY" ]; then
     # The reason I do this is because I don't care about incr backups
@@ -34,7 +37,9 @@ if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DAY" ]; then
 fi
 
 rsync -Pav -z --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS "$DESTINO_FINAL"
-rm /tmp/backup_history.txt
+
+# Clean up the backup history file
+rm "$BACKUP_HISTORY_FILE"
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO_FINAL"
