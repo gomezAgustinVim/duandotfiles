@@ -10,7 +10,7 @@ alt + k + {m,y,z,p,r}
 
 # open GUI
 alt + g; {b,g,o,d,n,e,t,f,k,v}
-    {$BROWSER,gimp,virt-manager,obs,soulseekqt,electrum, transmission-gtk, filezilla, keepassxc,virtualbox}
+    {$BROWSER,gimp,virt-manager,obs,nicotine,electrum, transmission-gtk, filezilla, keepassxc,virtualbox}
 
 # open CLI
 alt + c; {s,m,h,c,l}
