@@ -29,8 +29,9 @@ echo "$DAY" >> "$BACKUP_HISTORY_FILE"
 
 # Get the previous backup directory from the history file
 DIRECTORIO_PREVIO=$(head -n 1 "$BACKUP_HISTORY_FILE")
+DIRECTORIO_ACTUAL=$(tail -n 1 "$BACKUP_HISTORY_FILE")
 
-if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DAY" ]; then
+if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DIRECTORIO_ACTUAL" ]; then
     # The reason I do this is because I don't care about incr backups
     # It's not really necesary for my use case
     mv "$DESTINO/$DIRECTORIO_PREVIO" "$DESTINO_FINAL"
