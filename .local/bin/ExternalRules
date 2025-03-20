@@ -38,8 +38,8 @@ case "$class" in
     Zathura)
         result "state=tiled"
         ;;
-    SoulseekQt)
-        result "desktop=^8"
+    org.nicotine_plus.Nicotine)
+        result "desktop=^8 state=floating"
         ;;
     FileZilla)
         result "desktop=^6 follow=on"
@@ -55,6 +55,9 @@ case "$class" in
         ;;
     firefox-esr)
         result "desktop=^1 follow=on"
+        ;;
+    steam)
+        result "desktop=^8 state=floating"
         ;;
 esac
 
