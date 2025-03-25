@@ -11,6 +11,7 @@ local servers = {
   "markdown_oxide",
   "lua_ls",
   "eslint",
+  "ts_ls",
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
