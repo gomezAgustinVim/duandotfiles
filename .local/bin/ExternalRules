@@ -59,6 +59,8 @@ case "$class" in
     steam)
         result "desktop=^8 state=floating"
         ;;
+    code-oss)
+        result "desktop=^2"
 esac
 
 case "$instance" in
