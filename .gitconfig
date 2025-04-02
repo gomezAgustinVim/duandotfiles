@@ -4,8 +4,8 @@
 	email = niconecrofilo589@gmail.com
 	name = lordagustin22
 	signingkey = /home/utane/.ssh/id_ed25519.pub
-[protocol "file"]
-	allow = always
+# [protocol "file"]
+    # allow = always
 [commit]
 	gpgsign = true
 [gpg]
