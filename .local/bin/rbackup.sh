@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 # Works with runit
 # Parameters for RSYNC
@@ -16,8 +16,8 @@ DESTINO_FINAL="$DESTINO/$DAY"
 BACKUP_HISTORY_FILE="/tmp/backup_history.txt"
 
 # A better handle of the backup history file
-ls -t1r $DESTINO | head -n 1 > /tmp/backup_history.txt
-BACKUP_HISTORY_CONTENT=$(cat "$BACKUP_HISTORY_FILE")
+ls -t1r $DESTINO | head -n 1 > $BACKUP_HISTORY_FILE
+BACKUP_HISTORY_CONTENT=$(cat $BACKUP_HISTORY_FILE)
 
 if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
     notify-send "Aun no hay un directorio creado en $DESTINO." "Creando..."
@@ -26,11 +26,11 @@ if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
 fi
 
 # Append the current backup directory to the history file
-echo "$DAY" >> "$BACKUP_HISTORY_FILE"
+echo "$DAY" >> $BACKUP_HISTORY_FILE
 
 # Get the previous backup directory from the history file
-DIRECTORIO_PREVIO=$(head -n 1 "$BACKUP_HISTORY_FILE")
-DIRECTORIO_ACTUAL=$(tail -n 1 "$BACKUP_HISTORY_FILE")
+DIRECTORIO_PREVIO=$(head -n 1 $BACKUP_HISTORY_FILE)
+DIRECTORIO_ACTUAL=$(tail -n 1 $BACKUP_HISTORY_FILE)
 
 if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DIRECTORIO_ACTUAL" ]; then
     # The reason I do this is because I don't care about incr backups
@@ -39,7 +39,7 @@ if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DIRECTORIO_ACTUAL"
 fi
 
 rsync -Pav --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS "$DESTINO_FINAL"
-rm "$BACKUP_HISTORY_FILE"
+rm $BACKUP_HISTORY_FILE
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO_FINAL"

@@ -1,11 +1,10 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 # Works with runit
 # Parameters for RSYNC
-# Name of USB drive
 COPIADOS="$@"
 # My filter rules
-BACKUP_FILTER="$HOME/Documentos/backup.filter"
+BACKUP_FILTER="$HOME/Documentos/backupPublic.filter"
 # File to store backup history
 DAY=$(date +%y%d%m-%H-%M)
 # USB PATH GOES HERE
@@ -15,8 +14,8 @@ DESTINO_FINAL="$DESTINO/$DAY"
 BACKUP_HISTORY_FILE="/tmp/backup_history.txt"
 
 # Get the oldest backup directory
-ls -t1r "$DESTINO" | head -n 1 > "$BACKUP_HISTORY_FILE"
-BACKUP_HISTORY_CONTENT=$(cat "$BACKUP_HISTORY_FILE")
+ls -t1r "$DESTINO" | head -n 1 > $BACKUP_HISTORY_FILE
+BACKUP_HISTORY_CONTENT=$(cat $BACKUP_HISTORY_FILE)
 
 if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
     notify-send "Aun no hay un directorio creado en $DESTINO." "Creando..."
@@ -25,22 +24,20 @@ if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
 fi
 #
 # Append the current backup directory to the history file
-echo "$DAY" >> "$BACKUP_HISTORY_FILE"
+echo "$DAY" >> $BACKUP_HISTORY_FILE
 
 # Get the previous backup directory from the history file
-DIRECTORIO_PREVIO=$(head -n 1 "$BACKUP_HISTORY_FILE")
-DIRECTORIO_ACTUAL=$(tail -n 1 "$BACKUP_HISTORY_FILE")
+DIRECTORIO_PREVIO=$(head -n 1 $BACKUP_HISTORY_FILE)
+DIRECTORIO_ACTUAL=$(tail -n 1 $BACKUP_HISTORY_FILE)
 
-if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DIRECTORIO_ACTUAL" ]; then
-    # The reason I do this is because I don't care about incr backups
-    # It's not really necesary for my use case
-    mv "$DESTINO/$DIRECTORIO_PREVIO" "$DESTINO_FINAL"
-fi
+# The reason I do this is because I don't care about incr backups
+# It's not really necesary for my use case
+mv "$DESTINO/$DIRECTORIO_PREVIO" "$DESTINO_FINAL"
 
-rsync -Pav -z --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS "$DESTINO_FINAL"
+rsync -Pav -z --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO_FINAL
 
 # Clean up the backup history file
-rm "$BACKUP_HISTORY_FILE"
+rm $BACKUP_HISTORY_FILE
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO_FINAL"
