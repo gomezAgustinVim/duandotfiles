@@ -4,17 +4,15 @@ snap
 *SoulseekQt
 k*
 D*
-R
-Escritorio
-Imagenes
-Monero
-Musica
-Videos
-Publico
+R*
+E*
+I*
+M*
+M*
+V*
+P*
 
 # Ignore filetypes
-*.db
-*.sq*
 *.txt
 *.pdf
 *.mp3
@@ -22,7 +20,6 @@ Publico
 *.gif
 *.jpg
 *.jpeg
-*.md
 *.png
 *.m4a
 *.ini
@@ -40,8 +37,4 @@ Publico
 *.html
 *.js
 .gtk-bookmarks
-plugin
-custom
-spell
-ftplugin
 .zcompdump
