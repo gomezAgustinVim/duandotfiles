@@ -30,6 +30,7 @@ alias \
     rmd="rmdir -v" \
     du="du -h" \
     rs="rsync -Pav" \
+    rnew="rs -Pav -z --update --delete-after" \
     lf="lfub"
 
 # ffmpeg commands

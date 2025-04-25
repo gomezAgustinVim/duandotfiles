@@ -7,7 +7,7 @@ dt  ${XDG_DATA_HOME:-$HOME/.local/share}
 rr  $HOME/.local/src
 h   $HOME
 m   ${XDG_MUSIC_DIR:-$HOME/Musica}
-mn  /mnt
+mn  $HOME/mnt
 pp  ${XDG_PICTURES_DIR:-$HOME/Imagenes/}
 sc  $HOME/.local/bin
 src $HOME/.local/src

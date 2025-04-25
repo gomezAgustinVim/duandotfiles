@@ -16,6 +16,10 @@ alt + g; {b,g,o,n,e,t,f,k,v,c,s}
 alt + c; {s,m,h,c,l}
     {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse, st -e lfub}
 
+# mount phone
+super + m
+   aft-mtp-mount ~/mnt
+
 # open terminal itself
 super + Return
     $TERMINAL
