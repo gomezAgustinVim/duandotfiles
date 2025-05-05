@@ -162,4 +162,12 @@ bindkey -M visual '^[[P' vi-delete
 source ~/.config/lf/lfcd.sh
 bindkey -s '^o' '^ulfcd\n'
 
-fastfetch
+# fastfetch
+
+# pnpm
+export PNPM_HOME="/home/utane/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
