@@ -89,7 +89,7 @@ C "filetype plugin indent on"
 C [[
 augroup deleteWhitespace
     autocmd!
-	  autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * %s/\s\+$//e
    	autocmd BufWritePre * %s/\n\+\%$//e
    	autocmd BufWritePre *.[ch] %s/\%$/\r/e
 augroup END

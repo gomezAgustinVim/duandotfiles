@@ -47,4 +47,6 @@ return {
 
   -- Other stuff --
   "frazrepo/vim-rainbow",
+
+  "Saghen/blink.cmp",
 }

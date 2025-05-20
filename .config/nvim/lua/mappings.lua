@@ -43,7 +43,6 @@ map({ "n", "x" }, "<leader>py", '"0p')
 
 -- Activate local spell
 map("n", "<leader>o", "<CMD>setlocal spell! spelllang=es_ar<CR>")
-map("n", "<leader>O", "<CMD>setlocal spell! spelllang=ja_jp<CR>")
 
 -- Vim tree
 map("n", "<c-n>", "<CMD>NvimTreeToggle<CR>")

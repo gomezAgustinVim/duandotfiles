@@ -50,8 +50,8 @@ o.hlsearch = false
 o.encoding = "utf-8"
 
 -- Colors
-o.termguicolors = true
-o.background = "dark"
+-- o.termguicolors = true
+-- o.background = "dark"
 
 -- Smooth scrolling
 o.smoothscroll = true
@@ -85,8 +85,8 @@ end
 -- Activate plugins
 -- require('lualine').setup()
 -- require("ibl").setup()
--- g.rainbow_active = 1
--- g.python_highlight_all = 1
+g.rainbow_active = 1
+g.python_highlight_all = 1
 
 -- add option map_cr
 -- require("nvim-autopairs").setup { map_cr = true }
