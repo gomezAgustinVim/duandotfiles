@@ -9,8 +9,8 @@ alt + k + {m,y,z,p,r}
 	{pkill -USR1 mpd && mpd,pkill -USR1 screenkey,kill -USR1 $(pidof obs),launch.sh,remapd}
 
 # open GUI
-alt + g; {b,g,o,n,e,t,f,k,v,c,s}
-    {$BROWSER, gimp, obs, nicotine, electrum, transmission-gtk, filezilla, keepassxc, virtualbox, code, steam}
+alt + g; {a,b,g,o,n,e,t,f,k,v,c,s}
+    {anki, $BROWSER, gimp, obs, nicotine, electrum, transmission-gtk, filezilla, keepassxc, virtualbox, code, steam}
 
 # open CLI
 alt + c; {s,m,h,c,l}
