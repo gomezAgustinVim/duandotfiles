@@ -30,7 +30,8 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
-setopt inc_append_history
+# setopt inc_append_history
+setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
@@ -66,7 +67,7 @@ zstyle ':completion:*' matcher-list \
 		'm:{a-zA-Z}={A-Za-z}' \
 		'+r:|[._-]=* r:|=*' \
 		'+l:|=*'
-zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
+zstyle ':completion:*:warnings' format "%B%F{red}No hay matches para:%f %F{magenta}%d%b"
 zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
 zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
@@ -143,13 +144,14 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
     esac
 fi
 
-# Load syntax highlighting; should be last.
+# ZSH autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up # or '\eOA'
+bindkey '^[[B' history-substring-search-down # or '\eOB'
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
 bindkey '^[[P' delete-char
 bindkey '^[[3~' delete-char
 
@@ -158,11 +160,11 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
+bindkey -M vicmd 'k' history-substring-search-down # or '\eOB'
+bindkey -M vicmd 'j' history-substring-search-down # or '\eOB'
 
 source ~/.config/lf/lfcd.sh
 bindkey -s '^o' '^ulfcd\n'
-
-# fastfetch
 
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
@@ -171,3 +173,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Load syntax highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
