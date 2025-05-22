@@ -5,6 +5,7 @@ return {
     "vimdoc",
     "html",
     "css",
+    "javascript",
     "markdown",
     "markdown_inline",
     "c",

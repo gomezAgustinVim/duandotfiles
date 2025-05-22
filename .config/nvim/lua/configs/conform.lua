@@ -9,6 +9,7 @@ local options = {
     sh = { "beautysh" },
     zsh = { "beautysh" },
     python = { "ast-grep" },
+    javascript = { "prettier" },
     c = { "ast-grep" },
   },
 
