@@ -26,11 +26,11 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 #  ┬ ┬┬┌─┐┌┬┐┌─┐┬─┐┬ ┬
 #  ├─┤│└─┐ │ │ │├┬┘└┬┘
 #  ┴ ┴┴└─┘ ┴ └─┘┴└─ ┴
+# HISTFILE=~/.config/zsh/zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
-#setopt inc_append_history
-setopt appendhistory
+setopt inc_append_history
 setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
@@ -66,7 +66,7 @@ zstyle ':completion:*' matcher-list \
 		'm:{a-zA-Z}={A-Za-z}' \
 		'+r:|[._-]=* r:|=*' \
 		'+l:|=*'
-zstyle ':completion:*:warnings' format "%B%F{red}No hay matches para:%f %F{magenta}%d%b"
+zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
 zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
 zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
@@ -88,7 +88,6 @@ command_not_found_handler() {
 	printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
     return 127
 }
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
@@ -105,7 +104,6 @@ zle-line-init() {
 }
 
 zle -N zle-line-init
-
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
@@ -145,22 +143,15 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
     esac
 fi
 
-bindkey '^[[P' delete-char
-bindkey '^[[3~' delete-char
-
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-
 # Load syntax highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-# zsh-history-substring-search configuration
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up # or '\eOA'
-bindkey '^[[B' history-substring-search-down # or '\eOB'
-bindkey -M vicmd 'k' history-substring-search-up # or '\eOA'
-bindkey -M vicmd 'j' history-substring-search-down
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[[P' delete-char
+bindkey '^[[3~' delete-char
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -171,6 +162,8 @@ bindkey -M visual '^[[P' vi-delete
 source ~/.config/lf/lfcd.sh
 bindkey -s '^o' '^ulfcd\n'
 
+# fastfetch
+
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
 case ":$PATH:" in
@@ -178,10 +171,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# ZSH autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# autosuggestions config
-# bindkey '^a' autosuggest-clear
-# bindkey '^p' autosuggest-fetch
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#d0d0d0,bold"
