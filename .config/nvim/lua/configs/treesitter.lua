@@ -6,6 +6,7 @@ return {
     "html",
     "css",
     "javascript",
+    "typescript",
     "markdown",
     "markdown_inline",
     "c",

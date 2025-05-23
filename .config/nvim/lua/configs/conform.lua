@@ -10,6 +10,7 @@ local options = {
     zsh = { "beautysh" },
     python = { "ast-grep" },
     javascript = { "prettier" },
+    typescript = { "prettier" },
     c = { "ast-grep" },
   },
 
