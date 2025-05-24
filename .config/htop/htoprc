@@ -1,6 +1,6 @@
 # Beware! This file is rewritten by htop when settings are changed in the interface.
 # The parser is also very primitive, and not human-friendly.
-htop_version=3.4.0-dev-d10f022
+htop_version=3.4.1-ee21c79
 config_reader_min_version=3
 fields=0 48 17 18 38 39 40 2 46 47 49 1
 hide_kernel_threads=1
@@ -30,7 +30,7 @@ degree_fahrenheit=0
 show_cached_memory=1
 update_process_names=0
 account_guest_in_cpu_meter=0
-color_scheme=5
+color_scheme=0
 enable_mouse=1
 delay=10
 hide_function_bar=0
