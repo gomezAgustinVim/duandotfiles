@@ -38,8 +38,6 @@ ctrl + alt + {period,comma,t}
 super + d
     rofi -show combi -combi-modes "drun,ssh" -modes combi
 
-# dmenu_run -nf '#8ec07c' -sb '#b8bb26'
-
 # lock screen
 alt + x; {x, s}
     {lock.sh, loginctl suspend}
