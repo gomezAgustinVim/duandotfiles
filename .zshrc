@@ -125,21 +125,21 @@ function xterm_title_preexec () {
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
-if [[ "$TERM" == (st*|tmux*|screen*|xterm*) ]]; then
+if [[ "$TERM" == (kitty*|tmux*|screen*|xterm*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
     case $(tmux showenv TERM 2>/dev/null) in
-        st-256color)
-            TERM=st-256color ;;
         tmux-256color)
             TERM=tmux-256color ;;
         *256color)
             TERM=screen-256color ;;
         fbterm)
             TERM=screen-256color ;;
+        xterm-kitty)
+            TERM=screen ;;
         *)
             TERM=screen ;;
     esac

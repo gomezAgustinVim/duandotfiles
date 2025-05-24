@@ -12,8 +12,8 @@ unsetopt PROMPT_SP 2>/dev/null
 # Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="st"
-export TERM="st-256color"
+export TERMINAL="kitty"
+export TERM="xterm-kitty"
 export BROWSER="firefox-esr"
 export MANPAGER='nvim +Man!'
 
