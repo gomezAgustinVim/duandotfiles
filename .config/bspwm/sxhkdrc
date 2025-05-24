@@ -3,7 +3,7 @@
 
 # Kill sxhkd
 alt + k + s
-    kill $(pidof sxhkd) && -c ~/.config/bspwm/sxhkdrc 2>&1 &; \
+    kill $(pidof sxhkd) && sxhkd -c ~/.config/bspwm/sxhkdrc 2>&1 &; \
     dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!';
 
 # Kill a process
@@ -17,6 +17,10 @@ alt + g; {a,b,g,o,n,e,t,f,k,v,c,s}
 # open CLI
 alt + c; {s,m,h,c,l}
     {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse, st -e lfub}
+
+# Launch SDDM (restarts the session)
+super + Shift + s
+    dbus-run-session sddm
 
 # mount phone
 super + m
