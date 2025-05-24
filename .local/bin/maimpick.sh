@@ -8,7 +8,7 @@
 output="$(date '+%y%m%d-%H%M-%S').png"
 xclip_cmd="xclip -sel clip -t image/png"
 
-case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\narea seleccionada (copiar)\\nventana actual (copiar)\\npantalla completa (copiar)" | dmenu -nf '#8ec07c' -sb '#b8bb26' -l 6 -i -p "Tipo de selección")" in
+case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\narea seleccionada (copiar)\\nventana actual (copiar)\\npantalla completa (copiar)" | rofi -dmenu -l 6 -i -p "Tipo de selección")" in
     "area seleccionada") maim -s -u pic-selected-"${output}" ;;
     "ventana actual") maim -u -q -d 0.2 -i "$(xdotool getactivewindow)" pic-window-"${output}" ;;
     "pantalla completa") maim -u -q -d 0.2 pic-full-"${output}" ;;
