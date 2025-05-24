@@ -13,7 +13,7 @@ xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment t
 autostart="mpd unclutter dunst udiskie remapd"
 
 for program in $autostart; do
-	pidof -s "$program" || "$program" &
+    pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
