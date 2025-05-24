@@ -11,7 +11,7 @@ $HOME/.config/x11/xinitrc
 $HOME/.config/bspwm/polybar/launch.sh
 
 # Set background
-setbg "${HOME}"/.config/bspwm/walls/hyperborea/ &
+setbg "${HOME}"/Imagenes/walls/hyperborea &
 
 # Launch sxhkd daemon
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/sxhkdrc & }

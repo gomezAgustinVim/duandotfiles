@@ -35,8 +35,10 @@ ctrl + alt + {period,comma,t}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
 # open dmenu
-super + @d
-    dmenu_run -nf '#8ec07c' -sb '#b8bb26'
+super + d
+    rofi -show combi -combi-modes "drun,ssh" -modes combi
+
+# dmenu_run -nf '#8ec07c' -sb '#b8bb26'
 
 # lock screen
 alt + x; {x, s}
