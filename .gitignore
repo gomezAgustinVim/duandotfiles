@@ -52,6 +52,7 @@
 .config/libvirt
 .config/menus
 .config/mozc
+.config/ncmpcpp/lyrics
 .config/mpd/mpd.db
 .config/mpd/mpdstate
 .config/mpd/mpd.log
