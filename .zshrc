@@ -130,21 +130,6 @@ if [[ "$TERM" == (kitty*|tmux*|screen*|xterm*) ]]; then
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
-if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
-    case $(tmux showenv TERM 2>/dev/null) in
-        tmux-256color)
-            TERM=tmux-256color ;;
-        *256color)
-            TERM=screen-256color ;;
-        fbterm)
-            TERM=screen-256color ;;
-        xterm-kitty)
-            TERM=screen ;;
-        *)
-            TERM=screen ;;
-    esac
-fi
-
 # ZSH autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
