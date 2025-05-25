@@ -1,3 +1,3 @@
-IBUS_ADDRESS=unix:path=/tmp/dbus-B70D1smN7S,guid=b8a338bee72ecdecc25780e16831e49b,fcitx_random_string=0aee54a68c104eb7a1ad785919840aa0
-IBUS_DAEMON_PID=1858
+IBUS_ADDRESS=unix:path=/tmp/dbus-K74C8J5HOL,guid=422ee3f820cca01274dcc4c6683391e5,fcitx_random_string=41f4e8c39cda46e89802ab7b6350212f
+IBUS_DAEMON_PID=1886
 
