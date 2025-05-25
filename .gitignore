@@ -1,40 +1,75 @@
-# Ignore config directory
-.*
-snap
-*SoulseekQt
-k*
-D*
-R*
-E*
-I*
-M*
-M*
-V*
-P*
+# X11-specific files (ignored only in wayland branch)
+# bspwm/
+# sxhkd/
+# picom.conf
+# polybar/
+# .xinitrc
 
-# Ignore filetypes
-*.txt
-*.pdf
-*.mp3
-*.mp4
-*.gif
-*.jpg
-*.jpeg
-*.png
-*.m4a
-*.ini
-*.zip
-*.rar
-*.7z*
-*.xls
-*.xml
-*.xcf
-*.webm
-*.mkv
-*.log
-*.aux
-*.json
-*.html
-*.js
-.gtk-bookmarks
-.zcompdump
+/*
+!/.gitignore
+
+# !/.config/
+# !/.config/**/*  # Include all subfiles/subdirs
+
+!/Imagenes/walls/
+!/.local/share/lockscreen.png
+!/.local/bin/
+!/.local/bin/**/*
+!/.gitconfig
+
+# Whitelist these root files
+!.zshrc
+!.Renviron
+
+# Whitelist specific .config subdirectories
+!/.config/
+.config/BraveSoftware
+.config/Code
+.config/GIMP
+.config/PCSX2
+.config/QtProject
+.config/QtProject.conf
+.config/VirtualBox
+.config/calcurse
+.config/cef_user_data
+.config/cointop
+.config/configstore
+.config/dconf
+.config/eww
+.config/filezilla
+.config/font-manager
+.config/fontconfig
+.config/foot
+.config/galculator
+.config/geogebra
+.config/glib-2.0
+.config/go
+.config/hypr
+.config/ibus
+.config/inkscape
+.config/keepassxc
+.config/libfm
+.config/libvirt
+.config/menus
+.config/mozc
+.config/mpd/mpd.db
+.config/mpd/mpdstate
+.config/mpd/mpd.log
+.config/mpd/mpd.pid
+.config/mpv/watch_later/
+.config/mpv/socket
+.config/nextjs-nodejs
+.config/nicotine
+.config/obs-studio
+.config/pavucontrol.ini
+.config/pcmanfm
+.config/qt5ct
+.config/vscode-sqltools
+.config/waybar
+.config/wget
+.config/whoozle.github.io
+.config/wireplumber
+.config/mutt
+.config/smtp
+.config/transmission
+.config/transmission-daemon
