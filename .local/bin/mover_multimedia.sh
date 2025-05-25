@@ -20,7 +20,7 @@ mov_video() {
 }
 
 ask() {
-    choice=$(printf "Imagenes\\nVideos" | dmenu -nf '#8ec07c' -sb '#b8bb26' -i -p "Qué desea mover?")
+    choice=$(printf "Imagenes\\nVideos" | rofi -dmenu -i -p "Qué desea mover?")
     case "$choice" in
         Imagenes) mov_imagen ;;
         Videos) mov_video ;;

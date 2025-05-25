@@ -1,12 +1,5 @@
-#include "/home/utane/.local/share/repos/Xresources-themes/base16-gruvbox-dark-hard-256.Xresources"
+include: "/home/utane/.local/share/repos/Xresources-themes/base16-gruvbox-dark-hard.Xresources"
 #define background_opacity 80
-
-!! alpha value for st
-st.alpha: 1
-st.alphaOffset: 0.13
-
-st.termname: st-256color
-st.borderpx: 2
 
 URxvt.background:	[background_opacity]base00
 !! URxvt.foreground:       #e4e4e4

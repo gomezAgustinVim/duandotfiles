@@ -3,7 +3,7 @@
 
 # Kill sxhkd
 alt + k + s
-    kill $(pidof sxhkd) && -c ~/.config/bspwm/sxhkdrc 2>&1 &; \
+    kill $(pidof sxhkd) && sxhkd -c ~/.config/bspwm/sxhkdrc 2>&1 &; \
     dunstify -u low 'sxhkd' 'Reseteaste sxhkd NWN!';
 
 # Kill a process
@@ -16,7 +16,7 @@ alt + g; {a,b,g,o,n,e,t,f,k,v,c,s}
 
 # open CLI
 alt + c; {s,m,h,c,l}
-    {screenkey,st -e ncmpcpp,st -e htop,st -e calcurse, st -e lfub}
+    {screenkey,kitty -e ncmpcpp,kitty -e htop,kitty -e calcurse, kitty -e lfub}
 
 # mount phone
 super + m
@@ -24,15 +24,15 @@ super + m
 
 # open terminal itself
 super + Return
-    $TERMINAL
+    kitty
 
 # Change transparency on focused window
 ctrl + alt + {period,comma,t}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
-# open dmenu
-super + @d
-    dmenu_run -nf '#8ec07c' -sb '#b8bb26'
+# open rofi
+super + d
+    rofi -show combi -combi-modes "drun,ssh" -modes combi
 
 # lock screen
 alt + x; {x, s}
@@ -45,31 +45,35 @@ XF86Calculator
 # audio control
 # raise, lower it, or mute it
 XF86AudioMute
-    exec pamixer -t
+    exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 XF86AudioRaiseVolume
-    exec pamixer -i 3
+    exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
 
 XF86AudioLowerVolume
-    exec pamixer -d 3
+    exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 # toggle between audio pause/play
 XF86AudioPause
-    mpc pause
+    exec playerctl play-pause
 
 XF86AudioPlay
-    mpc play
+    exec playerctl play-pause
 
 # go to next song
 XF86AudioNext
-    mpc next
+    exec playerctl next
+
+# go to previous song
+XF86AudioPrev
+    exec playerctl previous
 
 # backlight control
 XF86MonBrightnessDown
-    sudo brillo -q -U 3
+    sudo brightnessctl -e4 -n2 set 5%-
 
 XF86MonBrightnessUp
-    sudo brillo -q -A 3
+    sudo brightnessctl -e4 -n2 set 5%+
 
 # take screenshoot
 Print

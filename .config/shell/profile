@@ -12,8 +12,8 @@ unsetopt PROMPT_SP 2>/dev/null
 # Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="st"
-export TERM="st-256color"
+export TERMINAL="kitty"
+# export TERM="xterm-kitty"
 export BROWSER="firefox-esr"
 export MANPAGER='nvim +Man!'
 
@@ -65,5 +65,24 @@ export BAT_THEME='gruvbox-dark'
 
 [ ! -f "$XDG_CONFIG_HOME/shell/shortcutrc" ] && setsid shortcuts >/dev/null 2>&1
 
+# FNM EXPORTS
+export PATH="/run/user/1000/fnm_multishells/3940_1747971854898/bin":$PATH
+export FNM_MULTISHELL_PATH="/run/user/1000/fnm_multishells/3940_1747971854898"
+export FNM_VERSION_FILE_STRATEGY="local"
+export FNM_DIR="/home/utane/.local/share/fnm"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_COREPACK_ENABLED="false"
+export FNM_RESOLVE_ENGINES="true"
+export FNM_ARCH="x64"
+
 # Start graphical server on user's current tty if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+
+# Mpd daemon start
+# [ ! -s ~/.config/mpd/pid ] && mpd
+
+# Starting Wayland
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#   exec Hyprland
+# fi

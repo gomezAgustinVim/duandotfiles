@@ -60,6 +60,7 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 _comp_options+=(globdots)
 
+
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
@@ -124,24 +125,9 @@ function xterm_title_preexec () {
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
-if [[ "$TERM" == (st*|tmux*|screen*|xterm*) ]]; then
+if [[ "$TERM" == (kitty*|tmux*|screen*|xterm*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
-
-if [[ -n ${TMUX} && -n ${commands[tmux]} ]]; then
-    case $(tmux showenv TERM 2>/dev/null) in
-        st-256color)
-            TERM=st-256color ;;
-        tmux-256color)
-            TERM=tmux-256color ;;
-        *256color)
-            TERM=screen-256color ;;
-        fbterm)
-            TERM=screen-256color ;;
-        *)
-            TERM=screen ;;
-    esac
 fi
 
 # ZSH autosuggestions
@@ -160,8 +146,6 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
-bindkey -M vicmd 'k' history-substring-search-down # or '\eOB'
-bindkey -M vicmd 'j' history-substring-search-down # or '\eOB'
 
 source ~/.config/lf/lfcd.sh
 bindkey -s '^o' '^ulfcd\n'
@@ -173,6 +157,20 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Hook for reading node version inmediately
+autoload -U add-zsh-hook
+_fnm_autoload_hook () {
+    if [[ -f .node-version || -f .nvmrc || -f package.json ]]; then
+    fnm use --silent-if-unchanged
+fi
+
+}
+
+add-zsh-hook chpwd _fnm_autoload_hook \
+    && _fnm_autoload_hook
+
+rehash
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
