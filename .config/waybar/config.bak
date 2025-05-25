@@ -1,0 +1,62 @@
+{
+    "position": "top",
+    "height": 25,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-right": ["bluetooth", "pulseaudio", "cpu", "memory","network", "clock" ,"tray"],
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+    	"interval": 1,
+    	"timezone": "Asia/Kolkata",
+    	"format": " {:%a %d %b   %I:%M %p}",
+    	"tooltip": false,
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% ",
+        "format-charging": "{capacity}%",
+        "format-plugged": "{capacity}%",
+        "format-alt": "{time} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": " Wired ",
+        "format-ethernet": " Wired ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": " Unwired",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{volume}%  / {format_source}",
+        "format-bluetooth": "{volume}%    {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "on-click": "pavucontrol"
+    },
+"bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": " {status} {device_battery_percentage}",
+	"format-on": "%{F#66ffffff} {status} {device_battery_percentage}",
+	"format-off": "",
+    "format-connected": "%{F#2193ff} {device_alias} {device_battery_percentage}",
+    "on-click": "./scripts/toggle_bluetooth.sh",
+	"format-disabled": "", // an empty format will hide the module,
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    }
+}
