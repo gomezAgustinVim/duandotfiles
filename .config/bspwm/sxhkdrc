@@ -18,10 +18,6 @@ alt + g; {a,b,g,o,n,e,t,f,k,v,c,s}
 alt + c; {s,m,h,c,l}
     {screenkey,kitty -e ncmpcpp,kitty -e htop,kitty -e calcurse, kitty -e lfub}
 
-# Launch SDDM (restarts the session)
-super + Shift + s
-    dbus-run-session sddm
-
 # mount phone
 super + m
    aft-mtp-mount ~/mnt
@@ -34,7 +30,7 @@ super + Return
 ctrl + alt + {period,comma,t}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
-# open dmenu
+# open rofi
 super + d
     rofi -show combi -combi-modes "drun,ssh" -modes combi
 
