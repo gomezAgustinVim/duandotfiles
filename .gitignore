@@ -40,6 +40,9 @@
 .config/go
 .config/inkscape
 .config/keepassxc
+.config/fcitx
+.config/fcitx5
+.config/ibus
 .config/libfm
 .config/libvirt
 .config/mozc
@@ -50,6 +53,7 @@
 .config/mpd/mpd.pid
 .config/mpv/watch_later/
 .config/mpv/socket
+.config/mpv/mpv_sub-delay.json
 .config/nextjs-nodejs
 .config/nicotine
 .config/obs-studio
@@ -63,3 +67,4 @@
 .config/smtp
 .config/transmission
 .config/transmission-daemon
+.config/zsh
