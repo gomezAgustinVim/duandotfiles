@@ -70,4 +70,5 @@
 .config/smtp
 .config/transmission
 .config/transmission-daemon
+.config/zathura
 .config/zsh
