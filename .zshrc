@@ -1,16 +1,42 @@
-# Duan's config for the Zoomer Shell
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 
-export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+# Stop terminal from freezing
+stty stop undef
+stty start undef
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Load ZINIT
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+# Load powerlevel10k theme
+zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Duan's config for the Zoomer Shell
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|sudo sdn|history|cd -|cd ..)"
 export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
-# PS1 viejo
-# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-PS1=' %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
-stty stop undef		# Disable ctrl-s to freeze terminal.
+# PS1=' %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
 
 #  ┌─┐┌─┐┬ ┬  ┌─┐┌─┐┌─┐┬    ┌─┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
 #  ┌─┘└─┐├─┤  │  │ ││ ││    │ │├─┘ │ ││ ││││└─┐
@@ -50,7 +76,7 @@ setopt hist_find_no_dups
 autoload -Uz compinit
 
 for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-  compinit -d ~/.config/zsh/zcompdump
+    compinit -d ~/.config/zsh/zcompdump
 done
 
 compinit -C -d ~/.config/zsh/zcompdump
@@ -60,22 +86,21 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 _comp_options+=(globdots)
 
-
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
 zstyle ':completion:*' matcher-list \
-		'm:{a-zA-Z}={A-Za-z}' \
-		'+r:|[._-]=* r:|=*' \
-		'+l:|=*'
+    'm:{a-zA-Z}={A-Za-z}' \
+    '+r:|[._-]=* r:|=*' \
+    '+l:|=*'
 zstyle ':completion:*:warnings' format "%B%F{red}No hay matches para:%f %F{magenta}%d%b"
 zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
 zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
 expand-or-complete-with-dots() {
-  echo -n "\e[31m…\e[0m"
-  zle expand-or-complete
-  zle redisplay
+    echo -n "\e[31m…\e[0m"
+    zle expand-or-complete
+    zle redisplay
 }
 
 zle -N expand-or-complete-with-dots
@@ -87,14 +112,15 @@ export KEYTIMEOUT=1
 
 # command not found
 command_not_found_handler() {
-	printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
+    printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
     return 127
 }
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
+        vicmd) echo -ne '\e[1 q' ;;      # block
+        viins|main) echo -ne '\e[5 q' ;; # beam
     esac
 }
 
@@ -111,29 +137,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
 
-#  ┌─┐┬ ┬┌─┐┌┐┌┌─┐┌─┐  ┌┬┐┌─┐┬─┐┌┬┐┬┌┐┌┌─┐┬  ┌─┐  ┌┬┐┬┌┬┐┬  ┌─┐
-#  │  ├─┤├─┤││││ ┬├┤    │ ├┤ ├┬┘│││││││├─┤│  └─┐   │ │ │ │  ├┤
-#  └─┘┴ ┴┴ ┴┘└┘└─┘└─┘   ┴ └─┘┴└─┴ ┴┴┘└┘┴ ┴┴─┘└─┘   ┴ ┴ ┴ ┴─┘└─┘
-
-function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
-}
-
-function xterm_title_preexec () {
-	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
-	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
-}
-
-if [[ "$TERM" == (kitty*|tmux*|screen*|xterm*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
-
 # ZSH autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
@@ -153,17 +160,16 @@ bindkey -s '^o' '^ulfcd\n'
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
 # Hook for reading node version inmediately
-autoload -U add-zsh-hook
 _fnm_autoload_hook () {
     if [[ -f .node-version || -f .nvmrc || -f package.json ]]; then
-    fnm use --silent-if-unchanged
-fi
+        fnm use --silent-if-unchanged
+    fi
 
 }
 
