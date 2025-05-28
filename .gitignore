@@ -38,6 +38,10 @@
 .config/geogebra
 .config/glib-2.0
 .config/go
+.config/hypr
+.config/ibus
+.config/fcitx
+.config/fcitx5
 .config/inkscape
 .config/keepassxc
 .config/fcitx
@@ -67,4 +71,5 @@
 .config/smtp
 .config/transmission
 .config/transmission-daemon
+.config/zathura
 .config/zsh
