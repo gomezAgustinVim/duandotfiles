@@ -17,6 +17,9 @@
 # Whitelist specific .config subdirectories
 !/.config/
 .config/BraveSoftware
+.config/bspwm/
+.config/x11/
+.config/redshift
 .config/Code
 .config/GIMP
 .config/PCSX2
@@ -28,11 +31,9 @@
 .config/cointop
 .config/configstore
 .config/dconf
-.config/eww
 .config/filezilla
 .config/font-manager
 .config/fontconfig
-.config/foot
 .config/galculator
 .config/geogebra
 .config/glib-2.0
@@ -43,9 +44,11 @@
 .config/fcitx5
 .config/inkscape
 .config/keepassxc
+.config/fcitx
+.config/fcitx5
+.config/ibus
 .config/libfm
 .config/libvirt
-.config/menus
 .config/mozc
 .config/ncmpcpp/lyrics
 .config/mpd/mpd.db
@@ -60,9 +63,7 @@
 .config/obs-studio
 .config/pavucontrol.ini
 .config/pcmanfm
-.config/qt5ct
 .config/vscode-sqltools
-.config/waybar
 .config/wget
 .config/whoozle.github.io
 .config/wireplumber
