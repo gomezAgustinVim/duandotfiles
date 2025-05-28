@@ -1,0 +1,118 @@
+{
+  "hyprland/workspaces": {
+    "format": "{name}: {icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "active": "",
+      "default": ""
+    },
+    "sort-by-number": true
+  },
+
+  "hyprland/window": {
+    "separate-outputs": true
+  },
+
+  "tray": {
+    "spacing": 10,
+    "tooltip": true
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p - %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "foot -e calcurse",
+    "tooltip": true
+  },
+
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 1,
+
+    "states": {
+      "critical": 90
+    }
+  },
+  "memory": {
+    "format": "mem {percentage}%",
+    "interval": 1,
+
+    "states": {
+      "critical": 80
+    }
+  },
+
+  "battery": {
+    "format": "bat {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": false
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", ""]
+  },
+
+  "network": {
+    "format-wifi": "wifi {bandwidthDownBits}",
+    "format-ethernet": "enth {bandwidthDownBits}",
+    "format-disconnected": "no network",
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5,
+    "max-volume": 150,
+    "format": "vol {volume}%",
+    "format-bluetooth": "vol {volume}%",
+    "nospacing": 1,
+    "on-click": "pavucontrol",
+    "tooltip": true
+  },
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+    "format-disconnected": "Dekonetado nwnww ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Detenido ",
+    "interval": 10,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (conetado nwnw)",
+    "tooltip-format-disconnected": "MPD (dekonetado nwnw)"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "~/.config/waybar/scripts/toggle_bluetooth.sh"
+  }
+}
