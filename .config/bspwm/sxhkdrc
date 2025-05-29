@@ -16,7 +16,7 @@ alt + g; {a,b,g,o,n,e,t,f,k,v,c,s}
 
 # open CLI
 alt + c; {s,m,h,c,l}
-    {screenkey,kitty -e ncmpcpp,kitty -e htop,kitty -e calcurse, kitty -e lfub}
+    {screenkey,$TERMINAL -e ncmpcpp,$TERMINAL -e htop,$TERMINAL -e calcurse, $TERMINAL -e lfub}
 
 # mount phone
 super + m
@@ -24,11 +24,7 @@ super + m
 
 # open terminal itself
 super + Return
-    kitty
-
-# Change transparency on focused window
-ctrl + alt + {period,comma,t}
-	picom-trans {-c -o +3,-c -o -1,-c -d}
+    $TERMINAL
 
 # open rofi
 super + d
