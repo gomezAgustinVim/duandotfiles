@@ -17,8 +17,6 @@
 # Whitelist specific .config subdirectories
 !/.config/
 .config/BraveSoftware
-.config/bspwm/
-.config/x11/
 .config/redshift
 .config/Code
 .config/GIMP
@@ -41,7 +39,6 @@
 .config/inkscape
 .config/keepassxc
 .config/fcitx
-.config/fcitx5
 .config/ibus
 .config/libfm
 .config/libvirt
@@ -57,7 +54,6 @@
 .config/nextjs-nodejs
 .config/nicotine
 .config/obs-studio
-.config/pavucontrol.ini
 .config/pcmanfm
 .config/vscode-sqltools
 .config/wget
