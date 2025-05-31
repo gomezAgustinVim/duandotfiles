@@ -39,6 +39,7 @@
 .config/inkscape
 .config/keepassxc
 .config/fcitx
+.config/fcitx5
 .config/ibus
 .config/libfm
 .config/libvirt
