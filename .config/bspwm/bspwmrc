@@ -21,8 +21,9 @@ pidof -q picom || { picom --config "${HOME}"/.config/bspwm/picom.conf & }
 
 pidof -q nm-applet || nm-applet &
 pidof -q redshift || redshift-gtk &
-pidof -q fcitx5 || fcitx5 -dr &
 numlockx on &
+
+fcitx5 -dr
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
