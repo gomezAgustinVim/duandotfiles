@@ -1,5 +1,9 @@
-gtk-theme-name="Gruvbox-Green-Dark"
-gtk-icon-theme-name="Gruvbox-Dark"
+# DO NOT EDIT! This file will be overwritten by nwg-look.
+# Any customization should be done in ~/.gtkrc-2.0.mine instead.
+
+include "/home/utane/.gtkrc-2.0.mine"
+gtk-theme-name="Materia-dark"
+gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Ubuntu 11"
 gtk-cursor-theme-name="Bibata-Modern-Ice"
 gtk-cursor-theme-size=18
@@ -11,7 +15,5 @@ gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=0
 gtk-xft-antialias=1
 gtk-xft-hinting=1
-gtk-xft-hintstyle="hintmedium"
-gtk-xft-rgba="none"
-gtk-modules="canberra-gtk-module:gail:atk-bridge"
-gtk-im-module="fcitx"
+gtk-xft-hintstyle="hintslight"
+gtk-xft-rgba="rgb"
