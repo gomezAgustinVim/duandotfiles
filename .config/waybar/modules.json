@@ -36,6 +36,7 @@
       "critical": 90
     }
   },
+
   "memory": {
     "format": "mem {percentage}%",
     "interval": 1,
@@ -78,6 +79,7 @@
     "on-click": "pavucontrol",
     "tooltip": true
   },
+
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
     "format-disconnected": "Dekonetado nwnww ",
