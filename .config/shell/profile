@@ -78,12 +78,9 @@ export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
 
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-
-# Mpd daemon start
-# [ ! -s ~/.config/mpd/pid ] && mpd
+[ "$(tty)" = "/dev/tty2" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
 
 # Starting Wayland
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#   exec Hyprland
-# fi
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec Hyprland
+fi
