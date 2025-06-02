@@ -1,5 +1,5 @@
 configuration {
-modes: "drun,run,ssh";
+modes: "drun,run,ssh,emoji,calc";
 font: "JetBrainsMono Nerd Font Medium 10";
 location: 0;
 // yoffset: -100;
