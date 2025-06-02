@@ -13,7 +13,7 @@ unsetopt PROMPT_SP 2>/dev/null
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="kitty"
-export TERM="xterm-kitty"
+export TERM="xterm-256color"
 export BROWSER="firefox-esr"
 export MANPAGER='nvim +Man!'
 
@@ -56,10 +56,11 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM=wayland
 export GTK_IM_MODULE=wayland
 export QT_IM_MODULES="wayland;fcitx5"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export BAT_THEME='gruvbox-dark'
@@ -77,10 +78,10 @@ export FNM_COREPACK_ENABLED="false"
 export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
 
-# Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty2" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-
 # Starting Wayland
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec Hyprland
 fi
+
+# Start graphical server on user's current tty if not already running.
+[ "$(tty)" = "/dev/tty2" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
