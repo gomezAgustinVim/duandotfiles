@@ -15,11 +15,10 @@ alias \
     ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
     ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
-# bashrc/other configs
-alias s="$EDITOR ~/.config/bspwm/sxhkdrc"
-
 # Expand sudo to work with aliases
 alias sudo="sudo "
+
+alias brave="brave --ozone-platform-hint=wayland"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
