@@ -4,8 +4,8 @@
 CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/zathura/zathurarc"
 
 # Define the lines for the light and dark themes
-LIGHT_THEME="zathura-gruvbox-light-soft"
-DARK_THEME="zathura-gruvbox-dark-soft"
+LIGHT_THEME="zathura-gruvbox-light"
+DARK_THEME="zathura-gruvbox-dark"
 
 # Escapar caracteres especiales para usar en sed
 # Esto haría falta usarlo si y solo si utilizara la ruta completa en la variable
@@ -17,12 +17,12 @@ DARK_THEME="zathura-gruvbox-dark-soft"
 #ESCAPED_LIGHT_THEME=$(printf '%s\n' "$LIGHT_THEME" | sed 's/[]\/$*.^[]/\\&/g')
 #ESCAPED_DARK_THEME=$(printf '%s\n' "$DARK_THEME" | sed 's/[]\/$*.^[]/\\&/g')
 
- if grep -q "$LIGHT_THEME" "$CONFIG_FILE"; then
+if grep -q "$LIGHT_THEME" "$CONFIG_FILE"; then
     sed -i "/$LIGHT_THEME/d" "$CONFIG_FILE"
     echo 'include ./'"$DARK_THEME" >> "$CONFIG_FILE"
-    dunstify -u normal -t 3600 "Cambiado al tema oscuro"
+    dunstify -u normal "Cambiado al tema oscuro"
 else
-  sed -i "/$DARK_THEME/d" "$CONFIG_FILE"
-  echo 'include ./'"$LIGHT_THEME" >> "$CONFIG_FILE"
-  dunstify -u normal -t 3600 "Cambiado al tema claro"
+    sed -i "/$DARK_THEME/d" "$CONFIG_FILE"
+    echo 'include ./'"$LIGHT_THEME" >> "$CONFIG_FILE"
+    dunstify -u normal "Cambiado al tema claro"
 fi
