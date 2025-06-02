@@ -28,9 +28,9 @@ alias \
     mkd="mkdir -pv" \
     rmd="rmdir -v" \
     du="du -h" \
+    lf="lfrun" \
     rs="rsync -Pav" \
-    rnew="rs -Pav -z --update --delete-after" \
-    lf="lfub"
+    rnew="rs -Pav -z --update --delete-after"
 
 # ffmpeg commands
 alias \

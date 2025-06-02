@@ -1,15 +1,5 @@
 # Duan's lf settings
 
-
-# 1. ueberzug must be installed.
-# 2. The scope file (~/.config/lf/scope for me), must have a command similar to
-#    mine to generate ueberzug images.
-# 3. A `set cleaner` line as below is a cleaner script.
-# 4. lf should be started through a wrapper script (~/.local/bin/lfub for me)
-#    that creates the environment for ueberzug. This command can be be aliased
-#    in your shellrc (`alias lf="lfub") or if set to a binding, should be
-#    called directly instead of normal lf.
-
 # Basic vars
 set shell zsh
 set shellopts '-euy'
@@ -19,7 +9,7 @@ set info size:time
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
-set cleaner '~/.config/lf/cleaner'
+# set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/preview'
 set autoquit true
 
@@ -201,10 +191,10 @@ map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
 
-map U $printf "%s" "$fx" | xclip -selection clipboard
-map u $printf "%s" "$fx" | sed 's/.*\///' | xclip -selection clipboard
+map U $printf "%s" "$fx" | wl-copy
+map u $printf "%s" "$fx" | sed 's/.*\///' | wl-copy
 map . :read; cmd-history-prev; cmd-enter        # repeat previous command
-map <gt> $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/piped.video\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
+map <gt> $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/piped.video\/watch?v=/' | sed -E 's/\]\..+//' | wl-copy
 map T $nsxiv -t "$(pwd)" # opens thumbnail mode
 map <c-l> unselect
 # map . $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/www.youtube.com\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard

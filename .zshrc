@@ -155,7 +155,7 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
 
 source ~/.config/lf/lfcd.sh
-bindkey -s '^o' '^ulfcd\n'
+bindkey -s '^o' 'lfcd\n'
 
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
