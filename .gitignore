@@ -17,6 +17,7 @@
 # Whitelist specific .config subdirectories
 !/.config/
 .config/BraveSoftware
+.config/qalculate
 .config/redshift
 .config/Code
 .config/GIMP
