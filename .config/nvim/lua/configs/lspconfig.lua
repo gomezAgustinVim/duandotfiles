@@ -4,6 +4,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "pyright",
   "clangd",
+  "beautysh",
   "rust_analyzer",
   "html",
   "cssls",
@@ -11,7 +12,6 @@ local servers = {
   "markdown_oxide",
   "lua_ls",
   "eslint",
-  "eslint_lsp",
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
