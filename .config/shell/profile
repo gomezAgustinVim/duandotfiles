@@ -12,7 +12,7 @@ unsetopt PROMPT_SP 2>/dev/null
 # Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="foot"
 export TERM="xterm-256color"
 export BROWSER="firefox-esr"
 export MANPAGER='nvim +Man!'
@@ -55,8 +55,6 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_QPA_PLATFORM=wayland
 export GTK_IM_MODULE=wayland
 export QT_IM_MODULES="wayland;fcitx5"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
