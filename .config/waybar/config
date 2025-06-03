@@ -18,7 +18,6 @@
     "bluetooth",
     "tray",
     "battery",
-    "cpu_text",
     "cpu",
     "memory",
     "backlight",
