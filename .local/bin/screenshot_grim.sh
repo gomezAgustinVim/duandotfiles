@@ -10,7 +10,7 @@ case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\ncopiar 
     "area seleccionada") grim -g "$(slurp)" $(xdg-user-dir PICTURES)/pic-sel-"${output}" ;;
     "ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - $(xdg-user-dir PICTURES)/pic-win-"${output}" ;;
     "pantalla completa") grim $(xdg-user-dir PICTURES)/pic-full-"${output}" ;;
-    "copiar area seleccionada") grim -g "$(slurp)" - | wl-copy ;;
+    "copiar area seleccionada") sleep 0.3 && grim -g "$(slurp)" - | wl-copy ;;
     "copiar ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - - | wl-copy ;;
-    "copiar pantalla completa") grim - | wl-copy ;;
+    "copiar pantalla completa") sleep 0.3 && grim - | wl-copy ;;
 esac
