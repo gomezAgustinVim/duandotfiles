@@ -19,4 +19,4 @@ map p print
 map g goto top
 
 # Theme
-include ./zathura-gruvbox-dark
+include ./zathura-gruvbox-light
