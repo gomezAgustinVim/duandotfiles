@@ -45,6 +45,7 @@
 .config/libfm
 .config/libvirt
 .config/mozc
+.config/menus
 .config/ncmpcpp/lyrics
 .config/mpd/mpd.db
 .config/mpd/mpdstate
