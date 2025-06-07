@@ -56,6 +56,7 @@ alias \
     fas="fastfetch" \
     h="htop" \
     c="cointop" \
+    b="$EDITOR ~/.config/hypr/modules/binds.conf" \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
 
 # tmux commands
