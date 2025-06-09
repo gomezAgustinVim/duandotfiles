@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+pidof hyprpaper || hyprpaper
+
+WALLPAPER_DIR="${XDG_PICTURES_DIR:-$HOME/Imagenes}/walls"
+CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+# Get a random wallpaper that is not the current one
+WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+# Apply the selected wallpaper
+hyprctl hyprpaper reload ,"$WALLPAPER"
