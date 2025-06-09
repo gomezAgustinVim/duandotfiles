@@ -67,4 +67,6 @@
 .config/transmission
 .config/transmission-daemon
 .config/zathura
-.config/zsh
+.config/zsh/zcompdump
+.config/nvim/lazy-lock.json
+.config/calcurse/calcurse.ical
