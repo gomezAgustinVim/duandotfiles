@@ -49,15 +49,18 @@ alias \
     sdn="shutdown -h now" \
     kitty="kitty -o allow_remote_control=yes -o enabled_layouts=tall" \
     df='df -lH ' \
-    p="pacman" \
-    pn="pacman -S --needed" \
-    pu="pacman -Syu" \
-    pa="paru" \
-    fas="fastfetch" \
+    f="fastfetch" \
     h="htop" \
     c="cointop" \
     b="$EDITOR ~/.config/hypr/modules/binds.conf" \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
+
+# Pacman
+alias \
+    p="pacman" \
+    pn="pacman -S --needed" \
+    pu="pacman -Syu" \
+    pa="paru"
 
 # tmux commands
 alias \
@@ -78,6 +81,9 @@ alias \
     egrep="egrep --color=auto" \
     diff="diff --color=auto" \
     ip="ip --color=auto"
+
+# Mpv
+alias podcast="mpv --no-video"
 
 # alias \
     # ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"

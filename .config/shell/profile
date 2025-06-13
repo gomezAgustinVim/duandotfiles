@@ -13,9 +13,8 @@ unsetopt PROMPT_SP 2>/dev/null
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="foot"
-# export TERM="xterm-256color"
 export TERM="foot"
-export BROWSER="firefox-esr"
+export BROWSER="firefox"
 export MANPAGER='nvim +Man!'
 
 # ~/ Clean-up:
