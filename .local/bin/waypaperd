@@ -1,6 +1,6 @@
 #!/bin/sh
 
 while true; do
-    snooze -M 0 -H /2 waypaper
+    snooze -M 0 -H /1 waypaper
     sleep 1  # Small delay to prevent tight looping
 done
