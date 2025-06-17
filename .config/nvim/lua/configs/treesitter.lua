@@ -16,6 +16,7 @@ return {
     "query",
     "regex",
     "yaml",
+    "json",
   },
 
   highlight = {
