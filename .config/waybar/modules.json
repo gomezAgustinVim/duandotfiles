@@ -1,6 +1,6 @@
 {
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
+    "format": "{name}:{icon}",
     "on-click": "activate",
     "format-icons": {
       "1": "",
