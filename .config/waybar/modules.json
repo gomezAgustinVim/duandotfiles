@@ -81,9 +81,9 @@
   },
 
   "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+    "format": "{stateIcon} {consumeIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
     "format-disconnected": "Dekonetado nwnww ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Detenido ",
+    "format-stopped": "{consumeIcon} Detenido ",
     "interval": 10,
     "consume-icons": {
       "on": " "
