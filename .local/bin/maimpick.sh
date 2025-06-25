@@ -3,16 +3,35 @@
 # This is bound to Shift+PrintScreen by default, requires maim. It lets you
 # choose the kind of screenshot to take, including copying the image or even
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
+# it also checks whether you're on a wayland session or not
+# in which case it uses maim
 
-# variables
-output="$(date '+%y%m%d-%H%M-%S').png"
-xclip_cmd="xclip -sel clip -t image/png"
+if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+    # variables
+    output="$(date '+%y%m%d-%H%M-%S').png"
+    xclip_cmd="xclip -sel clip -t image/png"
 
-case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\narea seleccionada (copiar)\\nventana actual (copiar)\\npantalla completa (copiar)" | rofi -dmenu -l 6 -i -p "Tipo de selección")" in
+    case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\narea seleccionada (copiar)\\nventana actual (copiar)\\npantalla completa (copiar)" | rofi -dmenu -l 6 -i -p "Tipo de selección")" in
     "area seleccionada") maim -s -u -o pic-selected-"${output}" ;;
     "ventana actual") maim -u -q -d 0.2 -o -i "$(xdotool getactivewindow)" pic-window-"${output}" ;;
     "pantalla completa") maim -u -q -d 0.2 -o pic-full-"${output}" ;;
     "area seleccionada (copiar)") maim -s -u -o | ${xclip_cmd} ;;
     "ventana actual (copiar)") maim -u -q -d 0.2 -o -i "$(xdotool getactivewindow)" | ${xclip_cmd} ;;
     "pantalla completa (copiar)") maim -u -q -d 0.2 -o | ${xclip_cmd} ;;
+    esac
+fi
+
+# El siguiente script requiere rofi, hyprland, jq, grim y slurp
+# Toma una captura del escritorio siguiendo varias opciones
+
+# monitor = hyprctl monitors | grep "ID 0" | cut -d ' ' -f2
+output="$(date '+%y%d%m-%H%M-%S').png"
+
+case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\ncopiar area seleccionada\\ncopiar ventana actual\\ncopiar pantalla completa" | rofi -dmenu -l 6 -i -p "Tipo de selección")" in
+"area seleccionada") grim -g "$(slurp)" "$(xdg-user-dir PICTURES)"/pic-sel-"${output}" ;;
+"ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - "$(xdg-user-dir PICTURES)"/pic-win-"${output}" ;;
+"pantalla completa") grim "$(xdg-user-dir PICTURES)"/pic-full-"${output}" ;;
+"copiar area seleccionada") sleep 0.3 && grim -g "$(slurp)" - | wl-copy ;;
+"copiar ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - - | wl-copy ;;
+"copiar pantalla completa") sleep 0.3 && grim - | wl-copy ;;
 esac
