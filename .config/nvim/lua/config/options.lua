@@ -1,4 +1,6 @@
-require "nvchad.options"
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
 
 local g = vim.g
 local o = vim.o
@@ -10,7 +12,7 @@ local o = vim.o
 o.splitbelow = true
 o.splitright = true
 
-vim.cmd "syntax on"
+vim.cmd("syntax on")
 
 -- The following are commented out as they cause vim to behave a lot
 -- differently from regular Vi. They are highly recommended though.
@@ -78,15 +80,9 @@ o.ruler = true
 o.laststatus = 2
 
 -- Check if not running in a GUI
-if not vim.fn.has "gui_running" then
+if not vim.fn.has("gui_running") then
   o.t_Co = 256
 end
-
--- Activate plugins
--- require('lualine').setup()
--- require("ibl").setup()
-g.rainbow_active = 1
-g.python_highlight_all = 1
 
 -- add option map_cr
 -- require("nvim-autopairs").setup { map_cr = true }
