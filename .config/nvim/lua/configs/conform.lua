@@ -8,10 +8,9 @@ local options = {
     bash = { "beautysh" },
     sh = { "beautysh" },
     zsh = { "beautysh" },
-    python = { "ast-grep" },
+    python = { "autoflake" },
     javascript = { "prettier" },
     typescript = { "prettier" },
-    c = { "ast-grep" },
   },
 
   format_on_save = {

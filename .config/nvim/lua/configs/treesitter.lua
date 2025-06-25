@@ -17,6 +17,7 @@ return {
     "regex",
     "yaml",
     "json",
+    "dockerfile",
   },
 
   highlight = {
