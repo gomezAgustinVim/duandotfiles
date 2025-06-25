@@ -1,3 +1,0 @@
-#!/bin/sh
-# first argument is the audio, second argument is the video
-cat * | ffmpeg -y -framerate 1.079 -f image2pipe -i - -i $1 -acodec copy -vf 'scale=-2:min(1080\,if(mod(ih\,2)\,ih-1\,ih))' $2

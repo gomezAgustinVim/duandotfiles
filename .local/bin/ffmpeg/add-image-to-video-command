@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# ffmpeg -stream_loop 0 -i "$1" -i "$2" -c:v libx264 -tune stillimage -c:a copy -b:a 192k -vf "scale='iw-mod(iw,2)':'ih-mod(ih,2)',format=yuv420p" -shortest -movflags +faststart $3
-
-ffmpeg -i "$1" -i "$2" -vf "scale='iw-mod(iw,2)':'ih-mod(ih,2)'" -b:a 192k -pix_fmt yuv420p "$3"
-
-# ffmpeg -loop 1 -i $1 -i $2 -c:v libx264 -tune stillimage -c:a copy -b:a 192k -vf "scale='iw-mod(iw,2)':'ih-mod(ih,2)',format=yuv420p" -shortest -movflags +faststart $3
