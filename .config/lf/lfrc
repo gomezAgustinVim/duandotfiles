@@ -9,14 +9,14 @@ set info size:time
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
-# set cleaner '~/.config/lf/cleaner'
+set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/preview'
 set autoquit true
 
 # Colors
-set cursorpreviewfmt "\033[48;2;146;131;116m\033[97m"
-set cursoractivefmt  "\033[48;2;76;175;80m\033[97m"
-set cursorparentfmt  "\033[48;2;76;175;80m\033[97m"
+# set cursorpreviewfmt "\033[48;2;146;131;116m\033[97m"
+# set cursoractivefmt  "\033[48;2;76;175;80m\033[97m"
+# set cursorparentfmt  "\033[48;2;76;175;80m\033[97m"
 
 # cmds/functions
 cmd open ${{
