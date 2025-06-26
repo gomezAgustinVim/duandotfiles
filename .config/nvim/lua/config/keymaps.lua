@@ -10,7 +10,7 @@ map("", "<Space>", "<Nop>", opts)
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
--- map("i", "jk", "<ESC>")
+map("i", "jk", "<ESC>")
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")
@@ -51,7 +51,7 @@ map("n", "tc", "<CMD>tabclose<CR>", opts)
 map("n", "tt", "<CMD>tabs<CR>", opts)
 
 -- Shortcut to yank register
-map({ "n", "x" }, "<leader>py", '"0p')
+-- map({ "n", "x" }, "<leader>py", '"0p')
 
 -- Vim tree
 -- map("n", "<c-n>", "<CMD>NvimTreeToggle<CR>")
@@ -83,7 +83,7 @@ map("n", "Q", "gq")
 -- map("n", "<leader>s", ":!clear && shellcheck -x %<CR>")
 
 -- Compile document, be it groff/LaTeX/markdown/etc.
-map("n", "<localleader>c", ':w! | !compiler "<c-r>%"<CR>')
+map("n", "<leader>c", ':w! | !compiler "<c-r>%"<CR>')
 
 -- Compile slide with pandoc
 map("n", "<leader>e", ":!pandoc % -t beamer -o %.pdf<CR>")
