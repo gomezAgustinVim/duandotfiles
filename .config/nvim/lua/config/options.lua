@@ -83,6 +83,3 @@ o.laststatus = 2
 if not vim.fn.has("gui_running") then
   o.t_Co = 256
 end
-
--- add option map_cr
--- require("nvim-autopairs").setup { map_cr = true }
