@@ -1,6 +1,6 @@
 {
   "include": [
-      "~/.config/waybar/modules.json",
+      "~/.config/waybar/modules.json"
   ],
   "layer": "top",
   "spacing": 0,
