@@ -54,7 +54,7 @@ o.termguicolors = true
 -- Smooth scrolling
 o.smoothscroll = true
 o.scrolloff = 8
-o.colorcolumn = "80"
+-- o.colorcolumn = "80"
 
 -- Remember 50 items in commandline history
 o.history = 50
