@@ -15,13 +15,12 @@
   "modules-center": ["clock","mpd"],
 
   "modules-right": [
-    "bluetooth",
-    "tray",
     "battery",
-    "cpu",
-    "memory",
+    "bluetooth",
+    "pulseaudio",
+    "tray",
     "backlight",
-    "network",
-    "pulseaudio"
+    "cpu",
+    "memory"
   ]
 }
