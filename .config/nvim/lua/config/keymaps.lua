@@ -104,5 +104,5 @@ map("n", "<C-a>", "ggVG", opts)
 map("n", "<C-l>", ":LspStart ")
 
 map("n", "<leader>rn", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })
+  vim.lsp.buf.rename()
+end)
