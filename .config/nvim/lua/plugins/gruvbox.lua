@@ -36,7 +36,4 @@ return {
       colorscheme = "gruvbox",
     },
   },
-  {
-    "erikbackman/brightburn.vim",
-  },
 }
