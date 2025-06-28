@@ -24,7 +24,7 @@
   "clock": {
     "format": "{:%I:%M %p - %d/%m}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click": "foot -e calcurse",
+    "on-click": "kitty -e calcurse",
     "tooltip": true
   },
 
