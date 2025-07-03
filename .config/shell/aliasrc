@@ -18,8 +18,6 @@ alias \
 # Expand sudo to work with aliases
 alias sudo="sudo "
 
-alias brave="brave --ozone-platform-hint=wayland"
-
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -30,7 +28,8 @@ alias \
 	du="du -h" \
 	lf="lfrun" \
 	rs="rsync -Pav" \
-	rnew="rs -Pav -z --update --delete-after"
+	rnew="rs -Pav -z --update --delete-after" \
+	texwatch="latexmk -pdf -pvc" # better latex compiler
 
 # ffmpeg commands
 alias \
@@ -89,11 +88,11 @@ alias podcast="mpv --no-video"
 # ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
 con() {
-	cd ~/.config
-	$EDITOR $(fzf)
+	cd ~/.config || exit
+	$EDITOR "$(fzf)"
 }
 
 se() {
-	cd ~/.local/bin
-	$EDITOR $(fzf)
+	cd ~/.local/bin || exit
+	$EDITOR "$(fzf)"
 }
