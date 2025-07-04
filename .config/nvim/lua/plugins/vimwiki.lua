@@ -18,6 +18,7 @@ return {
         [".rmd"] = "markdown",
         [".markdown"] = "markdown",
         [".mdown"] = "markdown",
+        [".mdx"] = "markdown",
       }
 
       -- This will make sure vimwiki will only set the
@@ -25,5 +26,6 @@ return {
       -- directory, rather than vim.globally.
       vim.g.vimwiki_global_ext = 0
     end,
+    lazy = false,
   },
 }
