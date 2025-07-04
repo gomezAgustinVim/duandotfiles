@@ -10,6 +10,13 @@
 local A = vim.api
 local C = vim.cmd
 
+A.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*.md", -- or "*.markdown" if you use that extension
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+
 -- numToStrs config
 
 -- Custom filetypes
@@ -59,19 +66,7 @@ A.nvim_create_autocmd("TermOpen", {
 
 ------------------------------------------------------------------------------
 
--- my config
-
--- Autocmd to run texclear script when leaving a .tex file
-C([[
-augroup CleanTeXBuildFiles
-    autocmd!
-    autocmd VimLeave *.tex !texclear %
-augroup END
-]])
-
-C([[
-cnoreabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-]])
+-- luke smith's config
 
 -- Set the 'filetype' when reading Xresources or Xdefaults files and
 -- Run 'xrdb' after writing changes to Xresources or Xdefaults files
@@ -82,15 +77,6 @@ augroup XresourcesAndXdefaults
     autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 augroup END
 ]])
-
--- Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
-if vim.o.diff then
-  C("highlight! link DiffText MatchParen")
-end
-
--- Uncomment the following to have Vim load indentation rules and plugins
--- according to the detected filetype.
-C("filetype plugin indent on")
 
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
 C([[
