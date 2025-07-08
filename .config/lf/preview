@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 draw() {
     kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
     exit 1
@@ -15,7 +15,9 @@ h="$3"
 x="$4"
 y="$5"
 
-filename=$(basename $(echo "$file" | tr ' ' '_'))
+# filename=$(basename $(echo "$file" | tr ' ' '_'))
+type=$(file -Lb --mime-type "$file" | cut -d/ -f2)
+filename=$(basename -s ".$type" "$file")
 
 case "$(file -Lb --mime-type "$file")" in
 image/*)
@@ -34,6 +36,12 @@ video/*)
 application/pdf)
     if [[ ! -f "/tmp/$filename.png" ]]; then
         pdftoppm -f 1 -l 1 "$file" >>"/tmp/$filename.png"
+    fi
+    drawpdf
+    ;;
+application/epub+zip)
+    if [[ ! -f "/tmp/$filename.png" ]]; then
+        gnome-epub-thumbnailer "$file" "/tmp/$filename.png"
     fi
     drawpdf
     ;;
