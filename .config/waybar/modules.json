@@ -88,6 +88,7 @@
     "exec": "~/.config/waybar/scripts/bluetooth-display.sh",
     "interval": 10,
     "on-click": "blueberry",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth-toggle.sh",
     "return-type": "plain",
     "tooltip": true,
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
