@@ -34,7 +34,7 @@ trueloc="$(readlink -f "$1")" &&
     case "$(file --mime-type -b "$trueloc")" in
     image/*) hyprctl hyprpaper reload ,"$trueloc" && notify-send -i "$walldir" "Cambiando wallpaper nwn..." ;;
     inode/directory)
-        wallpaper="$(find "$walldir" -type f ! -name "$(basename "$current_wall")" | shuf -n 1)"
+        wallpaper="$(find "$trueloc" -type f ! -name "$(basename "$current_wall")" | shuf -n 1)"
         hyprctl hyprpaper reload ,"$wallpaper" && notify-send -i "$walldir" "Elegiste wallpaper nwn..."
         ;;
     *)
