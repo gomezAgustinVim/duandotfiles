@@ -5,13 +5,20 @@ URxvt.background:	[background_opacity]base00
 !! URxvt.foreground:       #e4e4e4
 URxvt.intensityStyles: true
 URxvt.depth:            32
-URxvt.font:	xft:monospace:size=9
+URxvt.font:
+    xft:Fira Mono:size=11:style=Regular, \
+    xft:Noto Emoji:style=Regular
 URxvt.scrollBar:    false
 !! URxvt.cursorColor: #aeafad
 URxvt.termname:         rxvt-unicode
 
-*.foreground: #8ec07c
-*.background: #222222
+*.font:
+    xft:JetBrainsMono Nerd Font Mono:size=11:style=Regular, \
+    xft:Libertinus Mono:size=11:style=Regular, \
+    xft:Noto Emoji:style=Regular
+*.foreground: #d5c4a1
+*.background:   #1d2021
+*.cursorColor:  #b8bb26
 
 dmenu.font: monospace
 dmenu.foreground: base0C
