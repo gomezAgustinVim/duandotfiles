@@ -4,7 +4,7 @@
 include "/home/utane/.gtkrc-2.0.mine"
 gtk-theme-name="Gruvbox-Dark"
 gtk-icon-theme-name="Gruvbox-Plus-Dark"
-gtk-font-name="Ubuntu 11"
+gtk-font-name="Libertinus Sans 11"
 gtk-cursor-theme-name="Bibata-Modern-Ice"
 gtk-cursor-theme-size=18
 gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
