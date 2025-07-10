@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Define the path to your Zathura configuration file
-CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/zathura/zathurarc"
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/zathura/zathura-theme"
 
 # Define the lines for the light and dark themes
 LIGHT_THEME="zathura-gruvbox-light"
@@ -19,10 +19,10 @@ DARK_THEME="zathura-gruvbox-dark"
 
 if grep -q "$LIGHT_THEME" "$CONFIG_FILE"; then
     sed -i "/$LIGHT_THEME/d" "$CONFIG_FILE"
-    echo 'include ./'"$DARK_THEME" >> "$CONFIG_FILE"
+    echo 'include ./'"$DARK_THEME" >>"$CONFIG_FILE"
     dunstify -u normal "Cambiado al tema oscuro"
 else
     sed -i "/$DARK_THEME/d" "$CONFIG_FILE"
-    echo 'include ./'"$LIGHT_THEME" >> "$CONFIG_FILE"
+    echo 'include ./'"$LIGHT_THEME" >>"$CONFIG_FILE"
     dunstify -u normal "Cambiado al tema claro"
 fi
