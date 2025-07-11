@@ -53,12 +53,6 @@ map("n", "<tab>", ":tabnext<Return>", opts)
 -- Get tabs
 map("n", "<s-tab>", ":tabprev<Return>", opts)
 
--- Shortcut to yank register
--- map({ "n", "x" }, "<leader>py", '"0p')
-
--- Vim tree
--- map("n", "<c-n>", "<CMD>NvimTreeToggle<CR>")
-
 ------------------------------------------------
 -- ==>   Splits
 ------------------------------------------------
@@ -103,3 +97,12 @@ map("n", "<C-a>", "ggVG", opts)
 map("n", "<leader>rn", function()
   vim.lsp.buf.rename()
 end)
+
+-- Yanky keymaps
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")

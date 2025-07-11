@@ -2,10 +2,25 @@
 -- stylua: ignore
 -- if true then return {} end
 
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
-return {}
+return {
+    {
+        "folke/todo-comments.nvim",
+        enabled = false,
+    },
+    {
+        "linux-cultist/venv-selector.nvim",
+        enabled = false,
+    },
+    {
+        "folke/tokyonight.nvim",
+        enabled = false,
+    },
+    {
+        "MagicDuck/grug-far.nvim",
+        enabled = false,
+    },
+    {
+        "catppuccin/nvim",
+        enabled = false,
+    }
+}
