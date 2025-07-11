@@ -100,9 +100,6 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 -- Control all select
 map("n", "<C-a>", "ggVG", opts)
 
--- Start any lsp server if not already started
-map("n", "<C-l>", ":LspStart ")
-
 map("n", "<leader>rn", function()
   vim.lsp.buf.rename()
 end)

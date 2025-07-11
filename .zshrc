@@ -36,11 +36,7 @@ export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
-# PS1=' %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
-
-#  ┌─┐┌─┐┬ ┬  ┌─┐┌─┐┌─┐┬    ┌─┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
-#  ┌─┘└─┐├─┤  │  │ ││ ││    │ │├─┘ │ ││ ││││└─┐
-#  └─┘└─┘┴ ┴  └─┘└─┘└─┘┴─┘  └─┘┴   ┴ ┴└─┘┘└┘└─┘
+# Options
 setopt interactive_comments
 setopt AUTOCD              # change directory just by typing its name
 setopt PROMPT_SUBST        # enable command substitution in prompt
@@ -49,13 +45,11 @@ setopt LIST_PACKED		   # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 
-#  ┬ ┬┬┌─┐┌┬┐┌─┐┬─┐┬ ┬
-#  ├─┤│└─┐ │ │ │├┬┘└┬┘
-#  ┴ ┴┴└─┘ ┴ └─┘┴└─ ┴
-# HISTFILE=~/.config/zsh/zhistory
+# History
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
+
 # setopt inc_append_history
 setopt appendhistory
 setopt sharehistory
