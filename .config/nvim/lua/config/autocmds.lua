@@ -10,8 +10,9 @@
 local A = vim.api
 local C = vim.cmd
 
-A.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "*.md", -- or "*.markdown" if you use that extension
+-- Disable spell check for markdown files
+A.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "FileType" }, {
+  pattern = { "*.md", "markdown" },
   callback = function()
     vim.opt_local.spell = false
   end,
@@ -43,11 +44,14 @@ A.nvim_create_autocmd("TextYankPost", {
   group = num_au,
   callback = function()
     vim.highlight.on_yank({ higroup = "Visual" })
-    -- This is a workaround for clipboard not working in WSL
-    -- see https://github.com/neovim/neovim/issues/19204#issuecomment-1173722375
-    -- if vim.fn.has('wsl') == 1 then
-    --     vim.fn.system('clip.exe', vim.fn.getreg('"'))
-    -- end
+  end,
+})
+
+-- disable automatic comment on newline
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end,
 })
 
