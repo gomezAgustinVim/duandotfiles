@@ -129,7 +129,9 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+# bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+
+bindkey -s '^f' 'con\n'
 
 # ZSH autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -10,89 +10,89 @@
 
 # youtube-dl
 alias \
-	yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
-	yta='yt -x -f bestaudio/best -o "~/Musica/dl-music/%(title)s.%(ext)s"' \
-	ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
-	ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
+    yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
+    yta='yt -x -f bestaudio/best -o "~/Musica/dl-music/%(title)s.%(ext)s"' \
+    ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
+    ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
 # Expand sudo to work with aliases
 alias sudo="sudo "
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	mkd="mkdir -pv" \
-	rmd="rmdir -v" \
-	du="du -h" \
-	lf="lfrun" \
-	rs="rsync -Pav" \
-	rnew="rs -Pav -z --update --delete-after" \
-	texwatch="latexmk -pdf -pvc" # better latex compiler
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -vI" \
+    mkd="mkdir -pv" \
+    rmd="rmdir -v" \
+    du="du -h" \
+    lf="lfrun" \
+    rs="rsync -Pav" \
+    rnew="rs -Pav -z --update --delete-after" \
+    texwatch="latexmk -pdf -pvc" # better latex compiler
 
 # ffmpeg commands
 alias \
-	ffmpeg="ffmpeg -hide_banner" \
-	ffconvert='find -maxdepth 1 -mindepth 1 -type f -name "*.mkv" -print -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;' \
-	tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
+    ffmpeg="ffmpeg -hide_banner" \
+    ffconvert='find -maxdepth 1 -mindepth 1 -type f -name "*.mkv" -print -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;' \
+    tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
 
 # These common commands are just too long! Abbreviate them.
 alias \
-	z="zathura" \
-	ka="killall" \
-	g="git status" \
-	gm="git commit -m" \
-	i="nsxiv -q -a -t" \
-	sdn="shutdown -h now" \
-	kitty="kitty -o allow_remote_control=yes -o enabled_layouts=tall" \
-	df='df -lH ' \
-	f="fastfetch" \
-	h="htop" \
-	c="cointop" \
-	b="$EDITOR ~/.config/hypr/modules/binds.conf" \
-	src="source ~/.zshrc && echo 'sourceado nwn!'"
+    z="zathura" \
+    ka="killall" \
+    g="git status" \
+    gm="git commit -m" \
+    i="nsxiv -q -a -t" \
+    sdn="shutdown -h now" \
+    kitty="kitty -o allow_remote_control=yes -o enabled_layouts=tall" \
+    df='df -lH ' \
+    f="fastfetch" \
+    h="htop" \
+    c="cointop" \
+    b="$EDITOR ~/.config/hypr/modules/binds.conf" \
+    src="source ~/.zshrc && echo 'sourceado nwn!'"
 
 # Pacman
 alias \
-	p="pacman" \
-	pn="pacman -S --needed" \
-	pu="pacman -Syu" \
-	pa="paru"
+    p="pacman" \
+    pn="pacman -S --needed" \
+    pu="pacman -Syu" \
+    pa="paru"
 
 # tmux commands
 alias \
-	t="tmux" \
-	tn="t new-session -swk" \
-	tbg="t new-session -sbg" \
-	tk="t kill-session"
+    t="tmux" \
+    tn="t new-session -swk" \
+    tbg="t new-session -sbg" \
+    tk="t kill-session"
 
 # enable color support of ls and also add handy aliases
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	cat="bat --theme=base16" \
-	dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
-	dir="dir --color=auto" \
-	vdir="vdir --color=auto" \
-	grep="grep --color=auto" \
-	fgrep="fgrep --color=auto" \
-	egrep="egrep --color=auto" \
-	diff="diff --color=auto" \
-	fc-list="fc-list -f '%{file}\n'" \
-	ip="ip --color=auto"
+    ls="ls -hN --color=auto --group-directories-first" \
+    cat="bat --theme=base16" \
+    dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
+    dir="dir --color=auto" \
+    vdir="vdir --color=auto" \
+    grep="grep --color=auto" \
+    fgrep="fgrep --color=auto" \
+    egrep="egrep --color=auto" \
+    diff="diff --color=auto" \
+    fc-list="fc-list -f '%{file}\n'" \
+    ip="ip --color=auto"
 
 # Mpv
 alias podcast="mpv --no-video"
 
-# alias \
-# ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
-
 con() {
-	cd ~/.config || exit
-	$EDITOR "$(fzf)"
+    cd ~/.config || exit
+    local selected_file
+    selected_file=$(fzf) || exit # Exit if no selection
+    cd "$(dirname "$selected_file")" || exit
+    $EDITOR "$(basename "$selected_file")" # Open the file
 }
 
 se() {
-	cd ~/.local/bin || exit
-	$EDITOR "$(fzf)"
+    cd ~/.local/bin || exit
+    $EDITOR "$(fzf)"
 }
