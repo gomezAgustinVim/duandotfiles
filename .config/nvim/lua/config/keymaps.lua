@@ -28,7 +28,8 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)
+-- Make file executable
+map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
 -- Navigate buffers
 -- map("n", "<S-l>", ":bnext<CR>", opts) -- la S significa shift
@@ -44,14 +45,10 @@ map("n", "<C-s>", "<CMD>w<CR>")
 -- Save and quit neovim
 map("n", "<C-z>", "<CMD>x<CR>")
 
--- Create new tab
-map("n", "te", ":tabedit", opts)
-
--- Close tab
-map("n", "<tab>", ":tabnext<Return>", opts)
-
--- Get tabs
-map("n", "<s-tab>", ":tabprev<Return>", opts)
+-- Tabs
+map("n", "te", ":tabedit", opts) -- Create new tab
+map("n", "<tab>", ":tabnext<Return>", opts) -- Close tab
+map("n", "<s-tab>", ":tabprev<Return>", opts) -- Get tabs
 
 ------------------------------------------------
 -- ==>   Splits
@@ -73,17 +70,14 @@ map("n", "<C-Up>", "<CMD>resize -2<CR>", opts)
 map("n", "<C-Down>", "<CMD>resize +2<CR>", opts)
 
 -- Change 2 split windows from vert to horiz or horiz to vert
-map("n", "<Leader>th", "<C-w>t<C-w>H")
-map("n", "<Leader>tk", "<C-w>t<C-w>K")
+map("n", "<Leader>th", "<C-w>t<C-w>H", { desc = "Move split window to horizontal" })
+map("n", "<Leader>tk", "<C-w>t<C-w>K", { desc = "Move split window to vertical" })
 
 -- Replace ex mode with gq
 map("n", "Q", "gq")
 
 -- Compile document, be it groff/LaTeX/markdown/etc.
-map("n", "<leader>c", ':w! | !compiler "<c-r>%"<CR>')
-
--- Compile slide with pandoc
-map("n", "<leader>e", ":!pandoc % -t beamer -o %.pdf<CR>")
+map("n", "<leader>cp", ':w! | !compiler "<c-r>%"<CR>', { desc = "Compile this file" })
 
 -- Perform dot commands over visual blocks:
 map("x", ".", ":normal .<CR>")
@@ -94,9 +88,9 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 -- Control all select
 map("n", "<C-a>", "ggVG", opts)
 
-map("n", "<leader>rn", function()
-  vim.lsp.buf.rename()
-end)
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable" })
+
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
 -- Yanky keymaps
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
