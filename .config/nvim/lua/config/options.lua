@@ -2,83 +2,74 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-local g = vim.g
-local o = vim.o
+local options = {
+  conceallevel = 2, -- markdown conceal
+  concealcursor = "nc",
+  showmode = false, -- Don't show mode since we have a statusline
+  showcmd = false,
+  ruler = false, -- Disable extra numbering
+  laststatus = 3,
+  showmatch = true, -- Show matching brackets.
+  ignorecase = true, -- Do case insensitive matching
+  smartcase = true, -- Do smart case matching
+  incsearch = true, -- Incremental search
+  hlsearch = false,
+  autowrite = true, -- Automatically save before commands like :next and :make
+  hidden = true, -- Hide buffers when they are abandoned
 
--- Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-o.splitbelow = true
-o.splitright = true
+  -- Better editing experience
+  tabstop = 4, -- Tabs counts as 4 spaces
+  shiftwidth = 4,
+  softtabstop = -1, -- If negative, shiftwidth value is used
+  expandtab = true, -- Turn tab into spaces
+  cindent = true,
+  autoindent = false,
+  smarttab = true,
+  swapfile = false,
+  backup = false,
+  undofile = true,
+  undodir = os.getenv("HOME") .. "/.vim/undodir",
+  wrap = true,
+  textwidth = 300,
+  list = true,
+  listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂",
 
--- The following are commented out as they cause vim to behave a lot
--- differently from regular Vi. They are highly recommended though.
--- o.ic = true			-- Ignore case
-o.showmatch = true -- Show matching brackets.
-o.ignorecase = true -- Do case insensitive matching
-o.smartcase = true -- Do smart case matching
-o.incsearch = true -- Incremental search
-o.hlsearch = false
-o.autowrite = true -- Automatically save before commands like :next and :make
-o.hidden = true -- Hide buffers when they are abandoned
+  -- Better editor UI
+  numberwidth = 5,
+  nu = true,
+  relativenumber = true,
+  cursorline = true,
+  cursorlineopt = "both", -- to enable cursorline!
+  clipboard = "unnamedplus", -- System clipboard integration
+  title = true,
+  encoding = "utf-8",
 
--- Better editing experience
-o.tabstop = 4 -- Tabs counts as 4 spaces
-o.shiftwidth = 4
-o.softtabstop = -1 -- If negative, shiftwidth value is used
-o.expandtab = true -- Turn tab into spaces
-o.cindent = true
-o.smartindent = true
-o.autoindent = true
-o.swapfile = false
-o.backup = false
-o.undodir = os.getenv("HOME") .. "/.vim/undodir"
-o.undofile = true
-o.wrap = true
-o.textwidth = 300
-o.list = true
-o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
+  -- Colors
+  termguicolors = true,
 
--- Better editor UI
-o.numberwidth = 5
-o.nu = true
-o.relativenumber = true
-o.cursorline = true
-o.cursorlineopt = "both" -- to enable cursorline!
+  -- Smooth scrolling
+  ttyfast = true,
+  smoothscroll = true,
+  scrolloff = 8,
 
-o.clipboard = "unnamedplus"
-o.title = true
-o.encoding = "utf-8"
+  -- Remember 5,0 items in commandline history
+  history = 50,
 
--- Colors
-o.termguicolors = true
+  -- Preserve view while jumping
+  jumpoptions = "view",
 
--- Smooth scrolling
-o.smoothscroll = true
-o.scrolloff = 8
--- o.colorcolumn = "80"
+  mouse = "a", -- Enable mouse usage (all modes)
 
--- Remember 50 items in commandline history
-o.history = 50
+  -- Enable autocompletion:
+  wildmode = "longest,list,full",
 
--- Preserve view while jumping
-o.jumpoptions = "view"
+  updatetime = 50,
+}
 
-o.mouse = "a" -- Enable mouse usage (all modes)
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
 
--- Enable autocompletion:
-o.wildmode = "longest,list,full"
-
-o.updatetime = 50
-
--- Set global variables
--- g.hidden_all = 0
-
--- Set options
-o.showmode = true
-o.showcmd = true
-o.ruler = true
-o.laststatus = 2
-
--- Check if not running in a GUI
--- if not vim.fn.has("gui_running") then
---   o.t_Co = 256
--- end
+vim.diagnostic.config({
+  signs = false,
+})

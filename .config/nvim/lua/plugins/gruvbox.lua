@@ -1,4 +1,5 @@
 return {
+
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
   name = "gruvbox",
@@ -6,14 +7,14 @@ return {
     require("gruvbox").setup({
       terminal_colors = true, -- add neovim terminal colors
       undercurl = true,
-      underline = false,
+      underline = true,
       bold = true,
       italic = {
-        strings = false,
-        emphasis = false,
-        comments = false,
+        strings = true,
+        emphasis = true,
+        comments = true,
         operators = false,
-        folds = false,
+        folds = true,
       },
       strikethrough = true,
       invert_selection = false,

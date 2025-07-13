@@ -19,8 +19,4 @@ return {
         "MagicDuck/grug-far.nvim",
         enabled = false,
     },
-    {
-        "catppuccin/nvim",
-        enabled = false,
-    }
 }
