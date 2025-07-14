@@ -92,6 +92,8 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable" })
 
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
+map("n", "<leader>fa", vim.lsp.buf.format, { desc = "Format file" })
+
 -- Yanky keymaps
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
