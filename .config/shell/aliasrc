@@ -86,8 +86,7 @@ alias podcast="mpv --no-video"
 
 con() {
     cd ~/.config || exit
-    local selected_file
-    selected_file=$(fzf) || exit # Exit if no selection
+    selected_file=$(fzf) || return # Return if no selection
     cd "$(dirname "$selected_file")" || exit
     $EDITOR "$(basename "$selected_file")" # Open the file
 }
