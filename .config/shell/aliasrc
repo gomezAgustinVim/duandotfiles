@@ -43,6 +43,7 @@ alias \
     ka="killall" \
     g="git status" \
     gm="git commit -m" \
+    gp="git push" \
     i="nsxiv -q -a -t" \
     sdn="shutdown -h now" \
     kitty="kitty -o allow_remote_control=yes -o enabled_layouts=tall" \
