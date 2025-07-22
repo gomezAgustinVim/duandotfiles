@@ -19,4 +19,8 @@ return {
         "MagicDuck/grug-far.nvim",
         enabled = false,
     },
+    {
+        "echasnovski/mini.ai",
+        enabled = false,
+    },
 }
