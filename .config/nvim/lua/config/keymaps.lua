@@ -1,12 +1,11 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
 local map = vim.keymap.set
 
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
 map("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -32,9 +31,12 @@ map("n", "N", "Nzzzv")
 map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
 -- Navigate buffers
--- map("n", "<S-l>", ":bnext<CR>", opts) -- la S significa shift
-
--- map("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<S-l>", ":bnext<CR>", opts) -- la S significa shift
+map("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer" })
+map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
+map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" }) --close all
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" }) --ver split + open next buffer
 
 -- Quit neovim
 map("n", "<C-Q>", "<CMD>q<CR>")
@@ -92,13 +94,9 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable" })
 
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
-map("n", "<leader>fa", vim.lsp.buf.format, { desc = "Format file" })
+map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 
--- Yanky keymaps
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+-- misc
+map("n", "<leader>s", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
+map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
+map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
