@@ -57,7 +57,6 @@ require("plugins.colorscheme")
 require("plugins.gitsigns")
 require("plugins.lualine")
 require("plugins.nvim-lint")
-require("plugins.mini-pairs")
 require("plugins.mini-snippets")
 require("plugins.blink")
 require("plugins.render-markdown")
@@ -67,6 +66,7 @@ vim.defer_fn(function()
     --defer non-essential configs,
     --purely for experimental purposes:
     --this only makes a difference of +-10ms on initial startup
+    require("plugins.mini-pairs")
     require("plugins.treesitter")
     require("plugins.mini-pick")
     require("plugins.nvim-tree")
