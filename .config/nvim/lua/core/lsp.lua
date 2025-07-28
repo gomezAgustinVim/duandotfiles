@@ -13,15 +13,14 @@ vim.lsp.enable({
 })
 
 vim.lsp.config("*", {
-	capabilities = {
-		require("blink-cmp").get_lsp_capabilities(),
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
-	root_markers = { ".git" },
+    capabilities = {
+        textDocument = {
+            semanticTokens = {
+                multilineTokenSupport = true,
+            },
+        },
+    },
+    root_markers = { ".git" },
 })
 
 vim.diagnostic.config({
@@ -48,5 +47,3 @@ vim.diagnostic.config({
         },
     },
 })
-
-vim.cmd("set completeopt+=noselect")

@@ -49,7 +49,7 @@ A.nvim_create_autocmd("FileType", {
 A.nvim_create_autocmd('BufWritePre', {
     pattern = '*',
     callback = function(args)
-        local clients = vim.lsp.get_active_clients({ bufnr = args.buf })
+        local clients = vim.lsp.get_clients({ bufnr = args.buf })
         if #clients > 0 then
             vim.lsp.buf.format({ async = false })
         end

@@ -10,7 +10,6 @@ if vim.fn.empty(vim.fn.glob(data_dir .. "/site/autoload/plug.vim")) == 1 then
     vim.cmd("autocmd VimEnter * PlugInstall --sync | source $MYVIMRC")
 end
 
--- local vim = vim
 local Plug = vim.fn["plug#"]
 
 vim.g.start_time = vim.fn.reltime()
@@ -25,22 +24,22 @@ Plug("vimwiki/vimwiki")                                  -- vimwiki
 Plug("norcalli/nvim-colorizer.lua")                      --color highlight
 Plug("MeanderingProgrammer/render-markdown.nvim")        --render md inline
 Plug("lewis6991/gitsigns.nvim")                          --git
-Plug("folke/trouble.nvim")                               -- diagnostics
 Plug("iamcco/markdown-preview.nvim")
 Plug("nvim-treesitter/nvim-treesitter")                  -- improved syntax
 Plug("echasnovski/mini.pairs")                           -- autopairs
-Plug("echasnovski/mini.snippets")                        -- snippets
+Plug("echasnovski/mini.snippets")                        -- snippets engine
+Plug("rafamadriz/friendly-snippets")                     -- snippets source
 Plug("echasnovski/mini.pick")                            -- File picker
--- Plug("echasnovski/mini.icons")                           -- Icons 2
+Plug("echasnovski/mini.icons")                           -- Icons 2
 Plug('nvim-tree/nvim-web-devicons')                      -- Icons
 Plug("nvim-tree/nvim-tree.lua")                          -- File explorer
 Plug("romgrk/barbar.nvim")                               --bufferline
 Plug("goolord/alpha-nvim")                               --pretty startup
-Plug("Saghen/blink.compat")                              -- compatibility with nvim.cmp
+-- Plug("Saghen/blink.compat")                              -- compatibility with nvim.cmp
+-- Plug("Saghen/blink.cmp")                                 -- autocompletion
+Plug("mfussenegger/nvim-lint") --async linter
 --- Not configured yet ---
-Plug("folke/which-key.nvim")                             --mappings popup
-Plug("Saghen/blink.cmp")                                 -- No autocompletion
-Plug("mfussenegger/nvim-lint")                           --async linter
+Plug("folke/which-key.nvim")   --mappings popup
 
 vim.call("plug#end")
 
@@ -58,7 +57,6 @@ require("plugins.gitsigns")
 require("plugins.lualine")
 require("plugins.nvim-lint")
 require("plugins.mini-snippets")
-require("plugins.blink")
 require("plugins.render-markdown")
 require("plugins.vimwiki")
 

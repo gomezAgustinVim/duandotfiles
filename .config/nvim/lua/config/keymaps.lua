@@ -9,7 +9,7 @@ vim.g.maplocalleader = " "
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
-map("i", "jk", "<ESC>")
+map("n", "<leader>re", ":source %<CR>", { desc = "Reload configuration" })
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")
@@ -30,14 +30,6 @@ map("n", "N", "Nzzzv")
 -- Make file executable
 map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
--- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>", opts) -- la S significa shift
-map("n", "<S-h>", ":bprevious<CR>", opts)
-map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer" })
-map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
-map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" }) --close all
-map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" }) --ver split + open next buffer
-
 -- Quit neovim
 map("n", "<C-Q>", "<CMD>q<CR>")
 
@@ -48,16 +40,23 @@ map("n", "<C-s>", "<CMD>w<CR>")
 map("n", "<C-z>", "<CMD>x<CR>")
 
 -- Tabs
-map("n", "te", ":tabedit", opts) -- Create new tab
-map("n", "<tab>", ":tabnext<Return>", opts) -- Close tab
-map("n", "<s-tab>", ":tabprev<Return>", opts) -- Get tabs
+-- Deactivate for now
+-- map("n", "<leader>te", ":tabnew", opts)       -- Create new tab
+-- map("n", "<tab>", ":tabnext<Return>", opts)   -- Close tab
+-- map("n", "<s-tab>", ":tabprev<Return>", opts) -- Get tabs
 
 ------------------------------------------------
 -- ==>   Splits
 ------------------------------------------------
 
-map("n", "ss", ":split<Return>", opts)
-map("n", "vs", ":vsplit<Return>", opts)
+-- Navigate buffers
+map("n", "<Tab>", ":bnext<CR>", opts)
+map("n", "<S-Tab>", ":bprevious<CR>", opts) -- la S significa shift
+map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer" })
+map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
+map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" })                  -- close all
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" })           -- ver split + open next buffer
+map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Horizontal split and buffer" }) -- hor split + open next buffer
 
 -- Shortcutting split navigation, saving a keypress:
 map("n", "<C-h>", "<C-w>h", opts)
@@ -99,4 +98,4 @@ map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 -- misc
 map("n", "<leader>s", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
-map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
+map("n", "<leader>P", ":PlugInstall<CR>")                             --vim-plug
