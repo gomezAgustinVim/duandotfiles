@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
@@ -96,6 +95,6 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 
 -- misc
-map("n", "<leader>s", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
+map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
-map("n", "<leader>P", ":PlugInstall<CR>")                             --vim-plug
+map("n", "<leader>P", ":PlugInstall<CR>")                              --vim-plug

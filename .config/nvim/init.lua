@@ -16,6 +16,11 @@ vim.g.start_time = vim.fn.reltime()
 vim.loader.enable()
 vim.call("plug#begin")
 
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 Plug("ellisonleao/gruvbox.nvim", { ["as"] = "gruvbox" }) --colorscheme
 Plug("catppuccin/nvim", { ["as"] = "catppuccin" })       --colorscheme 2
 Plug("neovim/nvim-lspconfig")                            -- Native lsp
