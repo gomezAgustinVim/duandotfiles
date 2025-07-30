@@ -2,5 +2,5 @@
 
 [[mgr.append_keymap]]
 on  = [ "b" ]
-run = "shell 'setbg'"
+run = "shell 'setbg \"$1\"'"
 desc = "Seleccionar wallpaper"

@@ -43,6 +43,7 @@ inode/directory)
     ;;
 *)
     notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
-    exit 1
+    # Con exit 1 la salida se queja en yazi y me dice que setbg sigue corriendo
+    exit 0
     ;;
 esac
