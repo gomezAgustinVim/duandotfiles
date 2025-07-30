@@ -1,0 +1,6 @@
+[mgr]
+
+[[mgr.append_keymap]]
+on  = [ "b" ]
+run = "shell 'setbg'"
+desc = "Seleccionar wallpaper"
