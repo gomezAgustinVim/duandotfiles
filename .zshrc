@@ -150,8 +150,18 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
 
-source ~/.config/lf/lfcd.sh
-bindkey -s '^o' 'lfcd\n'
+# source ~/.config/lf/lfcd.sh
+# bindkey -s '^o' 'lfcd\n'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp" > /dev/null 2>&1
+}
+
+bindkey -s '^o' 'y\n'
 
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
