@@ -51,10 +51,23 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- Navigate buffers
 map("n", "<Tab>", ":bnext<CR>", opts)
 map("n", "<S-Tab>", ":bprevious<CR>", opts) -- la S significa shift
+map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>")
+map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>")
+map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>")
+map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>")
+map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>")
+map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>")
+map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>")
+map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>")
+map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>")
+map("n", "<A-0>", "<Cmd>BufferLast<CR>")
+map("n", "<A-p>", "<Cmd>BufferPin<CR>")
+
+-- Close and split
 map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer" })
 map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
-map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" })                  -- close all
-map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" })           -- ver split + open next buffer
+map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" }) -- close all
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Horizontal split and buffer" }) -- hor split + open next buffer
 
 -- Shortcutting split navigation, saving a keypress:
@@ -97,4 +110,5 @@ map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
-map("n", "<leader>P", ":PlugInstall<CR>")                              --vim-plug
+map("n", "<leader>g", ":lgrep '<cWORD>' <CR>", { desc = "Live grep under cursor" }) -- Live grep under cursor
+map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
