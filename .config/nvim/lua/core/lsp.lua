@@ -21,7 +21,7 @@ vim.lsp.config("*", {
             },
         },
     },
-    root_markers = { ".git" },
+    root_markers = { ".git", "duanproject.txt" },
 })
 
 vim.diagnostic.config({
