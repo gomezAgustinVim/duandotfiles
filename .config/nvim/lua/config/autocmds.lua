@@ -56,6 +56,14 @@ A.nvim_create_autocmd('BufWritePre', {
     end,
 })
 
+-- Autoformat with conform if found
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+    end,
+})
+
 -- highlight text on yank
 A.nvim_create_autocmd("TextYankPost", {
     pattern = "*",

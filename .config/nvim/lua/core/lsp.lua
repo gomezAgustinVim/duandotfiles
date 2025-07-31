@@ -9,6 +9,7 @@ vim.lsp.enable({
     "lua_ls",
     "biome",
     "bashls",
+    "marksman",
     "pyright",
 })
 

@@ -43,8 +43,9 @@ Plug("goolord/alpha-nvim")                               --pretty startup
 -- Plug("Saghen/blink.compat")                              -- compatibility with nvim.cmp
 -- Plug("Saghen/blink.cmp")                                 -- autocompletion
 Plug("mfussenegger/nvim-lint") --async linter
---- Not configured yet ---
 Plug("folke/which-key.nvim")   --mappings popup
+Plug("stevearc/conform.nvim")
+--- Not configured yet ---
 
 vim.call("plug#end")
 
@@ -60,10 +61,12 @@ require("plugins.colorizer")
 require("plugins.colorscheme")
 require("plugins.gitsigns")
 require("plugins.lualine")
+require("plugins.conform")
 require("plugins.nvim-lint")
 require("plugins.mini-snippets")
 require("plugins.render-markdown")
 require("plugins.vimwiki")
+
 
 vim.defer_fn(function()
     --defer non-essential configs,
