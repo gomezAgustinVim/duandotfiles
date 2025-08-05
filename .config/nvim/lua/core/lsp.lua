@@ -11,6 +11,7 @@ vim.lsp.enable({
 	"bashls",
 	"marksman",
 	"pyright",
+	"texlab",
 })
 
 vim.lsp.config("*", {
@@ -21,7 +22,7 @@ vim.lsp.config("*", {
 			},
 		},
 	},
-	root_markers = { ".git", "duanproject.txt" },
+	root_markers = { ".git" },
 })
 
 vim.diagnostic.config({

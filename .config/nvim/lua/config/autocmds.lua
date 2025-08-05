@@ -86,20 +86,13 @@ A.nvim_create_autocmd("TermOpen", {
 })
 
 A.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("my.lsp", {}),
 	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
 		if client:supports_method("textDocument/completion") then
 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 		end
-	end,
-})
-
--- linting when file is written to
-A.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		-- try_lint without arguments runs the linters defined in `linters_by_ft`
-		-- for the current filetype, on write
-		require("lint").try_lint()
 	end,
 })
 

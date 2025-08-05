@@ -29,21 +29,20 @@ Plug("vimwiki/vimwiki") -- vimwiki
 Plug("norcalli/nvim-colorizer.lua") --color highlight
 Plug("MeanderingProgrammer/render-markdown.nvim") --render md inline
 Plug("lewis6991/gitsigns.nvim") --git
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" }) -- improved syntax
-Plug("nvim-treesitter/nvim-treesitter-context") -- context of scope
-Plug("nvim-treesitter/nvim-treesitter-textobjects")
+Plug("nvim-treesitter/nvim-treesitter") -- improved syntax
+Plug("rafamadriz/friendly-snippets") -- snippets source
 Plug("echasnovski/mini.pairs") -- autopairs
 Plug("echasnovski/mini.snippets") -- snippets engine
-Plug("rafamadriz/friendly-snippets") -- snippets source
+Plug("echasnovski/mini.completion") -- better minimal completion
 Plug("echasnovski/mini.pick") -- File picker
 Plug("echasnovski/mini.icons") -- Icons 2
 Plug("nvim-tree/nvim-web-devicons") -- Icons
 Plug("nvim-tree/nvim-tree.lua") -- File explorer
 Plug("romgrk/barbar.nvim") --bufferline
 Plug("goolord/alpha-nvim") --pretty startup
-Plug("mfussenegger/nvim-lint") --async linter
 Plug("folke/which-key.nvim") --mappings popup
 Plug("stevearc/conform.nvim") -- better formatter (?
+-- Plug("mfussenegger/nvim-lint") --async linter
 -- Plug("L3MON4D3/LuaSnip")                                 -- more conventional snippets engine
 -- Plug("Saghen/blink.compat")                              -- compatibility with nvim.cmp
 -- Plug("Saghen/blink.cmp")                                 -- autocompletion
@@ -55,7 +54,6 @@ require("config.keymaps")
 require("config.options")
 require("config.autocmds")
 require("core.lsp")
-
 require("plugins.alpha")
 require("plugins.barbar")
 require("plugins.colorizer")
@@ -63,20 +61,23 @@ require("plugins.colorscheme")
 require("plugins.gitsigns")
 require("plugins.lualine")
 require("plugins.conform")
-require("plugins.nvim-lint")
 require("plugins.mini-snippets")
--- require("plugins.blink")
--- require("plugins.luasnip")
 require("plugins.render-markdown")
 require("plugins.vimwiki")
+require("plugins.treesitter")
+require("plugins.nvim-tree")
+require("plugins.which-key")
+-- require("plugins.nvim-lint")
+-- require("plugins.blink")
+-- require("plugins.luasnip")
 
-vim.defer_fn(function()
-	--defer non-essential configs,
-	--purely for experimental purposes:
-	--this only makes a difference of +-10ms on initial startup
-	require("plugins.mini-pairs")
-	require("plugins.treesitter")
-	require("plugins.mini-pick")
-	require("plugins.nvim-tree")
-	require("plugins.which-key")
-end, 100)
+require("mini.pairs").setup()
+
+require("mini.completion").setup()
+
+require("mini.pick").setup({
+	vim.keymap.set("n", "<leader>f", ":Pick files<CR>", { desc = "Pick Files" }),
+	vim.keymap.set("n", "<leader>h", ":Pick help<CR>", { desc = "Pick help" }),
+})
+
+vim.cmd("set completeopt+=noselect")

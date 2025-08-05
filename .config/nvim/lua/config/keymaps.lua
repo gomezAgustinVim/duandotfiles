@@ -8,7 +8,7 @@ vim.g.maplocalleader = " "
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
-map("n", "<leader>re", ":source %<CR>", { desc = "Reload configuration" })
+map("n", "<leader>re", ":so <CR>", { desc = "Reload this configuration" })
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")

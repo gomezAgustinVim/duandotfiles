@@ -4,4 +4,5 @@ wk.add({
 	{ "<leader>f", desc = "Pick Files" },
 	{ "<leader>h", desc = "Pick help" },
 	{ "<leader>g", desc = "Live grep under cursor" },
+	{ "<C-x>o", desc = "(insertar) Activar menu de completado nativo" },
 })

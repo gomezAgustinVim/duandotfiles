@@ -1,6 +1,5 @@
 local options = {
 	winborder = "rounded",
-	completeopt = { "menuone", "noselect" },
 	conceallevel = 2, -- markdown conceal
 	concealcursor = "nc",
 	showmode = false, -- Don't show mode since we have a statusline
