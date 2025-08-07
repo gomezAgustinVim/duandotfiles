@@ -3,6 +3,11 @@ use = "kirasok/epub-preview"
 rev = "2e8079e"
 hash = "92d5044ae6cd823443b180477cb60733"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "de53d90"
+hash = "3996fc74044bc44144b323686f887e1"
+
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"
 rev = "91fdfa7"
