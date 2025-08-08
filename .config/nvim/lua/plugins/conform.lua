@@ -3,6 +3,9 @@ require("conform").setup({
 		-- Conform will run the first available formatter
 		lua = { "stylua" },
 		typescript = { "prettierd", "prettier", stop_after_first = true },
+		html = { "prettierd", "prettier", stop_after_first = true },
+		css = { "prettierd", "prettier", stop_after_first = true },
+		javascript = { "prettierd", "prettier", stop_after_first = true },
 		markdown = { "prettier" },
 		markdown_inline = { "prettier" },
 	},

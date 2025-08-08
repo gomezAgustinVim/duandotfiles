@@ -101,11 +101,24 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 -- Control all select
 map("n", "<C-a>", "ggVG", opts)
 
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable" })
+-- Lsp related bindings start with l
+map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename variable" })
 
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
 
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
+
+map("n", "<leader>li", ":LspInfo<CR>", { desc = "Get information about lsp" })
+
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover over" })
+
+map("n", "<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature help" })
+
+-- diagnostics
+map("n", "gK", function()
+	local new_config = not vim.diagnostic.config().virtual_lines
+	vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = "Toggle diagnostic virtual_lines" })
 
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all

@@ -7,7 +7,7 @@ local signs = {
 
 vim.lsp.enable({
 	"lua_ls",
-	"biome",
+	"ts_ls",
 	"bashls",
 	"marksman",
 	"pyright",

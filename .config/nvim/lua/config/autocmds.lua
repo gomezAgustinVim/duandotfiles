@@ -1,8 +1,7 @@
-local A = vim.api
 local C = vim.cmd
 
 -- close nvim-tree if it's last buffer open
-A.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = function()
 		if #vim.api.nvim_list_bufs() == 1 and vim.bo.filetype == "NvimTree" then
@@ -11,7 +10,7 @@ A.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-A.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "*.md", -- or "*.markdown" if you use that extension
 	callback = function()
 		vim.opt_local.spell = false
@@ -35,10 +34,10 @@ vim.filetype.add({
 	},
 })
 
-local num_au = A.nvim_create_augroup("NUMTOSTR", { clear = true })
+local num_au = vim.api.nvim_create_augroup("NUMTOSTR", { clear = true })
 
 -- disable automatic comment on newline
-A.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
@@ -46,7 +45,7 @@ A.nvim_create_autocmd("FileType", {
 })
 
 -- Autoformat on save
-A.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
 		local clients = vim.lsp.get_clients({ bufnr = args.buf })
@@ -65,7 +64,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- highlight text on yank
-A.nvim_create_autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({ timeout = 300 })
@@ -73,19 +72,19 @@ A.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Remove useless stuff from the terminal window and enter INSERT mode
-A.nvim_create_autocmd("TermOpen", {
+vim.api.nvim_create_autocmd("TermOpen", {
 	group = num_au,
 	callback = function(data)
 		if not string.find(vim.bo[data.buf].filetype, "^[fF][tT]erm") then
-			A.nvim_set_option_value("number", false, { scope = "local" })
-			A.nvim_set_option_value("relativenumber", false, { scope = "local" })
-			A.nvim_set_option_value("signcolumn", "no", { scope = "local" })
-			A.nvim_command("startinsert")
+			vim.api.nvim_set_option_value("number", false, { scope = "local" })
+			vim.api.nvim_set_option_value("relativenumber", false, { scope = "local" })
+			vim.api.nvim_set_option_value("signcolumn", "no", { scope = "local" })
+			vim.api.nvim_command("startinsert")
 		end
 	end,
 })
 
-A.nvim_create_autocmd("LspAttach", {
+vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("my.lsp", {}),
 	callback = function(ev)
 		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))

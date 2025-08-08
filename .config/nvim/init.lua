@@ -42,6 +42,7 @@ Plug("romgrk/barbar.nvim") --bufferline
 Plug("goolord/alpha-nvim") --pretty startup
 Plug("folke/which-key.nvim") --mappings popup
 Plug("stevearc/conform.nvim") -- better formatter (?
+Plug("mistweaverco/kulala.nvim")
 -- Plug("mfussenegger/nvim-lint") --async linter
 -- Plug("L3MON4D3/LuaSnip")                                 -- more conventional snippets engine
 -- Plug("Saghen/blink.compat")                              -- compatibility with nvim.cmp
@@ -79,5 +80,7 @@ require("mini.pick").setup({
 	vim.keymap.set("n", "<leader>f", ":Pick files<CR>", { desc = "Pick Files" }),
 	vim.keymap.set("n", "<leader>h", ":Pick help<CR>", { desc = "Pick help" }),
 })
+
+require("kulala").setup()
 
 vim.cmd("set completeopt+=noselect")
