@@ -2,13 +2,13 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
-map("", "<Space>", "<Nop>", opts)
+map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
-map("n", "<leader>re", ":so <CR>", { desc = "Reload this configuration" })
+map("n", "<leader>re", ":so <CR>", { desc = "Reload this configuration", silent = true })
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")
@@ -38,19 +38,13 @@ map("n", "<C-s>", "<CMD>w<CR>")
 -- Save and quit neovim
 map("n", "<C-z>", "<CMD>x<CR>")
 
--- Tabs
--- Deactivate for now
--- map("n", "<leader>te", ":tabnew", opts)       -- Create new tab
--- map("n", "<tab>", ":tabnext<Return>", opts)   -- Close tab
--- map("n", "<s-tab>", ":tabprev<Return>", opts) -- Get tabs
-
 ------------------------------------------------
 -- ==>   Splits
 ------------------------------------------------
 
 -- Navigate buffers
-map("n", "<Tab>", ":bnext<CR>", opts)
-map("n", "<S-Tab>", ":bprevious<CR>", opts) -- la S significa shift
+map("n", "<Tab>", ":bnext<CR>")
+map("n", "<S-Tab>", ":bprevious<CR>") -- la S significa shift
 map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>")
 map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>")
 map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>")
@@ -64,23 +58,25 @@ map("n", "<A-0>", "<Cmd>BufferLast<CR>")
 map("n", "<A-p>", "<Cmd>BufferPin<CR>")
 
 -- Close and split
-map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer" })
+map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
-map("n", "<leader>U", "::bufdo bd<CR>", { desc = "Close all buffers" }) -- close all
+map("n", "<leader>qr", ":BufferCloseBuffersRight<CR>", { desc = "Close all buffers to the right", silent = true })
+map("n", "<leader>ql", ":BufferCloseBuffersLeft<CR>", { desc = "Close all buffers to the left", silent = true })
+map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Close all buffers" }) -- close all
 map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Horizontal split and buffer" }) -- hor split + open next buffer
 
 -- Shortcutting split navigation, saving a keypress:
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- Make adjusting split sizes a bit more friendly
-map("n", "<C-Left>", "<CMD>vertical resize -2<CR>", opts)
-map("n", "<C-Right>", "<CMD>vertical resize +2<CR>", opts)
-map("n", "<C-Up>", "<CMD>resize -2<CR>", opts)
-map("n", "<C-Down>", "<CMD>resize +2<CR>", opts)
+map("n", "<C-Left>", "<CMD>vertical resize -2<CR>")
+map("n", "<C-Right>", "<CMD>vertical resize +2<CR>")
+map("n", "<C-Up>", "<CMD>resize -2<CR>")
+map("n", "<C-Down>", "<CMD>resize +2<CR>")
 
 -- Change 2 split windows from vert to horiz or horiz to vert
 map("n", "<Leader>th", "<C-w>t<C-w>H", { desc = "Move split window to horizontal" })
@@ -99,7 +95,7 @@ map("x", ".", ":normal .<CR>")
 map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 
 -- Control all select
-map("n", "<C-a>", "ggVG", opts)
+map("n", "<C-a>", "ggVG")
 
 -- Lsp related bindings start with l
 map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename variable" })
@@ -123,5 +119,7 @@ end, { desc = "Toggle diagnostic virtual_lines" })
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
-map("n", "<leader>g", ":lgrep '<cWORD>' <CR>", { desc = "Live grep under cursor" }) -- Live grep under cursor
+map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grep for something idk" })
+map("n", "]q", ":cnext<CR>")
+map("n", "[q", ":cprev<CR>")
 map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
