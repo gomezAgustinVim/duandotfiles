@@ -1,4 +1,5 @@
 local options = {
+	completeopt = { "menuone", "noselect", "popup" },
 	winborder = "rounded",
 	conceallevel = 2, -- markdown conceal
 	concealcursor = "nc",

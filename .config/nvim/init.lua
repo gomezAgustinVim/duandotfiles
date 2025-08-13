@@ -33,6 +33,7 @@ Plug("nvim-treesitter/nvim-treesitter") -- improved syntax
 Plug("echasnovski/mini.pairs") -- autopairs
 Plug("echasnovski/mini.pick") -- File picker
 Plug("echasnovski/mini.icons") -- Icons 2
+Plug("echasnovski/mini.completion") -- completion menu with snippets
 Plug("nvim-tree/nvim-web-devicons") -- Icons
 Plug("nvim-tree/nvim-tree.lua") -- File explorer
 Plug("romgrk/barbar.nvim") --bufferline
@@ -43,11 +44,7 @@ Plug("rafamadriz/friendly-snippets") -- snippets source
 Plug("L3MON4D3/LuaSnip") -- more conventional snippets engine
 Plug("mhinz/vim-grepper", { ["on"] = { "Grepper", "<plug>(GrepperOperator)" } })
 
--- Plug("echasnovski/mini.completion") -- completion menu with snippets
--- Plug("echasnovski/mini.snippets") -- snippets engine
 -- Plug("mfussenegger/nvim-lint") --async linter
--- Plug("Saghen/blink.compat") -- compatibility with nvim.cmp
--- Plug("Saghen/blink.cmp") -- autocompletion
 
 vim.call("plug#end")
 
@@ -71,9 +68,9 @@ require("plugins.nvim-tree")
 require("plugins.which-key")
 require("plugins.luasnip")
 
--- require("plugins.mini-snippets")
 -- require("plugins.nvim-lint")
--- require("plugins.blink")
+
+require("mini.completion").setup()
 
 require("mini.pairs").setup()
 
@@ -81,8 +78,6 @@ require("mini.pick").setup({
 	vim.keymap.set("n", "<leader>f", ":Pick files<CR>", { desc = "Pick Files" }),
 	vim.keymap.set("n", "<leader>h", ":Pick help<CR>", { desc = "Pick help" }),
 })
-
-vim.cmd("set completeopt+=noselect")
 
 vim.g.grepper = {
 	tools = { "rg", "git" },
