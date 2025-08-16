@@ -108,9 +108,10 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 map("n", "<C-a>", "ggVG")
 
 -- Spelling español
-map("n", "es", ":setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
+map({ "n", "i" }, "<C-ñ>", "<CMD>setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
 
-map("n", "en", ":setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
+-- Spelling inglés
+map({ "n", "i" }, "<C-i>", "<CMD>setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
 
 -- Lsp related bindings start with l
 map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Renombrar variable" })
