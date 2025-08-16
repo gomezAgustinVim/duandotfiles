@@ -23,7 +23,6 @@ local options = {
 	cindent = true, -- C like indent
 	autoindent = false, -- Indent with indent from last line value
 	smarttab = false, -- Indent by shiftwidth value
-	wrap = true,
 	swapfile = false, -- Do not use swap files
 	backup = false,
 	undofile = true,
@@ -62,6 +61,14 @@ local options = {
 
 	updatetime = 50,
 }
+
+vim.cmd([[
+    setlocal formatoptions+=t
+	setlocal wrap
+	setlocal wrapmargin=10
+	setlocal spell
+    setlocal linebreak
+]])
 
 for k, v in pairs(options) do
 	vim.opt[k] = v

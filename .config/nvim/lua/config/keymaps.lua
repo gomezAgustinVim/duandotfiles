@@ -6,9 +6,9 @@ map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", ";", ":") -- enter command mode CMD
 
-map("n", "<leader>re", ":so <CR>", { desc = "Reload this configuration", silent = true })
+map("n", "<leader>re", ":so <CR>", { desc = "Recargar configuración", silent = true })
 
 -- Mimic shell movements
 map("i", "<C-E>", "<C-o>$")
@@ -27,7 +27,7 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 -- Make file executable
-map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
+map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Hacer archivo ejecutable" })
 
 -- Quit neovim
 map("n", "<C-Q>", "<CMD>q<CR>")
@@ -58,13 +58,23 @@ map("n", "<A-0>", "<Cmd>BufferLast<CR>")
 map("n", "<A-p>", "<Cmd>BufferPin<CR>")
 
 -- Close and split
-map("n", "<leader>q", ":BufferClose<CR>", { desc = "Close buffer", silent = true })
-map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Force close buffer" })
-map("n", "<leader>qr", ":BufferCloseBuffersRight<CR>", { desc = "Close all buffers to the right", silent = true })
-map("n", "<leader>ql", ":BufferCloseBuffersLeft<CR>", { desc = "Close all buffers to the left", silent = true })
-map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Close all buffers" }) -- close all
-map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split and buffer" }) -- ver split + open next buffer
-map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Horizontal split and buffer" }) -- hor split + open next buffer
+map("n", "<leader>q", ":BufferClose<CR>", { desc = "Cerrar buffer", silent = true })
+map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Cerrar buffer forzosamente" })
+map(
+	"n",
+	"<leader>qr",
+	":BufferCloseBuffersRight<CR>",
+	{ desc = "Cerrar todos los buffers a la derecha", silent = true }
+)
+map(
+	"n",
+	"<leader>ql",
+	":BufferCloseBuffersLeft<CR>",
+	{ desc = "Cerrar todos los buffers a la izquierda", silent = true }
+)
+map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
+map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
 
 -- Shortcutting split navigation, saving a keypress:
 map("n", "<C-h>", "<C-w>h")
@@ -97,14 +107,19 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 -- Control all select
 map("n", "<C-a>", "ggVG")
 
+-- Spelling español
+map("n", "es", ":setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
+
+map("n", "en", ":setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
+
 -- Lsp related bindings start with l
-map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename variable" })
+map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Renombrar variable" })
 
 map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
 
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 
-map("n", "<leader>li", ":LspInfo<CR>", { desc = "Get information about lsp" })
+map("n", "<leader>li", ":LspInfo<CR>", { desc = "Información sobre LSP" })
 
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover over" })
 
@@ -114,12 +129,13 @@ map("n", "<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature help" })
 map("n", "gK", function()
 	local new_config = not vim.diagnostic.config().virtual_lines
 	vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = "Toggle diagnostic virtual_lines" })
+end, { desc = "Lineas virtuales de diagnóstico" })
 
 -- misc
-map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Replace all" }) --replace all
-map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim tree" })
-map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grep for something idk" })
+map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- replace all
+map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Nvim tree" })
+map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grepear palabra" })
 map("n", "]q", ":cnext<CR>")
 map("n", "[q", ":cprev<CR>")
 map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
+map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
