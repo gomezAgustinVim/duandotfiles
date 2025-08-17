@@ -1,5 +1,3 @@
-local C = vim.cmd
-
 -- close nvim-tree if it's last buffer open
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
@@ -10,13 +8,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = "*.md", -- or "*.markdown" if you use that extension
-	callback = function()
-		vim.opt_local.spell = false
-	end,
-})
-
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+-- 	pattern = "*.md", -- or "*.markdown" if you use that extension
+-- 	callback = function()
+-- 		vim.opt_local.spell = false
+-- 	end,
+-- })
+--
 -- Custom filetypes
 vim.filetype.add({
 	extension = {
@@ -101,7 +99,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Set the 'filetype' when reading Xresources or Xdefaults files and
 -- Run 'xrdb' after writing changes to Xresources or Xdefaults files
-C([[
+vim.cmd([[
 augroup XresourcesAndXdefaults
     autocmd!
     autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
@@ -110,7 +108,7 @@ augroup END
 ]])
 
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
-C([[
+vim.cmd([[
 augroup deleteWhitespace
     autocmd!
 	autocmd BufWritePre * %s/\s\+$//e
