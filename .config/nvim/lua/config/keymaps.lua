@@ -11,7 +11,7 @@ map("n", ";", ":") -- enter command mode CMD
 map("n", "<leader>re", ":so <CR>", { desc = "Recargar configuración", silent = true })
 
 -- Mimic shell movements
-map("i", "<C-E>", "<C-o>$")
+map("i", "<C-W>", "<C-o>$")
 map("i", "<C-A>", "<C-o>^")
 
 -- God reveals himself
@@ -23,8 +23,8 @@ map("n", "J", "mzJ`z")
 
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+-- map("n", "n", "nzzzv")
+-- map("n", "N", "Nzzzv")
 
 -- Make file executable
 map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Hacer archivo ejecutable" })
@@ -108,10 +108,10 @@ map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
 map("n", "<C-a>", "ggVG")
 
 -- Spelling español
-map({ "n", "i" }, "<C-ñ>", "<CMD>setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
+map({ "n", "i" }, "<A-ñ>", "<CMD>setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
 
 -- Spelling inglés
-map({ "n", "i" }, "<C-i>", "<CMD>setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
+map({ "n", "i" }, "<A-i>", "<CMD>setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
 
 -- Lsp related bindings start with l
 map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Renombrar variable" })
