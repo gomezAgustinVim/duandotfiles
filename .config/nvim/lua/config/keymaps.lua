@@ -4,11 +4,11 @@ local opts = { noremap = true, silent = true }
 --Remap space as leader key
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- vim.g.maplocalleader = " "
 
 map("n", ";", ":") -- enter command mode CMD
 
-map("n", "<leader>re", ":so <CR>", { desc = "Recargar configuración", silent = true })
+map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
 
 -- Mimic shell movements
 map("i", "<C-W>", "<C-o>$")
@@ -58,7 +58,7 @@ map("n", "<A-0>", "<Cmd>BufferLast<CR>")
 map("n", "<A-p>", "<Cmd>BufferPin<CR>")
 
 -- Close and split
-map("n", "<leader>q", ":BufferClose<CR>", { desc = "Cerrar buffer", silent = true })
+map("n", "<leader>qb", ":BufferClose<CR>", { desc = "Cerrar buffer", silent = true })
 map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Cerrar buffer forzosamente" })
 map(
 	"n",
@@ -134,9 +134,7 @@ end, { desc = "Lineas virtuales de diagnóstico" })
 
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- replace all
-map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Nvim tree" })
 map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grepear palabra" })
 map("n", "]q", ":cnext<CR>")
 map("n", "[q", ":cprev<CR>")
-map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
 map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
