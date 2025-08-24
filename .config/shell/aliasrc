@@ -48,20 +48,19 @@ alias \
     gic="git checkout" \
     i="nsxiv -q -a -t" \
     sdn="shutdown -h now" \
-    kitty="kitty -o allow_remote_control=yes -o enabled_layouts=tall" \
     df='df -lH ' \
     f="fastfetch" \
     h="htop" \
     c="cointop" \
     b="$EDITOR ~/.config/hypr/modules/binds.conf" \
+    pcopy="pwd | wl-copy --trim-newline" \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
 
 # Pacman
 alias \
     p="pacman" \
     pn="pacman -S --needed" \
-    pu="pacman -Syu" \
-    pa="paru"
+    pu="pacman -Syu"
 
 # tmux commands
 alias \
