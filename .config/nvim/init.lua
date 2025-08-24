@@ -5,8 +5,6 @@ vim.g.loaded_ruby_provider = 0
 
 vim.pack.add({
 	{ src = "https://github.com/ellisonleao/gruvbox.nvim" }, --colorscheme
-	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- Native lsp
-	{ src = "https://github.com/nvim-lualine/lualine.nvim" }, --statusline
 	{ src = "https://github.com/vimwiki/vimwiki" }, -- vimwiki
 	{ src = "https://github.com/norcalli/nvim-colorizer.lua" }, --color highlight
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" }, --render md inline
@@ -19,16 +17,15 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" }, -- Icons
 	{ src = "https://github.com/stevearc/oil.nvim" }, -- Explorer with buffer like edit of directory structure
 	{ src = "https://github.com/refractalize/oil-git-status.nvim" }, -- git changes on oil
-	{ src = "https://github.com/romgrk/barbar.nvim" }, --bufferline
+	{ src = "https://github.com/romgrk/barbar.nvim" },
 	{ src = "https://github.com/goolord/alpha-nvim" }, --pretty startup
 	{ src = "https://github.com/folke/which-key.nvim" }, --mappings popup
 	{ src = "https://github.com/stevearc/conform.nvim" }, -- better formatter {}?
 	{ src = "https://github.com/rafamadriz/friendly-snippets" }, -- snippets source
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
 	{ src = "https://github.com/mhinz/vim-grepper" },
+	-- { src = "https://github.com/neovim/nvim-lspconfig" }, -- Native lsp
 })
-
--- Plug("mfussenegger/nvim-lint") --async linter
 
 -- move config and plugin config to alternate files
 require("config.keymaps")
@@ -40,15 +37,12 @@ require("plugins.alpha")
 require("plugins.barbar")
 require("plugins.colorizer")
 require("plugins.gitsigns")
-require("plugins.lualine")
 require("plugins.conform")
 require("plugins.render-markdown")
 require("plugins.vimwiki")
 require("plugins.treesitter")
 require("plugins.which-key")
 require("plugins.luasnip")
-
--- require("plugins.nvim-lint")
 
 require("mini.completion").setup()
 
@@ -74,11 +68,7 @@ vim.g.grepper = {
 }
 
 -- Theme related
-require("gruvbox").setup({
-	terminal_colors = true, -- add neovim terminal colors
-	transparent_mode = true,
-})
+require("gruvbox").setup({ transparent_mode = true })
 
--- if you want to get rid of toggling and just set one scheme, you can set here
 vim.cmd("silent! colorscheme gruvbox")
 vim.cmd(":hi statusline guibg=NONE")
