@@ -44,14 +44,14 @@ require("barbar").setup({
 
 	sidebar_filetypes = { -- Set the filetypes which barbar will offset itself for
 		-- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
-		NvimTree = true,
+		NvimTree = false,
 		-- Or, specify the text used for the offset:
 		undotree = {
 			text = "undotree",
 			align = "left", -- *optionally* specify an alignment (either 'left', 'center', or 'right')
 		},
 		-- Or, specify the event which the sidebar executes when leaving:
-		["nvim-tree"] = { event = "BufWipeout" },
+		["Oil"] = { event = "BufWipeout" },
 		-- Or, specify all three
 		Outline = { event = "BufWinLeave", text = "symbols-outline", align = "right" },
 	},
