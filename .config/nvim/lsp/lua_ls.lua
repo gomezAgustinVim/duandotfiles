@@ -1,5 +1,3 @@
----@brief
-
 return {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -12,16 +10,5 @@ return {
 		"selene.toml",
 		"selene.yml",
 		".git",
-	},
-	settings = {
-		workspace = {
-			library = {
-				vim.env.VIMRUNTIME,
-				vim.api.nvim_get_runtime_file("", true),
-			},
-		},
-		telemetry = {
-			enable = false,
-		},
 	},
 }

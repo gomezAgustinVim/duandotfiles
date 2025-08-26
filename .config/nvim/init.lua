@@ -21,9 +21,9 @@ vim.pack.add({
 	{ src = "https://github.com/goolord/alpha-nvim" }, --pretty startup
 	{ src = "https://github.com/folke/which-key.nvim" }, --mappings popup
 	{ src = "https://github.com/stevearc/conform.nvim" }, -- better formatter {}?
-	{ src = "https://github.com/rafamadriz/friendly-snippets" }, -- snippets source
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
 	{ src = "https://github.com/mhinz/vim-grepper" },
+	-- { src = "https://github.com/rafamadriz/friendly-snippets" }, -- snippets source
 	-- { src = "https://github.com/neovim/nvim-lspconfig" }, -- Native lsp
 })
 
