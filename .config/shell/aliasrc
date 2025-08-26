@@ -29,6 +29,7 @@ alias \
     lf="lfrun" \
     rs="rsync -Pav" \
     rnew="rs -Pav -z --update --delete-after" \
+    fm="pcmanfm > /dev/null 2>&1 &" \
     texwatch="latexmk -pdf -pvc" # better latex compiler
 
 # ffmpeg commands
