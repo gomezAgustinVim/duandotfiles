@@ -17,7 +17,7 @@
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%d/%m/%Y}",
-        "on-click-right": "kitty -e calcure",
+        "on-click-right": "foot -e calcure",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
