@@ -17,7 +17,10 @@ require("barbar").setup({
 		buffer_number = false,
 		button = "",
 		diagnostics = {
-			[vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+			[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "󰅚 " },
+			[vim.diagnostic.severity.WARN] = { enabled = true, icon = "󰀪 " },
+			[vim.diagnostic.severity.HINT] = { enabled = true, icon = "󰌶 " },
+			[vim.diagnostic.severity.INFO] = { enabled = true, icon = "󰋽 " },
 		},
 		gitsigns = {
 			added = { enabled = true, icon = " " },
@@ -42,18 +45,5 @@ require("barbar").setup({
 		visible = { modified = { buffer_number = false } },
 	},
 
-	sidebar_filetypes = { -- Set the filetypes which barbar will offset itself for
-		-- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
-		NvimTree = false,
-		-- Or, specify the text used for the offset:
-		undotree = {
-			text = "undotree",
-			align = "left", -- *optionally* specify an alignment (either 'left', 'center', or 'right')
-		},
-		-- Or, specify the event which the sidebar executes when leaving:
-		["Oil"] = { event = "BufWipeout" },
-		-- Or, specify all three
-		Outline = { event = "BufWinLeave", text = "symbols-outline", align = "right" },
-	},
 	maximum_length = 25, -- Sets the maximum buffer name length.
 })

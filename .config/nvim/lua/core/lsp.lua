@@ -12,6 +12,7 @@ vim.lsp.enable({
 	"marksman",
 	"pyright",
 	"texlab",
+	"tinymist",
 })
 
 vim.lsp.config("*", {

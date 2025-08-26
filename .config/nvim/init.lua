@@ -58,6 +58,13 @@ require("oil").setup({
 
 	win_options = {
 		signcolumn = "yes:2",
+		wrap = false,
+		cursorcolumn = false,
+		foldcolumn = "0",
+		spell = false,
+		list = false,
+		conceallevel = 3,
+		concealcursor = "nvic",
 	},
 })
 
