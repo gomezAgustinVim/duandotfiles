@@ -14,12 +14,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- 		vim.opt_local.spell = false
 -- 	end,
 -- })
---
+
 -- Custom filetypes
 vim.filetype.add({
 	extension = {
 		conf = "conf",
 		mdx = "markdown",
+		rmd = "markdown",
+		Rmd = "markdown",
 		mjml = "html",
 		kicad_mod = "scheme",
 	},

@@ -4,7 +4,6 @@ local opts = { noremap = true, silent = true }
 --Remap space as leader key
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
 
 map("n", ";", ":") -- enter command mode CMD
 
@@ -45,33 +44,11 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- Navigate buffers
 map("n", "<Tab>", ":bnext<CR>")
 map("n", "<S-Tab>", ":bprevious<CR>") -- la S significa shift
-map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>")
-map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>")
-map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>")
-map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>")
-map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>")
-map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>")
-map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>")
-map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>")
-map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>")
-map("n", "<A-0>", "<Cmd>BufferLast<CR>")
-map("n", "<A-p>", "<Cmd>BufferPin<CR>")
+map("n", "<A-1>", "<Cmd>bfirst<CR>") -- go to first buffer
+map("n", "<A-0>", "<Cmd>blast<CR>") -- go to last buffer
 
 -- Close and split
-map("n", "<leader>qb", ":BufferClose<CR>", { desc = "Cerrar buffer", silent = true })
-map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "Cerrar buffer forzosamente" })
-map(
-	"n",
-	"<leader>qr",
-	":BufferCloseBuffersRight<CR>",
-	{ desc = "Cerrar todos los buffers a la derecha", silent = true }
-)
-map(
-	"n",
-	"<leader>ql",
-	":BufferCloseBuffersLeft<CR>",
-	{ desc = "Cerrar todos los buffers a la izquierda", silent = true }
-)
+map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
 map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
 map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
@@ -137,6 +114,7 @@ map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- re
 map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grepear palabra" })
 map("n", "]q", ":cnext<CR>")
 map("n", "[q", ":cprev<CR>")
+map("n", "<leader>P", ":ExportPdf<CR>", { desc = "Exportar a pdf con typst" })
 map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
 map({ "n", "v" }, "<leader>y", '"+y')
 map({ "n", "v" }, "<leader>d", '"+d')

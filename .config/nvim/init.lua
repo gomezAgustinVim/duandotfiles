@@ -11,20 +11,19 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" }, --git
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" }, -- improved syntax
 	{ src = "https://github.com/echasnovski/mini.pairs" }, -- autopairs
+	{ src = "https://github.com/echasnovski/mini.surround" }, -- surround words with whatever
 	{ src = "https://github.com/echasnovski/mini.pick" }, -- File picker
-	{ src = "https://github.com/echasnovski/mini.icons" }, -- Icons 2
 	{ src = "https://github.com/echasnovski/mini.completion" }, -- completion menu with snippets
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons" }, -- Icons
+	{ src = "https://github.com/echasnovski/mini.tabline" }, -- bufferline replacement
+	{ src = "https://github.com/echasnovski/mini.icons" }, -- Icons
 	{ src = "https://github.com/stevearc/oil.nvim" }, -- Explorer with buffer like edit of directory structure
 	{ src = "https://github.com/refractalize/oil-git-status.nvim" }, -- git changes on oil
-	{ src = "https://github.com/romgrk/barbar.nvim" },
 	{ src = "https://github.com/goolord/alpha-nvim" }, --pretty startup
 	{ src = "https://github.com/folke/which-key.nvim" }, --mappings popup
 	{ src = "https://github.com/stevearc/conform.nvim" }, -- better formatter {}?
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
-	{ src = "https://github.com/mhinz/vim-grepper" },
-	-- { src = "https://github.com/rafamadriz/friendly-snippets" }, -- snippets source
-	-- { src = "https://github.com/neovim/nvim-lspconfig" }, -- Native lsp
+	{ src = "https://github.com/mhinz/vim-grepper" }, -- grep utility
+	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 })
 
 -- move config and plugin config to alternate files
@@ -34,7 +33,6 @@ require("config.autocmds")
 require("core.lsp")
 
 require("plugins.alpha")
-require("plugins.barbar")
 require("plugins.colorizer")
 require("plugins.gitsigns")
 require("plugins.conform")
@@ -45,13 +43,23 @@ require("plugins.which-key")
 require("plugins.luasnip")
 
 require("mini.completion").setup()
-
-require("mini.pairs").setup()
-
+require("mini.pairs").setup(
+	-- mappings = {
+	--    add = 'sa', -- Add surrounding in Normal and Visual modes
+	--    delete = 'sd', -- Delete surrounding
+	--    find = 'sf', -- Find surrounding (to the right)
+	--    find_left = 'sF', -- Find surrounding (to the left)
+	--    highlight = 'sh', -- Highlight surrounding
+	--    replace = 'sr', -- Replace surrounding
+	--    update_n_lines = 'sn', -- Update `n_lines`
+)
+require("mini.surround").setup()
 require("mini.pick").setup({
 	vim.keymap.set("n", "<leader>f", ":Pick files<CR>", { desc = "Pick Files" }),
 	vim.keymap.set("n", "<leader>h", ":Pick help<CR>", { desc = "Pick help" }),
 })
+require("mini.tabline").setup()
+require("mini.icons").setup()
 
 require("oil").setup({
 	vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" }),
@@ -76,6 +84,7 @@ vim.g.grepper = {
 
 -- Theme related
 require("gruvbox").setup({ transparent_mode = true })
+require("ibl").setup()
 
 vim.cmd("silent! colorscheme gruvbox")
 vim.cmd(":hi statusline guibg=NONE")

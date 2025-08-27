@@ -38,6 +38,10 @@ local options = {
 	clipboard = "unnamedplus", -- System clipboard integration
 	title = true,
 	encoding = "utf-8",
+	wrap = true,
+	wrapmargin = 10,
+	spell = true,
+	linebreak = true,
 
 	-- Colors
 	termguicolors = true,
@@ -62,14 +66,10 @@ local options = {
 	updatetime = 50,
 }
 
-vim.cmd([[
-    setlocal formatoptions+=t
-	setlocal wrap
-	setlocal wrapmargin=10
-	setlocal spell
-    setlocal linebreak
-]])
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.cmd([[
+    setlocal formatoptions+=t
+]])
