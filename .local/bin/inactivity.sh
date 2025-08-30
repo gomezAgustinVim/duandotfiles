@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/usr/bin/env bash
 
 startWatch() {
     while pgrep -u $UID -x xidlehook >/dev/null; do sleep 1; done

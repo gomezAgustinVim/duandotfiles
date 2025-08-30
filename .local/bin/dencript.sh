@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/usr/bin/env bash
 
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
     echo "" | xclip -sel clip
