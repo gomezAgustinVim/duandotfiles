@@ -1,11 +1,3 @@
----@brief
----
---- https://github.com/latex-lsp/texlab
----
---- A completion engine built from scratch for (La)TeX.
----
---- See https://github.com/latex-lsp/texlab/wiki/Configuration for configuration options.
-
 local function client_with_fn(fn)
 	return function()
 		local bufnr = vim.api.nvim_get_current_buf()

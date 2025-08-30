@@ -41,14 +41,14 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- ==>   Splits
 ------------------------------------------------
 
--- Navigate buffers
-map("n", "<Tab>", ":bnext<CR>")
-map("n", "<S-Tab>", ":bprevious<CR>") -- la S significa shift
-map("n", "<A-1>", "<Cmd>bfirst<CR>") -- go to first buffer
-map("n", "<A-0>", "<Cmd>blast<CR>") -- go to last buffer
+-- -- Navigate buffers
+-- map("n", "<Tab>", ":bnext<CR>")
+-- map("n", "<S-Tab>", ":bprevious<CR>") -- la S significa shift
+-- map("n", "<A-1>", "<Cmd>bfirst<CR>") -- go to first buffer
+-- map("n", "<A-0>", "<Cmd>blast<CR>") -- go to last buffer
+-- map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
 
 -- Close and split
-map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
 map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
 map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
@@ -109,11 +109,15 @@ map("n", "gK", function()
 	vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Lineas virtuales de diagnóstico" })
 
+-- fzf lua
+map("n", "<leader>ff", ":FzfLua files<CR>", { desc = "Abrir fzf-lua para archivos" })
+map("n", "<leader>fb", ":FzfLua buffers<CR>", { desc = "Abrir fzf-lua para buffers" })
+map("n", "<leader>fl", ":FzfLua live_grep<CR>", { desc = "Abrir fzf-lua para live grep" })
+map("n", "<leader>fg", ":FzfLua git_status<CR>", { desc = "Abrir fzf-lua para git status" })
+map("n", "<leader>ft", ":FzfLua tmux_buffers<CR>", { desc = "Abrir fzf-lua para tmux buffers" })
+
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- replace all
-map("n", "<leader>gg", ":Grepper<CR>", { desc = "Grepear palabra" })
-map("n", "]q", ":cnext<CR>")
-map("n", "[q", ":cprev<CR>")
 map("n", "<leader>P", ":ExportPdf<CR>", { desc = "Exportar a pdf con typst" })
 map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
 map({ "n", "v" }, "<leader>y", '"+y')
