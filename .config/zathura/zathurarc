@@ -39,7 +39,7 @@ map [fullscreen] i recolor
 map [fullscreen] p print
 map [fullscreen] g goto top
 
-set recolor-reverse-video true
+# set recolor-reverse-video true
 set scroll-step 50
 
 set font "Noto Sans 12"
