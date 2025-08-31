@@ -1,4 +1,4 @@
-#!/bin/usr/bin/env bash
+#!/bin/sh
 
 # hyperborea route
 bloqueo=($XDG_DATA_HOME/lockscreen.png)

@@ -1,4 +1,4 @@
-#!/bin/usr/bin/env bash
+#!/bin/sh
 
 # Define the path to your Zathura configuration file
 CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/zathura/zathura-theme"

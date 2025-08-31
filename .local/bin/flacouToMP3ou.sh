@@ -1,4 +1,4 @@
-#!/bin/usr/bin/env bash
+#!/bin/sh
 
 echo "Desea convertir todos los directorios y subdirectorios a mp3?"
 read -p "'y' para sí, 'n' para no: " rta

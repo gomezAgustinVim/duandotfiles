@@ -1,4 +1,4 @@
-#!/bin/usr/bin/env bash
+#!/bin/sh
 
 # This is bound to Shift+PrintScreen by default, requires maim. It lets you
 # choose the kind of screenshot to take, including copying the image or even

@@ -1,4 +1,4 @@
-#!/bin/usr/bin/env bash
+#!/bin/sh
 
 # Rofi menu options
 OPTIONS=("󰌌  Activar (3500K)" "󰌍  Desactivar" "󰤄  Suspender por...")

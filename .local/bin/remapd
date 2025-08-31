@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Rerun the remaps script whenever a new input device is added.
 while :; do
