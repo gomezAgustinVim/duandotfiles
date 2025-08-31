@@ -47,7 +47,7 @@ alias \
     gp="git push" \
     gb="git branch" \
     gic="git checkout" \
-    i="nsxiv -q -a -t" \
+    i="imv" \
     sdn="shutdown -h now" \
     df='df -lH ' \
     f="fastfetch" \
