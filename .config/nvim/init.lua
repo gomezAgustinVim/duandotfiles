@@ -21,7 +21,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" }, -- better formatter {}?
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
 })
 
 -- move config and plugin config to alternate files

@@ -78,9 +78,6 @@ map("n", "<leader>cp", ':w! | !compiler "<c-r>%"<CR>', { desc = "Compile this fi
 -- Perform dot commands over visual blocks:
 map("x", ".", ":normal .<CR>")
 
--- Mapping to open VimwikiIndex
-map("n", "<leader>ww", ":VimwikiIndex<CR>", opts)
-
 -- Control all select
 map("n", "<C-a>", "ggVG")
 
@@ -118,7 +115,7 @@ map("n", "<leader>ft", ":FzfLua tmux_buffers<CR>", { desc = "Abrir fzf-lua para 
 
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- replace all
-map("n", "<leader>P", ":ExportPdf<CR>", { desc = "Exportar a pdf con typst" })
+-- map("n", "<leader>P", ":ExportPdf<CR>", { desc = "Exportar a pdf con typst" })
 map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
 map({ "n", "v" }, "<leader>y", '"+y')
 map({ "n", "v" }, "<leader>d", '"+d')
