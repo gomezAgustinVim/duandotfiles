@@ -2,7 +2,7 @@
 inode/directory=pcmanfm.desktop;
 x-scheme-handler/magnet=torrent.desktop
 application/x.bittorrent=torrent.desktop
-image/svg+xml=nsxiv.desktop;inkscape.desktop
+image/svg+xml=imv.desktop;inkscape.desktop
 application/x-php=nvim.desktop
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
@@ -23,10 +23,10 @@ text/vnd.trolltech.linguist=nvim.desktop
 [Default Applications]
 video/x-matroska=mpv.desktop
 video/mp4=mpv.desktop
-image/gif=nsxiv.desktop
-image/png=nsxiv.desktop
-image/jpeg=nsxiv.desktop
-image/webp=nsxiv.desktop
+image/gif=imv.desktop
+image/png=imv.desktop
+image/jpeg=imv.desktop
+image/webp=imv.desktop
 text/html=firefox.desktop
 text/xml=firefox.desktop
 x-scheme-handler/http=firefox.desktop
