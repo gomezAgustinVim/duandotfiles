@@ -7,6 +7,7 @@ else
         sed "s|^$HOME/||" | \
         fzf --margin 10% --color="bw"
     )
+
     # Add home path back
     if [[ -n "$selected" ]]; then
         selected="$HOME/$selected"
@@ -25,7 +26,7 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t $selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
     tmux select-window -t $selected_name:1
 fi
