@@ -160,6 +160,8 @@ function y() {
 
 bindkey -s '^o' 'y\n'
 
+bindkey -s '^s' 'session-finder.sh\n'
+
 # pnpm
 export PNPM_HOME="/home/utane/.local/share/pnpm"
 case ":$PATH:" in
