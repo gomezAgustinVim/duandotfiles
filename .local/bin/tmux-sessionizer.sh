@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-# Function to exit or return appropriately
-safe_exit() {
-    if [[ "$0" == *bash* ]] || [[ "$0" == *zsh* ]]; then
-        # We're being sourced, use return
-        return "$1" 2>/dev/null || exit "$1"
-    else
-        # We're being executed, use exit
-        exit "$1"
-    fi
-}
-
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
@@ -34,7 +23,7 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s "$selected_name" -c "$selected"
-    safe_exit 0
+    exit 0
 fi
 
 if ! tmux has-session -t "$selected_name" 2> /dev/null; then
