@@ -16,4 +16,4 @@ if [ -z "$selection" ]; then
     exit 0
 fi
 
-tmux attach -t $selection
+[ -n "$TMUX" ] && tmux switch-client -t "$selection" || tmux attach -t "$selection"
