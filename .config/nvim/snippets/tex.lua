@@ -28,7 +28,7 @@ return {
 		)
 	),
 	s(
-		{ trig = "item", snippetType = "autosnippet" },
+		{ trig = "item" },
 		fmta(
 			[[
         \begin{<>}

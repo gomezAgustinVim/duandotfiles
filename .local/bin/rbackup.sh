@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/env bash
 
 # Works with runit
 # Parameters for RSYNC
