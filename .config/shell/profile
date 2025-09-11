@@ -77,11 +77,6 @@ export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
 
 # Starting Wayland
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#     exec Hyprland
-# fi
-
-# Starting Wayland
 # fix maybe yeah ok no definetly
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec dbus-run-session Hyprland

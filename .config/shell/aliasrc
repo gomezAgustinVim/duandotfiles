@@ -66,8 +66,7 @@ alias \
 # tmux commands
 alias \
     t="tmux" \
-    tn="t new-session -swk" \
-    tbg="t new-session -sbg" \
+    tn="t new-session -s" \
     tk="t kill-session"
 
 # enable color support of ls and also add handy aliases
@@ -89,7 +88,7 @@ alias podcast="mpv --no-video"
 
 con() {
     cd ~/.config || exit
-    selected_file=$(fzf) || return # Return if no selection
+    selected_file=$(fzf --color="16") || return # Return if no selection
     cd "$(dirname "$selected_file")" || exit
     $EDITOR "$(basename "$selected_file")" # Open the file
 }

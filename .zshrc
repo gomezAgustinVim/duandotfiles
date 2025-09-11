@@ -150,9 +150,6 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
 
-# source ~/.config/lf/lfcd.sh
-# bindkey -s '^o' 'lfcd\n'
-
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
