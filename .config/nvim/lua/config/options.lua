@@ -60,6 +60,8 @@ local options = {
 	wildmode = "longest,list,full",
 
 	updatetime = 50,
+
+	spelllang = "es",
 }
 
 for k, v in pairs(options) do
