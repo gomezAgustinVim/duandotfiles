@@ -8,7 +8,6 @@ local signs = {
 vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
-	"pyright",
 	"texlab",
 	"tinymist",
 })

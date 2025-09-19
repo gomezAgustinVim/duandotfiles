@@ -1,7 +1,7 @@
 vim.cmd([[
     setlocal formatoptions+=t
 	setlocal wrap
-	setlocal wrapmargin=10
+	"setlocal wrapmargin=0
 	setlocal spell
 	setlocal linebreak
 ]])

@@ -46,7 +46,7 @@ return {
 
 	s({ trig = "mmt", snippetType = "autosnippet" }, fmta("$ <> $ ", { i(1) })),
 
-	s({ trig = "cent" }, fmta("#align(center)[<>]", { i(1) })),
+	s({ trig = "cen" }, fmta("#align(center)[<>]", { i(1) })),
 
 	s(
 		{ trig = "mla" },
