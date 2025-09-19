@@ -38,7 +38,6 @@ autoload -U colors && colors	# Load colors
 
 # Options
 setopt interactive_comments
-setopt AUTOCD              # change directory just by typing its name
 setopt PROMPT_SUBST        # enable command substitution in prompt
 setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 setopt LIST_PACKED		   # The completion menu takes less space.
@@ -129,8 +128,6 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
-
 bindkey -s '^f' 'con\n'
 
 # ZSH autosuggestions
@@ -161,7 +158,6 @@ function y() {
 bindkey -s '^o' 'y\n'
 
 bindkey -s '^s' 'session-finder.sh\n'
-
 bindkey -s '^t' 'tmux-sessionizer.sh\n'
 
 # pnpm
