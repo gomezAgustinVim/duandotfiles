@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+
 return {
 	s(
 		{ trig = "fig", snippetType = "autosnippet", dscr = "Puts figures" },

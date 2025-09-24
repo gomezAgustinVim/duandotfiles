@@ -20,4 +20,6 @@ return {
 			{ i(1), i(2) }
 		)
 	),
+
+	s({ trig = "back", dscr = "Inserts backticks" }, fmta("```", {})),
 }

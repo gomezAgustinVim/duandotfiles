@@ -8,7 +8,7 @@ return {
 			[[
 
 drop temporary table if exists <>;
-create temporary table <>
+create temporary table if not exists <>
 
 ```
 
