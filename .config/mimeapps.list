@@ -19,6 +19,7 @@ audio/x-vorbis+ogg=mpv.desktop
 audio/mpeg=mpv.desktop
 application/x-ms-dos-executable=wine.desktop
 text/vnd.trolltech.linguist=nvim.desktop
+image/jpeg=imv-dir.desktop;
 
 [Default Applications]
 video/x-matroska=mpv.desktop
@@ -26,7 +27,7 @@ video/mp4=mpv.desktop
 image/gif=imv.desktop
 image/png=imv.desktop
 image/heif=imv.desktop
-image/jpeg=imv.desktop
+image/jpeg=imv-dir.desktop
 image/webp=imv.desktop
 text/html=firefox.desktop
 text/xml=firefox.desktop
