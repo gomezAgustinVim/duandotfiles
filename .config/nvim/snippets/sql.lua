@@ -10,11 +10,8 @@ return {
 drop temporary table if exists <>;
 create temporary table if not exists <>
 
-```
-
-
     ]],
-			{ i(1), i(1) }
+			{ i(1), rep(1) }
 		)
 	),
 }

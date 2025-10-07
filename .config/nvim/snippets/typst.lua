@@ -66,7 +66,7 @@ Agustín Gómez
 	),
 
 	s(
-		{ trig = "fig", snippetType = "autosnippet" },
+		{ trig = "fig" },
 		fmta(
 			[[
 #figure(

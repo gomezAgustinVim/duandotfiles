@@ -5,7 +5,8 @@ local opts = { noremap = true, silent = true }
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
-map("n", ";", ":") -- enter command mode CMD
+-- map("n", ";", ":") enter command mode CMD
+-- this shit is pretty useless unless your keyboard can active semicolon without shift
 
 map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
 
