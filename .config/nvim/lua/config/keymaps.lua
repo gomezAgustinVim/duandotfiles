@@ -10,6 +10,10 @@ vim.g.mapleader = " "
 
 map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
 
+map("n", "<leader>pu", function()
+	vim.pack.update()
+end, { desc = "Actualizar plugins" })
+
 -- Mimic shell movements
 map("i", "<C-W>", "<C-o>$")
 map("i", "<C-A>", "<C-o>^")
