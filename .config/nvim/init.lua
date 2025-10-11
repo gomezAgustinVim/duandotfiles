@@ -22,6 +22,8 @@ vim.pack.add({
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
 })
 
 -- move config and plugin config to alternate files
@@ -77,6 +79,16 @@ require("oil-git-status").setup()
 -- Theme related
 require("gruvbox").setup({ transparent_mode = true })
 require("ibl").setup()
+
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
 
 vim.cmd("silent! colorscheme gruvbox")
 vim.cmd(":hi statusline guibg=NONE")

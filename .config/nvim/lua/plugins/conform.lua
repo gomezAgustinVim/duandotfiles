@@ -1,4 +1,12 @@
 require("conform").setup({
+	formatters = {
+		kulala = {
+			command = "kulala-fmt",
+			args = { "format", "$FILENAME" },
+			stdin = false,
+		},
+	},
+
 	formatters_by_ft = {
 		-- Conform will run the first available formatter
 		lua = { "stylua" },
@@ -8,6 +16,7 @@ require("conform").setup({
 		javascript = { "prettier", "prettierd", stop_after_first = true },
 		markdown = { "prettier" },
 		markdown_inline = { "prettier" },
+		http = { "kulala" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
