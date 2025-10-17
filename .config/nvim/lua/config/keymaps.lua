@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
 map("", "<Space>", "<Nop>")
@@ -10,9 +9,34 @@ vim.g.mapleader = " "
 
 map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
 
-map("n", "<leader>pu", function()
+map("n", "<leader>u", function()
 	vim.pack.update()
 end, { desc = "Actualizar plugins" })
+
+map("n", "<leader>ga", function()
+	vim.print(vim.pack.get())
+end, { desc = "Get plugins" })
+
+-- WiP idk how to get the plugins i dont wanna use
+-- anymore and just deletem them from a parameter
+-- map("n", "<leader>rr", function()
+-- 	vim.pack.del({
+-- 		"nvim-lspconfig",
+-- 		"lualine.nvim",
+-- 		"vim-grepper",
+-- 		"telescope.nvim",
+-- 		"snipe.nvim",
+-- 		"plenary.nvim",
+-- 		"nvim-web-devicons",
+-- 		"mini.tabline",
+-- 		"mini.pick",
+-- 		"kulala-fmt",
+-- 		"harpoon",
+-- 		"friendly-snippets",
+-- 		"bufferline.nvim",
+-- 		"barbar.nvim",
+-- 	})
+-- end, { desc = "Borrar plugins" })
 
 -- Mimic shell movements
 map("i", "<C-W>", "<C-o>$")
@@ -54,7 +78,7 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
 
 -- Close and split
-map("n", "<leader>U", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
+map("n", "<leader>UU", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
 map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
 
