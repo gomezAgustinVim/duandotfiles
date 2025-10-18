@@ -39,6 +39,7 @@ alias \
     tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
 
 # These common commands are just too long! Abbreviate them.
+# i="imv -u linear" \
 alias \
     z="zathura" \
     ka="killall" \
@@ -47,7 +48,7 @@ alias \
     gp="git push" \
     gb="git branch" \
     gic="git checkout" \
-    i="imv -u linear" \
+    i="nsxiv -q -a -t" \
     sdn="shutdown -h now" \
     df='df -lH ' \
     f="fastfetch" \

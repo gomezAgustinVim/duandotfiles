@@ -1,0 +1,18 @@
+#!/bin/sh
+# Activar key handler con ctrl x para mandar la señal
+
+while read file
+do
+        case "$1" in
+        "D")
+		[ "$(printf "No\\nSi" | rofi -dmenu -i -p "Realmente borrar $file?")" = "Si" ] && rm "$file" && notify-send "$file borrado." ;;
+        "R")
+                magick "$file" -rotate 90 "$file" ;;
+        "y")
+                echo -n "$file" | wl-copy --trim-newline &&
+                notify-send "$file copiado! nwn" & ;;
+        "Y")    readlink -f "$file" | wl-copy --trim-newline &&
+                notify-send "$(readlink -f "$file") copiado! nwn" & ;;
+        "w")    setbg "$file" & ;;
+        esac
+done
