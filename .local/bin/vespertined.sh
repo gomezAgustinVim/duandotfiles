@@ -1,15 +1,16 @@
 #!/bin/sh
 
 HOUR=18
+MORNING=6
 
 while true; do
 TIME=$(date '+%H')
 
-    if [ "$TIME" -ge "$HOUR" ]; then
+    if [ "$TIME" -ge "$HOUR" ] || [ "$TIME"  -lt "$MORNING" ]; then
         hyprctl hyprsunset temperature 3500
-        notify-send "Luz Azul" "Activada (3500K)"
-        exit 0
     else
-        sleep 600  # chequea una hora despues
+        hyprctl hyprsunset identity  # temperatura normal
     fi
+
+    sleep 600  # chequea 10 minutos despues
 done
