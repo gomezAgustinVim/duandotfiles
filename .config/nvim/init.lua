@@ -23,6 +23,7 @@ vim.pack.add({
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- AI slop (experimental)
 	-- { src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
@@ -88,6 +89,25 @@ require("mason").setup({
 			package_uninstalled = "✗",
 		},
 	},
+})
+
+require("supermaven-nvim").setup({
+	keymaps = {
+		accept_suggestion = "<Tab>",
+		clear_suggestion = "<C-]>",
+		accept_word = "<C-j>",
+	},
+	ignore_filetypes = { cpp = true, markdown = true },
+	color = {
+		suggestion_color = "#9ffe90", -- color for the suggestion text
+		cterm = 244,
+	},
+	log_level = "off", -- set to "off" to disable logging completely
+	disable_inline_completion = false, -- disables inline completion for use with cmp
+	disable_keymaps = false, -- disables built in keymaps for more manual control
+	condition = function()
+		return false
+	end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
 })
 
 vim.cmd("silent! colorscheme gruvbox")

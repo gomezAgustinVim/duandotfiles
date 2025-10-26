@@ -54,5 +54,5 @@
 .config/mpv/watch_later/
 .config/mpv/socket
 .config/mpv/mpv_sub-delay.json
-.config/nvim/lazy-lock.json
+.config/nvim/*.lock.json
 .config/ncmpcpp/lyrics
