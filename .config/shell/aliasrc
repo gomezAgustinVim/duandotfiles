@@ -66,9 +66,8 @@ alias \
 
 # tmux commands
 alias \
-    t="tmux" \
-    tn="t new-session -s" \
-    tk="t kill-session"
+    tn="tmux-sessionizer.sh" \
+    tk="tmux kill-session"
 
 # enable color support of ls and also add handy aliases
 alias \

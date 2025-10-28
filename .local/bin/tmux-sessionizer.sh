@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+# Archivo con rutas
+routes="$HOME/Documentos/rutas.txt"
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/Documentos/UTN/DSW-TP ~/Documentos/UTN/DSW-TP/POC ~/Documentos/UTN/UTN\ archives ~/Documentos/Proyectos -mindepth 1 -maxdepth 1 -type d | \
+    selected=$(\cat "$routes" | xargs -I{} find {} -mindepth 1 -maxdepth 1 -type d | \
         sed "s|^$HOME/||" | \
         fzf --margin 10% --color="bw"
     )
