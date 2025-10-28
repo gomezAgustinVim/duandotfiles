@@ -9,6 +9,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
 	"cssls",
+	-- "sqlls",
 	-- "tailwindcss",
 	"biome",
 	"texlab",

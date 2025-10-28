@@ -95,11 +95,11 @@ require("supermaven-nvim").setup({
 	keymaps = {
 		accept_suggestion = "<Tab>",
 		clear_suggestion = "<C-]>",
-		accept_word = "<C-j>",
+		accept_word = "<C-w>",
 	},
 	ignore_filetypes = { cpp = true, markdown = true },
 	color = {
-		suggestion_color = "#9ffe90", -- color for the suggestion text
+		suggestion_color = "#008282", -- color for the suggestion text
 		cterm = 244,
 	},
 	log_level = "off", -- set to "off" to disable logging completely
