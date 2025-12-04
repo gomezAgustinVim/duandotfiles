@@ -8,9 +8,9 @@ return {
 			[[
 
 drop temporary table if exists <>;
-create temporary table if not exists <>
+create temporary table <>
 
-drop temporary table if exists <>;
+drop temporary table <>;
     ]],
 			{ i(1), rep(1), rep(1) }
 		)
@@ -24,6 +24,7 @@ drop temporary table if exists <>;
 DELIMITER $$
 DROP PROCEDURE IF EXISTS <> $$
 CREATE PROCEDURE <> (<>)
+READS SQL DATA -- o modifies SQL DATA
 BEGIN
 
 <>
@@ -45,6 +46,7 @@ DELIMITER $$
 DROP FUNCTION IF EXISTS <> $$
 CREATE FUNCTION <> (<>)
 RETURNS <>
+DETERMINISTIC -- si es deterministic, no se puede usar insert, update, delete
 BEGIN
     DECLARE <>
 
@@ -56,7 +58,7 @@ END $$
 DELIMITER ;
 
     ]],
-			{ i(1), rep(1), i(2), i(3), i(4), i(5), rep(4) }
+			{ i(1), rep(1), i(2), i(3), i(4), i(5), i(6) }
 		)
 	),
 

@@ -27,7 +27,7 @@ local options = {
 	backup = false,
 	undofile = true,
 	undodir = os.getenv("HOME") .. "/.vim/undodir",
-	textwidth = 80,
+	textwidth = 90,
 
 	-- Better editor UI
 	numberwidth = 5,
