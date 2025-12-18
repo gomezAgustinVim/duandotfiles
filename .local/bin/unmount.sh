@@ -1,16 +1,13 @@
 #!/bin/sh
 
-# Check if Rofi is installed
-if [ -z "$(pacman -Qeq rofi)" ]; then
-    echo "Rofi no está instalado"
-    echo "Instalar: sudo pacman -S rofi"
-    exit 1
-fi
+# Necesita rofi para andar
 
 # OPTS
 
 LIST_MODE=false
 SPECIFIED_USER=''
+
+set -e # abort on error
 
 while getopts 'lu:' opt; do
     case $opt in
@@ -24,7 +21,6 @@ while getopts 'lu:' opt; do
             echo "Uso: $0 [-l] [-u <user>]"
             echo "  -l lista los dispositivos conectados"
             echo "  -u USER especifica los dispositivos conectados de un usuario"
-            exit 1
             ;;
     esac
 done
@@ -37,7 +33,6 @@ if [ -n "$SPECIFIED_USER" ]; then
         USUARIO="$SPECIFIED_USER"
     else
         echo "Error: Usuario '$SPECIFIED_USER' no existe"
-        exit 1
     fi
 else
     # Get distinct current users
@@ -76,11 +71,8 @@ if $LIST_MODE; then
     exit 0
 fi
 
-if [ -z "$MENU" ]; then
-    exit 0
-fi
-
 DEVICE_NAME=$(echo "$MENU")
+MOUNT_POINT="/run/media/$USUARIO/$DEVICE_NAME"
 
 # unmount usb
-umount /run/media/$USUARIO/$DEVICE_NAME
+umount $MOUNT_POINT
