@@ -75,4 +75,4 @@ DEVICE_NAME=$(echo "$MENU")
 MOUNT_POINT="/run/media/$USUARIO/$DEVICE_NAME"
 
 # unmount usb
-umount $MOUNT_POINT
+sudo -A umount -l $MOUNT_POINT
