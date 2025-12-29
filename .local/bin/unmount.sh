@@ -23,12 +23,13 @@ else
 fi
 
 # mounted for one user
-LIST=$(ls /run/media/$USUARIO)
 
 # Si no hay dispositivos
 if [ -z "$LIST" ]; then
     echo "${RED}ERROR:${NC} No hay dispositivos montados para ${GREEN}$USUARIO${NC}\n"
 else
+    LIST=$(ls /run/media/$USUARIO)
+
     # rofi menu for list
     MENU=$(echo "$LIST" | rofi -dmenu -p 'Dispositivo USB')
 
@@ -42,18 +43,27 @@ fi
 # publico montado?
 if [ $(find $HOME/Publico -maxdepth 1 ! -name "Publico" | wc -l) -gt 0 ]; then
     # unmount public
-    read -p "Desmontar carpeta publico tambien? s/n" resp
+    while true; do
+    read -p "Desmontar carpeta publico tambien? s/n: " resp
     case "$resp" in
         [sS]*)
-            sudo -A umount -l $HOME/Publico
+            echo "${BLUE}Desmontando $HOME/Publico...${NC}"
+                if sudo -A umount -l "$HOME/Publico"; then
+                    echo "${GREEN}✓ Publico desmontado${NC}"
+                else
+                    echo "${RED}✗ Error desmontando publico${NC}"
+                fi
+                break
             ;;
             [nN])
-                exit 0 ;;
+                echo "${BLUE}Continuando sin desmontar Publico${NC}"
+                break
+                ;;
                 *)
-                    echo "Respuesta invalida ${BLUE}NWN${NC}"
-                    exit 1
+                    echo "${RED}Respuesta invalida ${BLUE}ingrese s o n NWN${NC}"
                     ;;
     esac
+done
 else
     echo "${RED}ERROR:${NC} No hay carpeta publico montada"
 fi
