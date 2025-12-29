@@ -1,5 +1,10 @@
 #!/bin/sh
 
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
 # Necesita rofi para andar
 
 set -e # abort on error
@@ -22,7 +27,7 @@ LIST=$(ls /run/media/$USUARIO)
 
 # Si no hay dispositivos
 if [ -z "$LIST" ]; then
-    echo "No hay dispositivos montados para $USUARIO"
+    echo "${RED}ERROR:${NC} No hay dispositivos montados para ${GREEN}$USUARIO${NC}\n"
 else
     # rofi menu for list
     MENU=$(echo "$LIST" | rofi -dmenu -p 'Dispositivo USB')
@@ -45,8 +50,10 @@ if [ $(find $HOME/Publico -maxdepth 1 ! -name "Publico" | wc -l) -gt 0 ]; then
             [nN])
                 exit 0 ;;
                 *)
-                    echo "Respuesta invalida"
+                    echo "Respuesta invalida ${BLUE}NWN${NC}"
                     exit 1
                     ;;
     esac
+else
+    echo "${RED}ERROR:${NC} No hay carpeta publico montada"
 fi
