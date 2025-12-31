@@ -15,6 +15,15 @@ DESTINO="$BACKUPS/$FECHA_HORA"
 # Backup history file
 BACKUP_HISTORY_FILE="/tmp/backup_history.txt"
 
+cleanup() {
+    echo "Cleaning up..."
+    rm -f $BACKUP_HISTORY_FILE
+    exit
+}
+
+# Clean up the backup history file
+trap cleanup 1 2 3 6 15 9
+
 # Count directories in BACKUPS
 DIR_COUNT=$(find "$BACKUPS" -maxdepth 1 -type d | wc -l)
 # Subtract 1 for the BACKUPS directory itself
@@ -47,9 +56,6 @@ ACTUAL=$(tail -n 1 $BACKUP_HISTORY_FILE)
 mv "$BACKUPS/$ORIGEN" "$DESTINO"
 
 rsync -Pav -z --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
-
-# Clean up the backup history file
-rm $BACKUP_HISTORY_FILE
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO"
