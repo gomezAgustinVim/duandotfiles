@@ -18,7 +18,7 @@
   "modules-right": [
     "clock",
     "battery",
-    "custom/bluetooth",
+    // "custom/bluetooth",
     "wireplumber",
     "backlight",
     "tray"
