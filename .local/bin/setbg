@@ -32,13 +32,13 @@ current_wall=$(hyprctl hyprpaper listactive)
 trueloc="$(readlink -f "$1")"
 
 case "$(file --mime-type -b "$trueloc")" in
-image/*) hyprctl hyprpaper reload ,"$trueloc" && notify-send -i "$walldir" "Cambiando wallpaper nwn..." ;;
+image/*) hyprctl hyprpaper wallpaper "eDP-1, $trueloc" && notify-send -i "$walldir" "Cambiando wallpaper nwn..." ;;
 inode/directory)
     wallpaper="$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f ! -name "$(basename "$current_wall")" | shuf -n 1)"
     if [ -z "$wallpaper" ]; then
         notify-send "❌ Error" "No hay ningún tipo de imagen valido en el directorio"
     else
-        hyprctl hyprpaper reload ,"$wallpaper" && notify-send -i "$walldir" "Elegiste wallpaper nwn..."
+        hyprctl hyprpaper wallpaper "eDP-1, $wallpaper" && notify-send -i "$walldir" "Elegiste wallpaper nwn..."
     fi
     ;;
 *)
