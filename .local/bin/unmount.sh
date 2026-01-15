@@ -23,21 +23,23 @@ else
 fi
 
 # mounted for one user
+LIST=$(ls /run/media/$USUARIO)
 
 # Si no hay dispositivos
 if [ -z "$LIST" ]; then
     echo "${RED}ERROR:${NC} No hay dispositivos montados para ${GREEN}$USUARIO${NC}\n"
 else
-    LIST=$(ls /run/media/$USUARIO)
-
     # rofi menu for list
     MENU=$(echo "$LIST" | rofi -dmenu -p 'Dispositivo USB')
 
-DEVICE_NAME=$(echo "$MENU")
-MOUNT_POINT="/run/media/$USUARIO/$DEVICE_NAME"
+    DEVICE_NAME=$(echo "$MENU")
+    MOUNT_POINT="/run/media/$USUARIO/$DEVICE_NAME"
 
-# unmount usb
-sudo -A umount -l $MOUNT_POINT
+    echo "${BLUE}Desmontando${NC} $MOUNT_POINT..."
+    # unmount usb
+    sudo -A umount -l $MOUNT_POINT
+
+    echo "${GREEN}EXITO:${NC} Dispositivo USB desmontado con éxito"
 fi
 
 # publico montado?
