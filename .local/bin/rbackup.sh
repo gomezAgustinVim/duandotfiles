@@ -3,7 +3,10 @@
 # Works with runit
 # Parameters for RSYNC
 # Name of USB drive
-read -p "Nombre del dispositivo USB: " USB || exit 0
+DEVICES="$(lsblk -rpo "name,type,size,mountpoint" | grep /run/media/ | cut -d '/' -f7)"
+MENU="$(echo "$DEVICES" | rofi -dmenu -i -p "Selecciona el dispositivo USB")"
+USB="$(echo "$MENU" | cut -d ' ' -f1)"
+# read -p "Nombre del dispositivo USB: " USB || exit 0
 USER=$(whoami)
 COPIADOS="$@"
 # COPIADOS="${@:2}"
