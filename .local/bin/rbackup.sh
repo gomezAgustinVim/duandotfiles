@@ -1,48 +1,55 @@
-#!/bin/env bash
+#!/bin/sh
 
 # Works with runit
 # Parameters for RSYNC
 # Name of USB drive
-NOMBRE="$1"
-COPIADOS="${@:2}"
+read -p "Nombre del dispositivo USB: " USB || exit 0
+USER=$(whoami)
+COPIADOS="$@"
+# COPIADOS="${@:2}"
+
 # My filter rules
 BACKUP_FILTER="$HOME/Documentos/backup.filter"
+
 # File to store backup history
-DAY=$(date +%y%d%m-%H-%M)
+FECHA_HORA=$(date +%d%m%y-%H-%M-%S)
 # USB PATH GOES HERE
-DESTINO="/run/media/utane/$NOMBRE/backup"
-DESTINO_FINAL="$DESTINO/$DAY"
-# Backup history file
-BACKUP_HISTORY_FILE="/tmp/backup_history.txt"
+BACKUPS="/run/media/$USER/$USB/backup"
+DESTINO="$BACKUPS/$FECHA_HORA"
 
-# A better handle of the backup history file
-ls -t1r $DESTINO | head -n 1 > $BACKUP_HISTORY_FILE
-BACKUP_HISTORY_CONTENT=$(cat $BACKUP_HISTORY_FILE)
+if [ -z "$COPIADOS" ]; then
+    echo "Uso: $(basename $0) /path/to/source1 /path/to/source2"
+    exit 1
+fi
 
-if [ -z "$BACKUP_HISTORY_CONTENT" ]; then
-    notify-send "Aun no hay un directorio creado en $DESTINO." "Creando..."
-    mkdir -p $DESTINO_FINAL
+# Count directories in BACKUPS
+DIR_COUNT=$(find "$BACKUPS" -maxdepth 1 -type d ! -path "$BACKUPS" | wc -l)
+# Subtract 1 for the BACKUPS directory itself
+DIR_COUNT=$((DIR_COUNT - 1))
+
+if [ $DIR_COUNT -gt 1 ]; then
+    echo "Hay más de un directorio en $BACKUPS." "Sólo puede haber uno"
+    exit 1
+fi
+
+# Get backup dir
+ORIGEN=$(ls -1 "$BACKUPS" 2>/dev/null)
+
+if [ -z "$ORIGEN" ]; then
+    notify-send "Primer Backup" "Creando estructura inicial..."
+    mkdir -p "$DESTINO"
     notify-send "Directorio creado con éxito nwn"
+else
+    # Rename the old backup to the current timestamp
+    mv "$BACKUPS/$ORIGEN" "$DESTINO"
 fi
 
-# Append the current backup directory to the history file
-echo "$DAY" >> $BACKUP_HISTORY_FILE
-
-# Get the previous backup directory from the history file
-DIRECTORIO_PREVIO=$(head -n 1 $BACKUP_HISTORY_FILE)
-DIRECTORIO_ACTUAL=$(tail -n 1 $BACKUP_HISTORY_FILE)
-
-if [ -n "$DIRECTORIO_PREVIO" ] && [ "$DIRECTORIO_PREVIO" != "$DIRECTORIO_ACTUAL" ]; then
-    # The reason I do this is because I don't care about incr backups
-    # It's not really necesary for my use case
-    mv "$DESTINO/$DIRECTORIO_PREVIO" "$DESTINO_FINAL"
-fi
-
-rsync -Pav --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS "$DESTINO_FINAL"
-rm $BACKUP_HISTORY_FILE
+# Overwrite the -l option implicit with -a
+# and transform any symlinks into the directory they point to
+rsync -Pavz --no-links --copy-dirlinks --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
 
 if [ $? -eq 0 ]; then
-    notify-send "Backup completado" "Los archivos se han copiado a $DESTINO_FINAL"
+    notify-send "Backup completado" "Los archivos se han copiado a $DESTINO"
 else
-    notify-send "Error en el backup" "Hubo un problema al copiar los archivos a $DESTINO_FINAL"
+    notify-send "Error en el backup" "Hubo un problema al copiar los archivos a $DESTINO"
 fi
