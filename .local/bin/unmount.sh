@@ -23,7 +23,7 @@ else
 fi
 
 # mounted for one user
-LIST=$(ls /run/media/$USUARIO)
+LIST=$(ls /run/media/$USUARIO) > /dev/null 2>&1 || continue
 
 # Si no hay dispositivos
 if [ -z "$LIST" ]; then
