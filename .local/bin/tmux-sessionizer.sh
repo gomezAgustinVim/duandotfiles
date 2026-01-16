@@ -26,6 +26,7 @@ tmux_running=$(pgrep tmux)
 
 if [[ "$selected" == "." ]]; then
     selected_name="$(basename $PWD)"
+    selected="$PWD"
 fi
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
