@@ -9,18 +9,8 @@ NC='\033[0m'
 
 set -e # abort on error
 
-# Get distinct current users
-USUARIOS=$(users | tr ' ' '\n' | sort -u)
-
-# Si solo hay un usuario, usarlo automáticamente
-if [ $(echo "$USUARIOS" | wc -l) -eq 1 ]; then
-    USUARIO="$USUARIOS"
-else
-    # Si hay múltiples usuarios, mostrar menú para seleccionar
-    echo "No especificado usuario"
-    echo "Seleccione un usuario:"
-    USUARIO=$(echo "$USUARIOS" | rofi -dmenu -p 'Selecciona un usuario') || exit 0
-fi
+# Get current user
+USUARIO=$(whoami)
 
 # mounted for one user
 LIST=$(ls /run/media/$USUARIO) > /dev/null 2>&1 || continue
