@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  background: transparent;
+  background: #282828;
   padding: 3px 0;
 }
 
@@ -29,44 +29,40 @@ tooltip {
 #memory,
 #cpu,
 #mpd,
+#workspaces,
 #custom-launcher,
 #custom-bluetooth {
   font-family: "JetBrainsMono Nerd Font Propo";
-  font-size: 12px;
-  border-radius: 16px;
+  font-size: 0.8em;
   color: #689d6a;
   background: #282828;
-  margin-right: 6px;
-  margin-left: 6px;
   padding: 3px 7px;
-  /* border-bottom: 2px solid; */
+  border-bottom: 2px solid;
+  /* border-radius: 0.7em; */
   margin-top: 2px;
   margin-bottom: 2px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 /* ======================================================== */
 /* workspaces module */
 /* ======================================================== */
 #workspaces {
-  font-family: "JetBrainsMono Nerd Font Propo";
-  font-size: 12px;
-  border-radius: 16px;
   font-weight: bold;
   background: #282828;
-  padding: 3px 7px;
-  margin-top: 2px;
   margin-right: 2px;
   margin-left: 2px;
 }
 
 #workspaces button {
   color: #ebdbb2;
-  border-radius: 8px;
+  border-radius: 0.5em;
   margin-bottom: 3px;
   margin-top: 3px;
   margin-right: 1px;
   margin-left: 1px;
-  min-width: 20px;
+  min-width: 1.2em;
   padding: 0 2px;
 }
 
@@ -89,12 +85,7 @@ tooltip {
 #window {
   color: #282828;
   background: #83a598;
-  border-radius: 16px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 6px;
-  margin-right: 6px;
-  padding: 3px 7px;
+  border-radius: 0.5em;
   border-bottom-color: #5a8b8c;
 }
 
@@ -187,9 +178,7 @@ window#waybar.empty #window {
 /* tray */
 /* ======================================================== */
 #tray {
-  padding: 3px 7px;
-  margin-left: 6px;
-  margin-right: 6px;
+  color: #ebdbb2;
   border-bottom-color: #fbf1c7;
 }
 
@@ -212,4 +201,19 @@ window#waybar.empty #window {
 #mpd:hover {
   color: #98971a;
   border-bottom-color: #98971a;
+}
+
+/* ======================================================== */
+/* global hover config */
+/* ======================================================== */
+#network:hover,
+#wireplumber:hover,
+#wireplumber.muted:hover,
+#battery:hover,
+#backlight:hover,
+#clock:hover,
+#memory:hover,
+#cpu:hover {
+  color: #ebdbb2;
+  border-bottom-color: #ebdbb2;
 }
