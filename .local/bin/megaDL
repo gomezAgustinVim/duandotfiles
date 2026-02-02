@@ -1,23 +1,8 @@
 #!/bin/sh
 
+set -e
+
 LINKS="$1"
 MEGAPATH="$2"
-
-# Verificar si se proporcionaron los argumentos necesarios
-if [[ -z "$LINKS" || -z "$MEGAPATH" ]]; then
-    echo "Uso: $(basename $0) <archivo_de_links> <ruta_de_descarga>"
-    exit 1
-fi
-
-  if [[ ! -f "$LINKS" ]]; then
-        echo "El archivo $file no existe."
-        exit 1
-    fi
-
-
-  if [[ ! -d "$MEGAPATH" ]]; then
-        echo "La ruta $MEGAPATH no existe o no es un directorio."
-        exit 1
-    fi
 
 cat "$LINKS" | xargs -I{} -r -d '\n' megadl --path="$MEGAPATH" {}
