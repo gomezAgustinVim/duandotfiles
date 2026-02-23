@@ -16,7 +16,6 @@
 
 # Whitelist specific .config subdirectories
 !/.config/Kvantum
-!/.config/bspwm
 !/.config/calcurse
 !/.config/dunst
 !/.config/fastfetch
@@ -24,10 +23,7 @@
 !/.config/gtk-4.0
 !/.config/gtk-3.0
 !/.config/hypr
-!/.config/kitty
-!/.config/lf
 !/.config/mpd
-!/.config/mpv
 !/.config/mpv
 !/.config/ncmpcpp
 !/.config/nvim
@@ -43,7 +39,6 @@
 !/.config/zathura
 !/.config/brave-flags.conf
 !/.config/code-flags.conf
-!/.config/mimeapps.list
 !/.config/mimeapps.list
 !/.config/user-dirs.dirs
 
