@@ -1,8 +1,3 @@
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
-
 vim.pack.add({
 	{ src = "https://github.com/ellisonleao/gruvbox.nvim", name = "gruvbox" }, --colorscheme
 	{ src = "https://github.com/vimwiki/vimwiki" }, -- vimwiki
@@ -20,10 +15,10 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" }, --mappings popup
 	{ src = "https://github.com/stevearc/conform.nvim" }, -- better formatter {}?
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
-	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" }, -- self explanatory
 	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- AI slop (experimental)
+	{ src = "https://github.com/mason-org/mason.nvim" }, -- look for lsps and formatters in one place
+	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- super useful AI
 	-- { src = "https://github.com/neovim/nvim-lspconfig" },
 })
 

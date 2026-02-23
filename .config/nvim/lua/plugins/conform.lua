@@ -9,7 +9,6 @@ require("conform").setup({
 		css = { "prettier", "prettierd", stop_after_first = true },
 		markdown = { "prettier" },
 		markdown_inline = { "prettier" },
-		terraform = { "terraform_fmt" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
