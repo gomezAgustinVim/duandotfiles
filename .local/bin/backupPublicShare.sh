@@ -41,7 +41,9 @@ fi
 
 # Overwrite the -l option implicit with -a
 # and transform any symlinks into the directory they point to
-rsync -Pavz --no-links --copy-dirlinks --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
+# Use -z only if you want to compress the data over network
+# as this uses SMB, you may wanna use it if your network is slow
+rsync -av --inplace --delete --delete-excluded --backup --backup-dir="$HOME/Publico/backup" --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO"
