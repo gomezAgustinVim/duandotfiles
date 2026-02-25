@@ -25,11 +25,24 @@ else
     DEVICE_NAME=$(echo "$MENU")
     MOUNT_POINT="/run/media/$USUARIO/$DEVICE_NAME"
 
-    echo "${BLUE}Desmontando${NC} $MOUNT_POINT..."
-    # unmount usb
-    sudo -A umount -l $MOUNT_POINT
-
-    echo "${GREEN}EXITO:${NC} Dispositivo USB desmontado con éxito"
+    while true; do
+    read -p "¿Desea desmontar el dispositivo USB $DEVICE_NAME? s/n: " resp
+    case "$resp" in
+        [sS])
+            echo "${BLUE}Desmontando$MOUNT_POINT...${NC}"
+            sudo -A umount -l $MOUNT_POINT
+            echo "${GREEN}EXITO:${NC} Dispositivo USB desmontado con éxito"
+            break
+            ;;
+        [nN])
+            echo "${BLUE}Continuando sin desmontar dispositivo USB${NC}"
+            break
+            ;;
+        *)
+            echo "${RED}Respuesta invalida ${BLUE}ingrese s o n NWN${NC}"
+            ;;
+        esac
+    done
 fi
 
 # publico montado?
@@ -38,22 +51,19 @@ if [ $(find $HOME/Publico -maxdepth 1 ! -name "Publico" | wc -l) -gt 0 ]; then
     while true; do
     read -p "Desmontar carpeta publico tambien? s/n: " resp
     case "$resp" in
-        [sS]*)
+        [sS])
             echo "${BLUE}Desmontando $HOME/Publico...${NC}"
-                if sudo -A umount -l "$HOME/Publico"; then
-                    echo "${GREEN}✓ Publico desmontado${NC}"
-                else
-                    echo "${RED}✗ Error desmontando publico${NC}"
-                fi
-                break
+            sudo -A umount -l "$HOME/Publico"
+            echo "${GREEN}✓ Publico desmontado${NC}"
+            break
             ;;
-            [nN])
-                echo "${BLUE}Continuando sin desmontar Publico${NC}"
-                break
-                ;;
-                *)
-                    echo "${RED}Respuesta invalida ${BLUE}ingrese s o n NWN${NC}"
-                    ;;
+        [nN])
+            echo "${BLUE}Continuando sin desmontar Publico${NC}"
+            break
+            ;;
+        *)
+            echo "${RED}Respuesta invalida ${BLUE}ingrese s o n NWN${NC}"
+            ;;
     esac
 done
 else
