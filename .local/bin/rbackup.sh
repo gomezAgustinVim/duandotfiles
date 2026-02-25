@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Works with runit
 # Parameters for RSYNC
 # Name of USB drive
@@ -9,9 +11,6 @@ USB="$(echo "$MENU" | cut -d ' ' -f1)"
 # read -p "Nombre del dispositivo USB: " USB || exit 0
 USER=$(whoami)
 COPIADOS="$@"
-# COPIADOS="${@:2}"
-
-# My filter rules
 BACKUP_FILTER="$HOME/Documentos/backup.filter"
 
 # File to store backup history
@@ -27,8 +26,6 @@ fi
 
 # Count directories in BACKUPS
 DIR_COUNT=$(find "$BACKUPS" -maxdepth 1 -type d ! -path "$BACKUPS" | wc -l)
-# Subtract 1 for the BACKUPS directory itself
-DIR_COUNT=$((DIR_COUNT - 1))
 
 if [ $DIR_COUNT -gt 1 ]; then
     echo "Hay más de un directorio en $BACKUPS." "Sólo puede haber uno"
@@ -47,9 +44,7 @@ else
     mv "$BACKUPS/$ORIGEN" "$DESTINO"
 fi
 
-# Overwrite the -l option implicit with -a
-# and transform any symlinks into the directory they point to
-rsync -Pavz --no-links --copy-dirlinks --update --delete-after --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
+rsync -a --delete --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO"

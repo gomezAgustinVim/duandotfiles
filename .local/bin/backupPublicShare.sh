@@ -7,6 +7,7 @@ COPIADOS="$@"
 BACKUP_FILTER="$HOME/Documentos/backupPublic.filter"
 
 # File to store backup history
+DAY=$(date +%A)
 FECHA_HORA=$(date +%d%m%y-%H-%M-%S)
 # USB PATH GOES HERE
 BACKUPS="$HOME/Publico/backup"
@@ -19,8 +20,6 @@ fi
 
 # Count directories in BACKUPS
 DIR_COUNT=$(find "$BACKUPS" -maxdepth 1 -type d ! -path "$BACKUPS" | wc -l)
-# Subtract 1 for the BACKUPS directory itself
-DIR_COUNT=$((DIR_COUNT - 1))
 
 if [ $DIR_COUNT -gt 1 ]; then
     echo "Hay más de un directorio en $BACKUPS." "Sólo puede haber uno"
@@ -39,11 +38,12 @@ else
     mv "$BACKUPS/$ORIGEN" "$DESTINO"
 fi
 
-# Overwrite the -l option implicit with -a
-# and transform any symlinks into the directory they point to
 # Use -z only if you want to compress the data over network
 # as this uses SMB, you may wanna use it if your network is slow
-rsync -av --inplace --delete --delete-excluded --backup --backup-dir="$HOME/Publico/backup" --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
+# rsync -a --quiet --inplace --delete --backup --backup-dir="$HOME/Publico/backup/incr/$DAY" --suffix=.bak --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
+# The --inplace option implies --partial and updates destination files in-place.
+
+rsync -a --delete --filter="merge $BACKUP_FILTER" $COPIADOS $DESTINO
 
 if [ $? -eq 0 ]; then
     notify-send "Backup completado" "Los archivos se han copiado a $DESTINO"

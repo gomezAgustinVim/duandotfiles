@@ -27,8 +27,7 @@ alias \
     rmd="rmdir -v" \
     du="du -h" \
     lf="lfrun" \
-    rs="rsync -Pav" \
-    rnew="rs -Pav -z --update --delete-after" \
+    rs="rsync -Pa" \
     fm="pcmanfm > /dev/null 2>&1 &" \
     texwatch="latexmk -pdf -pvc" # better latex compiler
 
