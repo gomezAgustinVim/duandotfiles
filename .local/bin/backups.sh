@@ -41,7 +41,7 @@ DEST="$RUTA"/"$CARP"
 echo "Sincronizando archivos desde $HOME... nwn"
 cd "$HOME"
 
-rsync -aAXHv --delete --delete-excluded --filter="merge $BACKUP_FILTER" \
+rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
     --exclude=docker-volumes --exclude=ISO \
     Descargas Documentos Imagenes Musica Videos Escritorio "$DEST/"
 notify-send "Backup completo" "Terminó el backup de todo nwn"
