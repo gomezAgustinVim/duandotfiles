@@ -56,8 +56,6 @@ require("mini.surround").setup()
 require("mini.icons").setup()
 
 require("oil").setup({
-	vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" }),
-
 	win_options = {
 		signcolumn = "yes:2",
 		wrap = false,
@@ -68,6 +66,8 @@ require("oil").setup({
 		conceallevel = 3,
 		concealcursor = "nvic",
 	},
+
+	vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" }),
 })
 
 require("oil-git-status").setup()
