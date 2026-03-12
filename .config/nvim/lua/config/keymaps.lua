@@ -12,32 +12,17 @@ map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuraci
 map("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" })
 
 map("n", "<leader>u", function()
-	vim.pack.update()
+    vim.pack.update()
 end, { desc = "Actualizar plugins" })
 
 map("n", "<leader>ga", function()
-	vim.print(vim.pack.get())
+    vim.print(vim.pack.get())
 end, { desc = "Get plugins" })
 
 -- WiP idk how to get the plugins i dont wanna use
 -- anymore and just deletem them from a parameter
 -- map("n", "<leader>rr", function()
--- 	vim.pack.del({
--- 		"nvim-lspconfig",
--- 		"lualine.nvim",
--- 		"vim-grepper",
--- 		"telescope.nvim",
--- 		"snipe.nvim",
--- 		"plenary.nvim",
--- 		"nvim-web-devicons",
--- 		"mini.tabline",
--- 		"mini.pick",
--- 		"kulala-fmt",
--- 		"harpoon",
--- 		"friendly-snippets",
--- 		"bufferline.nvim",
--- 		"barbar.nvim",
--- 	})
+-- 	vim.pack.del({ })
 -- end, { desc = "Borrar plugins" })
 
 -- Mimic shell movements
@@ -80,8 +65,8 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
 
 -- Close and split
-map("n", "<leader>UU", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
-map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
+map("n", "<leader>UU", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" })         -- close all
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" })           -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
 
 -- Shortcutting split navigation, saving a keypress:
@@ -133,8 +118,8 @@ map("n", "<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature help" })
 
 -- diagnostics
 map("n", "gK", function()
-	local new_config = not vim.diagnostic.config().virtual_lines
-	vim.diagnostic.config({ virtual_lines = new_config })
+    local new_config = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Lineas virtuales de diagnóstico" })
 
 -- fzf lua

@@ -5,4 +5,5 @@ wk.add({
 	{ "zw", desc = "Marcar palabra como malonga nwn" },
 	{ "z=", desc = "Ver sugerencia de palabras" },
 	{ "g?", desc = "actions.show_help" }, -- oil bindings
+	{ "C-x", desc = "Accept autocompletion suggestion" },
 })
