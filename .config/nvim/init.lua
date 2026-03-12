@@ -5,7 +5,7 @@ vim.pack.add({
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" }, --render md inline
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" }, --git
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" }, -- improved syntax
-	{ src = "https://github.com/nvimtools/none-ls.nvim" }, -- linter
+	{ src = "https://github.com/nvimtools/none-ls.nvim" }, -- linter and formatter
 	{ src = "https://github.com/nvim-lua/plenary.nvim" }, -- dependency for linter
 	{ src = "https://github.com/echasnovski/mini.pairs" }, -- autopairs
 	{ src = "https://github.com/echasnovski/mini.surround" }, -- surround words with whatever
@@ -20,7 +20,7 @@ vim.pack.add({
 	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
 	{ src = "https://github.com/mason-org/mason.nvim" }, -- look for lsps and formatters in one place
 	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- super useful AI
-	-- { src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
 -- move config and plugin config to alternate files
