@@ -19,6 +19,7 @@ vim.pack.add({
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" }, -- self explanatory
 	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
 	{ src = "https://github.com/mason-org/mason.nvim" }, -- look for lsps and formatters in one place
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- super useful AI
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
@@ -77,6 +78,10 @@ require("mason").setup({
 			package_uninstalled = "✗",
 		},
 	},
+})
+
+require("mason-lspconfig").setup({
+	ensure_installed = { "lua_ls", "ts_ls", "tinymist", "bashls" },
 })
 
 require("supermaven-nvim").setup({

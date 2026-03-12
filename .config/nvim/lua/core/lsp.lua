@@ -8,10 +8,10 @@ local signs = {
 vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
+	"bashls",
 	"gh_actions_ls",
 	"terraformls",
 	"ansiblels",
-	"biome",
 	"texlab",
 	"tinymist",
 })

@@ -70,26 +70,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-------------------------------------------------------------------------------
-
--- luke smith's config
-
 -- Set the 'filetype' when reading Xresources or Xdefaults files and
--- Run 'xrdb' after writing changes to Xresources or Xdefaults files
-vim.cmd([[
-augroup XresourcesAndXdefaults
-    autocmd!
-    autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
-    autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
-augroup END
-]])
+local xdb_au = vim.api.nvim_create_augroup("XresourcesAndXdefaults", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	group = xdb_au,
+	pattern = { "Xresources", "Xdefaults", "xdresources", "xdefaults" },
+	callback = function()
+		vim.bo.filetype = "xdefaults"
+	end,
+})
 
--- Automatically deletes all trailing whitespace and newlines at end of file on save.
-vim.cmd([[
-augroup deleteWhitespace
-    autocmd!
-	autocmd BufWritePre * %s/\s\+$//e
-   	autocmd BufWritePre * %s/\n\+\%$//e
-   	autocmd BufWritePre *.[ch] %s/\%$/\r/e
-augroup END
-]])
+-- Run 'xrdb' after writing changes to Xresources or Xdefaults files
+vim.api.nvim_create_autocmd("BufReadPost", {
+	group = xdb_au,
+	pattern = { "Xresources", "Xdefaults", "xdresources", "xdefaults" },
+	callback = function()
+		vim.fn.system("!xrdb " .. vim.fn.expand("%"))
+	end,
+})
