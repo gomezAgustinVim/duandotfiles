@@ -5,20 +5,20 @@ hash = "46037d1e5d2e1fa7e155babbf8e49812"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "03cdd4b"
-hash = "3996fc74044bc44144b323686f887e1"
+rev = "1962818"
+hash = "6fa6a05a81c98dd000fbca3cca6e9682"
 
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"
-rev = "91fdfa7"
-hash = "f48f510e5505f5d01e79c4f8257ec5cb"
+rev = "619fdc5"
+hash = "d4c7003ec6dc4efd5d3a050d5c2f2575"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
-rev = "d3fd3a5"
-hash = "7b9ff01a0070cc9176e0c683329aeb26"
+rev = "9511cb0"
+hash = "20624fcdfcf7e4e912de05e348065e5e"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "d3fd3a5"
-hash = "288a0dedd5d13b28605cf82c05326dcd"
+rev = "9511cb0"
+hash = "7dfe41c9c3d9be76da8a844263d0bbed"

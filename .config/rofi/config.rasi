@@ -10,7 +10,7 @@ display-window:             "";
 drun-display-format:        "{name}";
 window-format:              "{w} {c}";
 icon-theme: "Gruvbox Plus Dark";
-terminal: "kitty";
+terminal: "foot";
 ssh-client: "ssh";
 ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
 dpi: 120;

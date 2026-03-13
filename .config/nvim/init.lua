@@ -35,7 +35,6 @@ require("plugins.colorizer")
 require("plugins.gitsigns")
 require("plugins.render-markdown")
 require("plugins.vimwiki")
-require("plugins.treesitter")
 require("plugins.which-key")
 require("plugins.luasnip")
 
@@ -113,6 +112,28 @@ null_ls.setup({
 		null_ls.builtins.completion.luasnip,
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.code_actions.refactoring,
+	},
+})
+
+require("nvim-treesitter").setup({
+	ensure_installed = {
+		"bash",
+		"c",
+		"css",
+		"latex",
+		"typst",
+		"cpp",
+		"html",
+		"javascript",
+		"typescript",
+		"json",
+		"lua",
+		"markdown",
+		"markdown_inline",
+		"yaml",
+	},
+	highlight = {
+		enable = true,
 	},
 })
 
