@@ -62,7 +62,6 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 export AWT_TOOLKIT="MToolkit wmname LG3D" #May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1      # Fix for Java applications in dwm
 export BAT_THEME='gruvbox-dark'
-export TZ="America/Argentina/Buenos_Aires" # sincronizar reloj
 
 [ ! -f "$XDG_CONFIG_HOME/shell/shortcutrc" ] && setsid shortcuts >/dev/null 2>&1
 
