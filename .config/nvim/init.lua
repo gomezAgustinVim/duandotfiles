@@ -1,54 +1,159 @@
-vim.pack.add({
-	{ src = "https://github.com/ellisonleao/gruvbox.nvim", name = "gruvbox" }, --colorscheme
-	{ src = "https://github.com/vimwiki/vimwiki" }, -- vimwiki
-	{ src = "https://github.com/norcalli/nvim-colorizer.lua" }, --color highlight
-	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" }, --render md inline
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" }, --git
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" }, -- improved syntax
-	{ src = "https://github.com/nvimtools/none-ls.nvim" }, -- linter and formatter
-	{ src = "https://github.com/nvim-lua/plenary.nvim" }, -- dependency for linter
-	{ src = "https://github.com/echasnovski/mini.pairs" }, -- autopairs
-	{ src = "https://github.com/echasnovski/mini.surround" }, -- surround words with whatever
-	{ src = "https://github.com/echasnovski/mini.completion" }, -- completion menu with snippets
-	{ src = "https://github.com/echasnovski/mini.icons" }, -- Icons
-	{ src = "https://github.com/stevearc/oil.nvim" }, -- Explorer with buffer like edit of directory structure
-	{ src = "https://github.com/refractalize/oil-git-status.nvim" }, -- git changes on oil
-	{ src = "https://github.com/goolord/alpha-nvim" }, --pretty startup
-	{ src = "https://github.com/folke/which-key.nvim" }, --mappings popup
-	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- more conventional snippets engine
-	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" }, -- self explanatory
-	{ src = "https://github.com/ibhagwan/fzf-lua" }, -- manage files, buffers, git and grepper
-	{ src = "https://github.com/mason-org/mason.nvim" }, -- look for lsps and formatters in one place
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/supermaven-inc/supermaven-nvim" }, -- super useful AI
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-})
+vim.opt.termguicolors = true
+vim.cmd.colorscheme("habamax")
 
 -- move config and plugin config to alternate files
 require("config.keymaps")
 require("config.options")
 require("config.autocmds")
-require("core.lsp")
+require("config.statusline")
 
-require("plugins.alpha")
-require("plugins.colorizer")
-require("plugins.gitsigns")
-require("plugins.render-markdown")
+local function set_transparent() -- set UI component to transparent
+	local groups = {
+		"Normal",
+		"NormalNC",
+		"EndOfBuffer",
+		"NormalFloat",
+		"FloatBorder",
+		"SignColumn",
+		"StatusLine",
+		"StatusLineNC",
+		"TabLine",
+		"TabLineFill",
+		"TabLineSel",
+		"ColorColumn",
+	}
+	for _, g in ipairs(groups) do
+		vim.api.nvim_set_hl(0, g, { bg = "none" })
+	end
+	vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
+end
+
+set_transparent()
+
+-- plugins
+
+vim.pack.add({
+	"https://github.com/vimwiki/vimwiki",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	"https://github.com/lewis6991/gitsigns.nvim",
+	{
+		src = "https://github.com/nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		build = ":TSUpdate",
+	}, -- improved syntax
+	"https://github.com/mason-org/mason.nvim", -- look for lsps and formatters in one place
+	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/creativenull/efmls-configs-nvim", -- linter and formatter
+	{
+		src = "https://github.com/saghen/blink.cmp",
+		version = vim.version.range("1.*"),
+	}, -- better completion
+	"https://github.com/L3MON4D3/LuaSnip", -- more conventional snippets engine
+	"https://github.com/echasnovski/mini.nvim",
+	"https://github.com/stevearc/oil.nvim", -- Explorer with buffer like edit of directory structure
+	"https://github.com/refractalize/oil-git-status.nvim", -- git changes on oil
+	"https://github.com/folke/which-key.nvim", --mappings popup
+	"https://github.com/ibhagwan/fzf-lua", -- manage files, buffers, git and grepper
+	"https://github.com/neovim/nvim-lspconfig",
+})
+
+local function packadd(name)
+	vim.cmd("packadd " .. name)
+end
+packadd("nvim-treesitter")
+packadd("gitsigns.nvim")
+packadd("oil.nvim")
+packadd("oil-git-status.nvim")
+packadd("mini.nvim")
+packadd("vimwiki")
+packadd("render-markdown.nvim")
+packadd("which-key.nvim")
+packadd("fzf-lua")
+-- LSP
+packadd("nvim-lspconfig")
+packadd("mason.nvim")
+packadd("mason-lspconfig.nvim")
+packadd("efmls-configs-nvim")
+packadd("blink.cmp")
+packadd("LuaSnip")
+
+require("plugins.lsp")
 require("plugins.vimwiki")
 require("plugins.which-key")
 require("plugins.luasnip")
+require("plugins.blink")
 
-require("fzf-lua").setup({
-	lsp = {
-		async_or_timeout = 3000,
+require("render-markdown").setup({})
+
+require("gitsigns").setup({
+	signs = {
+		add = { text = "\u{2590}" }, -- ▏
+		change = { text = "\u{2590}" }, -- ▐
+		delete = { text = "\u{2590}" }, -- ◦
+		topdelete = { text = "\u{25e6}" }, -- ◦
+		changedelete = { text = "\u{25cf}" }, -- ●
+		untracked = { text = "\u{25cb}" }, -- ○
 	},
+	signcolumn = true,
+	current_line_blame = false,
 })
 
-require("mini.completion").setup()
+-- Gitsigns mappings
+vim.keymap.set("n", "]h", function()
+	require("gitsigns").next_hunk()
+end, { desc = "Next git hunk" })
+vim.keymap.set("n", "[h", function()
+	require("gitsigns").prev_hunk()
+end, { desc = "Previous git hunk" })
+vim.keymap.set("n", "<leader>hs", function()
+	require("gitsigns").stage_hunk()
+end, { desc = "Stage hunk" })
+vim.keymap.set("n", "<leader>hr", function()
+	require("gitsigns").reset_hunk()
+end, { desc = "Reset hunk" })
+vim.keymap.set("n", "<leader>hp", function()
+	require("gitsigns").preview_hunk()
+end, { desc = "Preview hunk" })
+vim.keymap.set("n", "<leader>hb", function()
+	require("gitsigns").blame_line({ full = true })
+end, { desc = "Blame line" })
+vim.keymap.set("n", "<leader>hB", function()
+	require("gitsigns").toggle_current_line_blame()
+end, { desc = "Toggle inline blame" })
+vim.keymap.set("n", "<leader>hd", function()
+	require("gitsigns").diffthis()
+end, { desc = "Diff this" })
+
+require("fzf-lua").setup({})
+vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "Abrir fzf-lua para archivos" })
+vim.keymap.set("n", "<leader>fb", ":FzfLua buffers<CR>", { desc = "Abrir fzf-lua para buffers" })
+vim.keymap.set("n", "<leader>fl", ":FzfLua live_grep<CR>", { desc = "Abrir fzf-lua para live grep" })
+vim.keymap.set("n", "<leader>fh", ":FzfLua helptags<CR>", { desc = "Abrir fzf-lua para helptags" })
+vim.keymap.set(
+	"n",
+	"<leader>fx",
+	":FzfLua diagnostics_document<CR>",
+	{ desc = "Abrir fzf-lua para diagnostics document" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>fX",
+	":FzfLua diagnostics_workspace<CR>",
+	{ desc = "Abrir fzf-lua para diagnostics workspace" }
+)
+vim.keymap.set("n", "<leader>fg", ":FzfLua git_status<CR>", { desc = "Abrir fzf-lua para git status" })
+
 require("mini.pairs").setup()
 require("mini.surround").setup()
-
-require("mini.icons").setup()
+require("mini.ai").setup({})
+require("mini.comment").setup({})
+require("mini.move").setup({})
+require("mini.cursorword").setup({})
+require("mini.indentscope").setup({})
+require("mini.trailspace").setup({})
+require("mini.bufremove").setup({})
+require("mini.notify").setup({})
+require("mini.icons").setup({})
 
 require("oil").setup({
 	win_options = {
@@ -62,61 +167,25 @@ require("oil").setup({
 		concealcursor = "nvic",
 	},
 })
-
 require("oil-git-status").setup()
 
--- Theme related
-require("gruvbox").setup({ transparent_mode = true })
-require("ibl").setup()
-
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
+require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "ts_ls", "tinymist", "bashls" },
-})
-
-require("supermaven-nvim").setup({
-	keymaps = {
-		accept_suggestion = "<S-Tab>",
-		clear_suggestion = "<C-]>",
-		accept_word = "<C-w>",
-	},
-	ignore_filetypes = { cpp = true, markdown = true },
-	color = {
-		suggestion_color = "#008282", -- color for the suggestion text
-		cterm = 244,
-	},
-	log_level = "off", -- set to "off" to disable logging completely
-	disable_inline_completion = false, -- disables inline completion for use with cmp
-	disable_keymaps = false, -- disables built in keymaps for more manual control
-	condition = function()
-		return false
-	end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-})
-
-local null_ls = require("null-ls")
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.completion.spell,
-		null_ls.builtins.completion.luasnip,
-		null_ls.builtins.code_actions.gitsigns,
-		null_ls.builtins.code_actions.refactoring,
-	},
-})
-
-require("nvim-treesitter").setup({
 	ensure_installed = {
+		"lua_ls",
+		"ts_ls",
+		"bashls",
+		"texlab",
+		"tinymist",
+	},
+})
+
+local setup_treesitter = function()
+	local treesitter = require("nvim-treesitter")
+	treesitter.setup({})
+	local ensure_installed = {
+		"vim",
+		"vimdoc",
 		"bash",
 		"c",
 		"css",
@@ -129,13 +198,79 @@ require("nvim-treesitter").setup({
 		"json",
 		"lua",
 		"markdown",
-		"markdown_inline",
 		"yaml",
-	},
-	highlight = {
-		enable = true,
-	},
-})
+	}
 
-vim.cmd("silent! colorscheme gruvbox")
-vim.cmd(":hi statusline guibg=NONE")
+	local config = require("nvim-treesitter.config")
+
+	local already_installed = config.get_installed()
+	local parsers_to_install = {}
+
+	for _, parser in ipairs(ensure_installed) do
+		if not vim.tbl_contains(already_installed, parser) then
+			table.insert(parsers_to_install, parser)
+		end
+	end
+
+	if #parsers_to_install > 0 then
+		treesitter.install(parsers_to_install)
+	end
+
+	local group = vim.api.nvim_create_augroup("TreeSitterConfig", { clear = true })
+	vim.api.nvim_create_autocmd("FileType", {
+		group = group,
+		callback = function(args)
+			if vim.list_contains(treesitter.get_installed(), vim.treesitter.language.get_lang(args.match)) then
+				vim.treesitter.start(args.buf)
+			end
+		end,
+	})
+end
+
+setup_treesitter()
+
+-- configure linters and formatters
+do
+	local luacheck = require("efmls-configs.linters.luacheck")
+	local stylua = require("efmls-configs.formatters.stylua")
+
+	local prettier_d = require("efmls-configs.formatters.prettier_d")
+	local eslint_d = require("efmls-configs.linters.eslint_d")
+
+	local fixjson = require("efmls-configs.formatters.fixjson")
+
+	local shellcheck = require("efmls-configs.linters.shellcheck")
+	local shfmt = require("efmls-configs.formatters.shfmt")
+
+	vim.lsp.config("efm", {
+		filetypes = {
+			"css",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"jsonc",
+			"lua",
+			"markdown",
+			"sh",
+			"typescript",
+			"typescriptreact",
+		},
+		init_options = { documentFormatting = true },
+		settings = {
+			languages = {
+				css = { prettier_d },
+				html = { prettier_d },
+				javascript = { eslint_d, prettier_d },
+				javascriptreact = { eslint_d, prettier_d },
+				json = { eslint_d, fixjson },
+				jsonc = { eslint_d, fixjson },
+				lua = { luacheck, stylua },
+				markdown = { prettier_d },
+				sh = { shellcheck, shfmt },
+				typescript = { eslint_d, prettier_d },
+				typescriptreact = { eslint_d, prettier_d },
+			},
+		},
+	})
+end

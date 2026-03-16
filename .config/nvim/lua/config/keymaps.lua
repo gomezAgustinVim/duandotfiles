@@ -4,11 +4,20 @@ local map = vim.keymap.set
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
--- map("n", ";", ":") enter command mode CMD
--- this shit is pretty useless unless your keyboard can active semicolon without shift
+-- better movement in wrapped text
+map("n", "j", function()
+	return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true, desc = "Down (wrap aware)" })
 
-map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
+-- better movement in wrapped text
+map("n", "k", function()
+	return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true, desc = "Up (wrap aware)" })
 
+map("n", "<leader>ch", ":nohlsearch<CR>", { desc = "Limpiar search highlight", silent = true })
+
+-- map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
+map("n", "<leader>re", ":restart<CR>", { desc = "Recargar configuración", silent = true })
 map("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" })
 
 map("n", "<leader>u", function()
@@ -19,12 +28,6 @@ map("n", "<leader>ga", function()
 	vim.print(vim.pack.get())
 end, { desc = "Get plugins" })
 
--- WiP idk how to get the plugins i dont wanna use
--- anymore and just deletem them from a parameter
--- map("n", "<leader>rr", function()
--- 	vim.pack.del({ })
--- end, { desc = "Borrar plugins" })
-
 -- Mimic shell movements
 map("i", "<C-W>", "<C-o>$")
 map("i", "<C-A>", "<C-o>^")
@@ -33,13 +36,15 @@ map("i", "<C-A>", "<C-o>^")
 -- Thanks the Primeagen
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
-
 map("n", "J", "mzJ`z")
 
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
--- map("n", "n", "nzzzv")
--- map("n", "N", "Nzzzv")
+map("n", "<C-d>", "<C-d>zz", { desc = "Media pagina abajo (centrado)" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Media pagina arriba (centrado)" })
+map("n", "n", "nzzzv", { desc = "Siguiente termino de busqueda (centrado)" })
+map("n", "N", "Nzzzv", { desc = "Anterior termino de busqueda (centrado)" })
+
+map("n", "<leader>p", '"_dP', { desc = "Pegar texto sin yanking" })
+map({ "n", "v" }, "<leader>x", '"_d', { desc = "Borrar texto sin yanking" })
 
 -- Make file executable
 map("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { desc = "Hacer archivo ejecutable" })
@@ -103,35 +108,13 @@ map({ "n", "i" }, "<A-ñ>", "<CMD>setlocal spelllang=es<CR>", { desc = "Poner co
 -- Spelling inglés
 map({ "n", "i" }, "<A-i>", "<CMD>setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
 
--- Lsp related bindings start with l
-map("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Renombrar variable" })
-
-map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
-
-map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
-
-map("n", "<leader>li", ":LspInfo<CR>", { desc = "Información sobre LSP" })
-
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover over" })
-
-map("n", "<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature help" })
-
--- diagnostics
-map("n", "gK", function()
-	local new_config = not vim.diagnostic.config().virtual_lines
-	vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = "Lineas virtuales de diagnóstico" })
-
--- fzf lua
-map("n", "<leader>ff", ":FzfLua files<CR>", { desc = "Abrir fzf-lua para archivos" })
-map("n", "<leader>fb", ":FzfLua buffers<CR>", { desc = "Abrir fzf-lua para buffers" })
-map("n", "<leader>fl", ":FzfLua live_grep<CR>", { desc = "Abrir fzf-lua para live grep" })
-map("n", "<leader>fg", ":FzfLua git_status<CR>", { desc = "Abrir fzf-lua para git status" })
-map("n", "<leader>ft", ":FzfLua tmux_buffers<CR>", { desc = "Abrir fzf-lua para tmux buffers" })
+-- Diagnostics
+map("n", "<leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
 
 -- misc
 map("n", "<leader>sa", ":%s//g<Left><Left>", { desc = "Reemplazar todo" }) -- replace all
--- map("n", "<leader>P", ":ExportPdf<CR>", { desc = "Exportar a pdf con typst" })
 map({ "n", "v" }, "<leader>cr", "1z=", { desc = "Corregir spelling" })
-map({ "n", "v" }, "<leader>y", '"+y')
-map({ "n", "v" }, "<leader>d", '"+d')
+map({ "n", "v" }, "<leader>y", '"+y') -- copy to system clipboard
+map({ "n", "v" }, "<leader>d", '"+d') -- cut to system clipboard

@@ -1,72 +1,107 @@
--- Custom filetypes
-vim.filetype.add({
-	extension = {
-		conf = "conf",
-		mdx = "markdown",
-		rmd = "markdown",
-		Rmd = "markdown",
-		mjml = "html",
-		kicad_mod = "scheme",
-	},
-	pattern = {
-		[".*%.env.*"] = "sh",
-		["ignore$"] = "conf",
-	},
-	filename = {
-		["yup.lock"] = "yaml",
-	},
-})
+augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
-local num_au = vim.api.nvim_create_augroup("NUMTOSTR", { clear = true })
+-- Format on save (ONLY real file buffers, ONLY when efm is attached)
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = augroup,
+	pattern = {
+		"*.lua",
+		"*.py",
+		"*.go",
+		"*.js",
+		"*.jsx",
+		"*.ts",
+		"*.tsx",
+		"*.json",
+		"*.css",
+		"*.scss",
+		"*.html",
+		"*.sh",
+		"*.bash",
+		"*.zsh",
+		"*.c",
+		"*.cpp",
+		"*.h",
+		"*.hpp",
+	},
+	callback = function(args)
+		-- avoid formatting non-file buffers (helps prevent weird write prompts)
+		if vim.bo[args.buf].buftype ~= "" then
+			return
+		end
+		if not vim.bo[args.buf].modifiable then
+			return
+		end
+		if vim.api.nvim_buf_get_name(args.buf) == "" then
+			return
+		end
+
+		local has_efm = false
+		for _, c in ipairs(vim.lsp.get_clients({ bufnr = args.buf })) do
+			if c.name == "efm" then
+				has_efm = true
+				break
+			end
+		end
+		if not has_efm then
+			return
+		end
+
+		pcall(vim.lsp.buf.format, {
+			bufnr = args.buf,
+			timeout_ms = 2000,
+			filter = function(c)
+				return c.name == "efm"
+			end,
+		})
+	end,
+})
 
 -- disable automatic comment on newline
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
+	group = augroup,
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-	end,
-})
-
--- Autoformat on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		local clients = vim.lsp.get_clients({ bufnr = args.buf })
-		if #clients > 0 then
-			vim.lsp.buf.format({ async = false })
-		end
 	end,
 })
 
 -- highlight text on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
+	group = augroup,
 	callback = function()
-		vim.highlight.on_yank({ timeout = 300 })
+		vim.hl.on_yank({ timeout = 300 })
 	end,
 })
 
--- Remove useless stuff from the terminal window and enter INSERT mode
-vim.api.nvim_create_autocmd("TermOpen", {
-	group = num_au,
-	callback = function(data)
-		if not string.find(vim.bo[data.buf].filetype, "^[fF][tT]erm") then
-			vim.api.nvim_set_option_value("number", false, { scope = "local" })
-			vim.api.nvim_set_option_value("relativenumber", false, { scope = "local" })
-			vim.api.nvim_set_option_value("signcolumn", "no", { scope = "local" })
-			vim.api.nvim_command("startinsert")
+-- return to last cursor position when opening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+	group = augroup,
+	desc = "Return to last cursor position when opening a file",
+	callback = function()
+		if vim.o.diff then
+			return
 		end
+
+		local last_pos = vim.api.nvim_buf_get_mark(0, '"') -- line, col
+		local last_line = vim.api.nvim_buf_line_count(0)
+
+		local row = last_pos[1]
+		if row < 1 or row > last_line then
+			return
+		end
+
+		pcall(vim.api.nvim_win_set_cursor, 0, last_pos)
 	end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("my.lsp", {}),
-	callback = function(ev)
-		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-
-		if client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-		end
+vim.api.nvim_create_autocmd("FileType", {
+	group = augroup,
+	pattern = { "markdown", "gitcommit", "text" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.spell = true
 	end,
 })
 
