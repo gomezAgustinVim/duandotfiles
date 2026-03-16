@@ -24,10 +24,6 @@ map("n", "<leader>u", function()
 	vim.pack.update()
 end, { desc = "Actualizar plugins" })
 
-map("n", "<leader>ga", function()
-	vim.print(vim.pack.get())
-end, { desc = "Get plugins" })
-
 -- Mimic shell movements
 map("i", "<C-W>", "<C-o>$")
 map("i", "<C-A>", "<C-o>^")
@@ -62,18 +58,6 @@ map("n", "<C-z>", "<CMD>x<CR>")
 -- ==>   Splits
 ------------------------------------------------
 
--- -- Navigate buffers
--- map("n", "<Tab>", ":bnext<CR>")
--- map("n", "<S-Tab>", ":bprevious<CR>") -- la S significa shift
--- map("n", "<A-1>", "<Cmd>bfirst<CR>") -- go to first buffer
--- map("n", "<A-0>", "<Cmd>blast<CR>") -- go to last buffer
--- map("n", "<leader>qb", ":bd<CR>", { desc = "Cerrar buffer", silent = true })
-
--- Close and split
-map("n", "<leader>UU", ":bufdo bd<CR>", { desc = "Cerrar todos los buffers" }) -- close all
-map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
-map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
-
 -- Shortcutting split navigation, saving a keypress:
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
@@ -86,12 +70,12 @@ map("n", "<C-Right>", "<CMD>vertical resize +2<CR>")
 map("n", "<C-Up>", "<CMD>resize -2<CR>")
 map("n", "<C-Down>", "<CMD>resize +2<CR>")
 
+-- Close and split
+map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
+map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
 -- Change 2 split windows from vert to horiz or horiz to vert
 map("n", "<Leader>th", "<C-w>t<C-w>H", { desc = "Move split window to horizontal" })
 map("n", "<Leader>tk", "<C-w>t<C-w>K", { desc = "Move split window to vertical" })
-
--- Replace ex mode with gq
-map("n", "Q", "gq")
 
 -- Compile document, be it groff/LaTeX/markdown/etc.
 map("n", "<leader>cp", ':w! | !compiler "<c-r>%"<CR>', { desc = "Compile this file" })
@@ -102,10 +86,7 @@ map("x", ".", ":normal .<CR>")
 -- Control all select
 map("n", "<C-a>", "ggVG")
 
--- Spelling español
 map({ "n", "i" }, "<A-ñ>", "<CMD>setlocal spelllang=es<CR>", { desc = "Poner corrector en español" })
-
--- Spelling inglés
 map({ "n", "i" }, "<A-i>", "<CMD>setlocal spelllang=en<CR>", { desc = "Poner corrector en inglés" })
 
 -- Diagnostics

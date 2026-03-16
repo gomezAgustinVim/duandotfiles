@@ -33,7 +33,6 @@ set_transparent()
 -- plugins
 
 vim.pack.add({
-	"https://github.com/vimwiki/vimwiki",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/lewis6991/gitsigns.nvim",
 	{
@@ -65,7 +64,6 @@ packadd("gitsigns.nvim")
 packadd("oil.nvim")
 packadd("oil-git-status.nvim")
 packadd("mini.nvim")
-packadd("vimwiki")
 packadd("render-markdown.nvim")
 packadd("which-key.nvim")
 packadd("fzf-lua")
@@ -78,7 +76,6 @@ packadd("blink.cmp")
 packadd("LuaSnip")
 
 require("plugins.lsp")
-require("plugins.vimwiki")
 require("plugins.which-key")
 require("plugins.luasnip")
 require("plugins.blink")

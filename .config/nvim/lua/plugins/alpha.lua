@@ -11,7 +11,7 @@ dashboard.section.header.val = {
 
 dashboard.section.buttons.val = {
 	dashboard.button("n", "  Nuevo archivo", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("w", "󰯂  Vimwiki", ":VimwikiIndex <CR>"),
+	-- dashboard.button("w", "󰯂  Vimwiki", ":VimwikiIndex <CR>"),
 	dashboard.button("f", "󰍉  Buscar archivo", ":Pick files<CR>"),
 	dashboard.button("e", "  Buscar en cwd", ":Oil<CR>"),
 	dashboard.button("r", "  Buscar docs", ":e ~/Documentos/<CR>"),
