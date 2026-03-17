@@ -6,7 +6,7 @@ BACKUP_FILTER="${XDG_DATA_HOME:-$HOME/.local/share}/backup.filter"
 
 # Size of file is = 0 bytes
 if [ ! -s "$BACKUP_FILTER" ]; then
-    cat <<EOF > "$BACKUP_FILTER"
+	cat <<EOF >"$BACKUP_FILTER"
 # Exclude patterns
 - *.tmp
 - *.log
@@ -29,12 +29,13 @@ echo "Procediendo al backup nwn..."
 
 # backup completo del sistema preservando atributos extendidos y ACLs
 echo "Sincronizando archivos desde $HOME... nwn"
-cd "$HOME"
+cd "$HOME" || return
 
 rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
-    --exclude=docker-volumes --exclude=ISO \
-    Descargas Documentos Imagenes Musica Videos Escritorio "$DEST"
+	--exclude=docker-volumes --exclude=ISO \
+	Descargas Documentos Imagenes Musica Videos Escritorio "$DEST"
 
 HOY=$(date +%c)
 notify-send "Backup completo nwn" "$HOY"
-echo "Último backup completo el $HOY" > "$DEST/backup.log"
+echo "Último backup completo el $HOY" >"$DEST/backup.log"
+
