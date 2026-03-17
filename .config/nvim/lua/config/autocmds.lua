@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = augroup,
-	pattern = { "markdown", "gitcommit", "text" },
+	pattern = { "markdown", "gitcommit", "text", "typst" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.linebreak = true
@@ -106,9 +106,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Set the 'filetype' when reading Xresources or Xdefaults files and
-local xdb_au = vim.api.nvim_create_augroup("XresourcesAndXdefaults", { clear = true })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	group = xdb_au,
+	group = augroup,
 	pattern = { "Xresources", "Xdefaults", "xdresources", "xdefaults" },
 	callback = function()
 		vim.bo.filetype = "xdefaults"
@@ -117,7 +116,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- Run 'xrdb' after writing changes to Xresources or Xdefaults files
 vim.api.nvim_create_autocmd("BufReadPost", {
-	group = xdb_au,
+	group = augroup,
 	pattern = { "Xresources", "Xdefaults", "xdresources", "xdefaults" },
 	callback = function()
 		vim.fn.system("!xrdb " .. vim.fn.expand("%"))
