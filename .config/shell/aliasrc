@@ -4,7 +4,7 @@
 [ -x "$(command -v nvim)" ] && alias v="nvim" vimdiff="nvim -d"
 
 # Use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+# [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
 # so, aliases for some programs are here, as follows:
 
@@ -34,8 +34,9 @@ alias \
 # ffmpeg commands
 alias \
     ffmpeg="ffmpeg -hide_banner" \
-    ffconvert='find -maxdepth 1 -mindepth 1 -type f -name "*.mkv" -print -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;' \
-    tothumbnail='ffmpeg -loop 1 -i $1 -i $2 c:v libx265 -c:a aac -b:a 320k -pix_fmt yuv420p -shortest out.mp4'
+    ffconvert='find -maxdepth 1 -mindepth 1 \
+        -type f -name "*.mkv" -print \
+        -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;'
 
 # These common commands are just too long! Abbreviate them.
 # i="imv -u linear" \
@@ -53,7 +54,7 @@ alias \
     f="fastfetch" \
     h="htop" \
     c="cointop" \
-    b="$EDITOR ~/.config/hypr/modules/binds.conf" \
+    tncopy="wl-copy --trim-newline" \
     pcopy="pwd | wl-copy --trim-newline" \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
 
@@ -72,14 +73,15 @@ alias \
 alias \
     ls="ls -hN --color=auto --group-directories-first" \
     cat="bat --theme=base16" \
-    dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
+    dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; \
+        then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
     dir="dir --color=auto" \
     vdir="vdir --color=auto" \
     grep="grep --color=auto" \
     fgrep="fgrep --color=auto" \
     egrep="egrep --color=auto" \
     diff="diff --color=auto" \
-    fc-list="fc-list -f '%{file}\n'" \
+    fclist="fc-list -f '%{file}\n'" \
     ip="ip --color=auto"
 
 # Mpv
