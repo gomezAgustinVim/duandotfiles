@@ -45,7 +45,4 @@ local setup_treesitter = function()
 	})
 end
 
--- setup_treesitter()
-
-require("nvim-treesitter").setup()
-require("nvim-treesitter.config")
+setup_treesitter()

@@ -216,12 +216,12 @@ do
 			languages = {
 				css = { prettier_d },
 				html = { prettier_d },
+				markdown = { prettier_d },
 				javascript = { eslint_d, prettier_d },
 				javascriptreact = { eslint_d, prettier_d },
 				json = { eslint_d, fixjson },
 				jsonc = { eslint_d, fixjson },
 				lua = { luacheck, stylua },
-				markdown = { prettier_d },
 				sh = { shellcheck, shfmt },
 				typescript = { eslint_d, prettier_d },
 				typescriptreact = { eslint_d, prettier_d },
