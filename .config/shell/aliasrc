@@ -54,7 +54,7 @@ alias \
     f="fastfetch" \
     h="htop" \
     c="cointop" \
-    tncopy="wl-copy --trim-newline" \
+    tcopy="wl-copy --trim-newline" \
     pcopy="pwd | wl-copy --trim-newline" \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
 
