@@ -10,6 +10,7 @@ local setup_treesitter = function()
 		"latex",
 		"typst",
 		"cpp",
+		"prisma",
 		"html",
 		"javascript",
 		"typescript",
