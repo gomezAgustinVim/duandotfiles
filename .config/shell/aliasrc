@@ -17,6 +17,7 @@ alias \
 
 # Expand sudo to work with aliases
 alias sudo="sudo "
+alias suenv="sudo -E " # principalmente utilizado para usar el clipboard de wayland en neovim, desde root
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
@@ -56,6 +57,7 @@ alias \
     c="cointop" \
     tcopy="wl-copy --trim-newline" \
     pcopy="pwd | wl-copy --trim-newline" \
+    dopdf="lowriter --headless --convert-to pdf " \
     src="source ~/.zshrc && echo 'sourceado nwn!'"
 
 # Pacman
