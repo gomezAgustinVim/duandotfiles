@@ -17,6 +17,7 @@
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%d/%m/%Y}",
+        "timezone": "America/Argentina/Buenos_Aires",
         "on-click-right": "foot -e calcure",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
