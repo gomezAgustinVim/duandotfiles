@@ -179,7 +179,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"ts_ls",
 		"bashls",
-		"texlab",
 		"tinymist",
 	},
 })
