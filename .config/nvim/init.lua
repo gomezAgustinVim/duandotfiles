@@ -48,6 +48,7 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	}, -- better completion
 	"https://github.com/L3MON4D3/LuaSnip", -- more conventional snippets engine
+	"https://github.com/prichrd/netrw.nvim", -- netrw icons
 	"https://github.com/echasnovski/mini.nvim",
 	"https://github.com/ibhagwan/fzf-lua", -- manage files, buffers, git and grepper
 	"https://github.com/neovim/nvim-lspconfig",
@@ -59,6 +60,7 @@ end
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
 packadd("mini.nvim")
+packadd("netrw.nvim")
 packadd("render-markdown.nvim")
 packadd("fzf-lua")
 -- LSP
@@ -73,6 +75,8 @@ require("plugins.lsp")
 require("plugins.luasnip")
 require("plugins.blink")
 require("plugins.treesitter")
+
+require("netrw").setup({})
 
 require("render-markdown").setup({})
 
