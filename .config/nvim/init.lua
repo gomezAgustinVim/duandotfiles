@@ -49,9 +49,6 @@ vim.pack.add({
 	}, -- better completion
 	"https://github.com/L3MON4D3/LuaSnip", -- more conventional snippets engine
 	"https://github.com/echasnovski/mini.nvim",
-	"https://github.com/stevearc/oil.nvim", -- Explorer with buffer like edit of directory structure
-	"https://github.com/refractalize/oil-git-status.nvim", -- git changes on oil
-	"https://github.com/folke/which-key.nvim", --mappings popup
 	"https://github.com/ibhagwan/fzf-lua", -- manage files, buffers, git and grepper
 	"https://github.com/neovim/nvim-lspconfig",
 })
@@ -61,11 +58,8 @@ local function packadd(name)
 end
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
-packadd("oil.nvim")
-packadd("oil-git-status.nvim")
 packadd("mini.nvim")
 packadd("render-markdown.nvim")
-packadd("which-key.nvim")
 packadd("fzf-lua")
 -- LSP
 packadd("nvim-lspconfig")
@@ -82,12 +76,10 @@ require("plugins.treesitter")
 
 require("render-markdown").setup({})
 
-require("which-key").add({
-	{ "zg", desc = "Añadir palabra a diccionario" },
-	{ "zG", desc = "Añadir palabra a diccionario interno" },
-	{ "zw", desc = "Marcar palabra como malonga nwn" },
-	{ "z=", desc = "Ver sugerencia de palabras" },
-})
+-- { "zg", desc = "Añadir palabra a diccionario" },
+-- { "zG", desc = "Añadir palabra a diccionario interno" },
+-- { "zw", desc = "Marcar palabra como malonga nwn" },
+-- { "z=", desc = "Ver sugerencia de palabras" },
 
 require("gitsigns").setup({
 	signs = {
@@ -158,20 +150,6 @@ require("mini.trailspace").setup({})
 require("mini.bufremove").setup({})
 require("mini.notify").setup({})
 require("mini.icons").setup({})
-
-require("oil").setup({
-	win_options = {
-		signcolumn = "yes:2",
-		wrap = false,
-		cursorcolumn = false,
-		foldcolumn = "0",
-		spell = false,
-		list = false,
-		conceallevel = 3,
-		concealcursor = "nvic",
-	},
-})
-require("oil-git-status").setup()
 
 require("mason").setup({})
 require("mason-lspconfig").setup({

@@ -18,7 +18,7 @@ map("n", "<leader>ch", ":nohlsearch<CR>", { desc = "Limpiar search highlight", s
 
 -- map("n", "<leader>re", ":update<CR> :source<CR>", { desc = "Recargar configuración", silent = true })
 map("n", "<leader>re", ":restart<CR>", { desc = "Recargar configuración", silent = true })
-map("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open oil or parent directory" })
+map("n", "<leader>e", "<CMD>Ex<CR>", { desc = "Open explorer" })
 
 map("n", "<leader>u", function()
 	vim.pack.update()
