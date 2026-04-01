@@ -17,6 +17,8 @@ export TERM="foot"
 export BROWSER="firefox"
 export MANPAGER='nvim +Man!'
 
+TZ="America/Argentina/Buenos_Aires"
+
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
