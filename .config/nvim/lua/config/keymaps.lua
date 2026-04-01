@@ -74,6 +74,17 @@ map("n", "<C-Down>", "<CMD>resize +2<CR>")
 -- Close and split
 map("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", { desc = "Split y buffer" }) -- ver split + open next buffer
 map("n", "<leader>ss", ":split<CR>:bnext<CR>", { desc = "Split horizontal y buffer" }) -- hor split + open next buffer
+
+vim.keymap.set("n", "<Leader>b", function()
+	local buflist = vim.api.nvim_list_bufs()
+	for _, bufnr in ipairs(buflist) do
+		local buf_name = vim.api.nvim_buf_get_name(bufnr)
+		if buf_name == "" then
+			vim.cmd("bd" .. tostring(bufnr))
+		end
+	end
+end, { silent = true, desc = "Close all unnamed buffers" })
+
 -- Change 2 split windows from vert to horiz or horiz to vert
 map("n", "<Leader>th", "<C-w>t<C-w>H", { desc = "Move split window to horizontal" })
 map("n", "<Leader>tk", "<C-w>t<C-w>K", { desc = "Move split window to vertical" })
