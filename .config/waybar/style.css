@@ -6,6 +6,7 @@
 }
 
 window#waybar {
+  /* background: #2e3440; */
   background: #282828;
   padding: 3px 0;
 }
@@ -56,7 +57,7 @@ tooltip {
 }
 
 #workspaces button {
-  color: #ebdbb2;
+  color: #eceff4;
   border-radius: 0.5em;
   margin-bottom: 3px;
   margin-top: 3px;
@@ -67,16 +68,16 @@ tooltip {
 }
 
 #workspaces button:hover {
-  background: #79740e;
+  background: #4c566a;
 }
 
 #workspaces button.active {
-  background: #b8bb26;
-  color: #282828;
+  background: #a3be8c;
+  color: #2e3440;
 }
 
 #workspaces button.urgent {
-  background: #ea6962;
+  background: #bf616a;
 }
 
 /* ======================================================== */
@@ -114,13 +115,11 @@ window#waybar.empty #window {
 /* Audio module */
 /* ======================================================== */
 #wireplumber {
-  color: #fabd2f;
-  border-bottom-color: #fabd2f;
+  color: #81a1c1;
 }
 
 #wireplumber.muted {
-  color: #ea6962;
-  border-bottom-color: #ea6962;
+  color: #d08770;
 }
 
 /* ======================================================== */
@@ -143,43 +142,39 @@ window#waybar.empty #window {
 /* backlight */
 /* ======================================================== */
 #backlight {
-  color: #d8a657;
-  border-bottom-color: #d8a657;
+  color: #ebcb8b;
+  /* border-bottom-color: #d8a657; */
 }
 
 /* ======================================================== */
 /* battery */
 /* ======================================================== */
 #battery {
-  color: #98971a;
-  border-bottom-color: #98971a;
+  color: #5e81ac;
+  /* border-bottom-color: #98971a; */
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #b8bb26;
-  border-bottom-color: #b8bb26;
+  color: #a3be8c;
 }
 
 #battery.critical:not(.charging) {
-  color: #cc241d;
-  border-bottom-color: #cc241d;
+  color: #bf616a;
 }
 
 /* ======================================================== */
 /* clock */
 /* ======================================================== */
 #clock {
-  color: #8ec07c;
-  border-bottom-color: #8ec07c;
+  color: #8fbcbb;
 }
 
 /* ======================================================== */
 /* tray */
 /* ======================================================== */
 #tray {
-  color: #ebdbb2;
-  border-bottom-color: #fbf1c7;
+  color: #e5e9f0;
 }
 
 /* ======================================================== */
@@ -194,13 +189,7 @@ window#waybar.empty #window {
 /* Media player */
 /* ======================================================== */
 #mpd {
-  color: #689d6a;
-  border-bottom-color: #689d6a;
-}
-
-#mpd:hover {
-  color: #98971a;
-  border-bottom-color: #98971a;
+  color: #b48ead;
 }
 
 /* ======================================================== */
@@ -213,7 +202,7 @@ window#waybar.empty #window {
 #backlight:hover,
 #clock:hover,
 #memory:hover,
+#mpd:hover,
 #cpu:hover {
-  color: #ebdbb2;
-  border-bottom-color: #ebdbb2;
+  color: #d8dee9;
 }

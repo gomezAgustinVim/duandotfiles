@@ -1,7 +1,7 @@
 #!/bin/sh
 pidof hyprpaper || hyprpaper
 
-WALLPAPER_DIR="${XDG_PICTURES_DIR:-$HOME/Imagenes}/walls/gruvbox1366x768"
+WALLPAPER_DIR="${XDG_PICTURES_DIR:-$HOME/Imagenes}/walls/nord"
 CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 
 # Get a random wallpaper that is not the current one
