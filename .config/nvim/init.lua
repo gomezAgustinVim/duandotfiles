@@ -182,6 +182,7 @@ do
 		filetypes = {
 			"css",
 			"html",
+			"prisma",
 			"javascript",
 			"javascriptreact",
 			"json",

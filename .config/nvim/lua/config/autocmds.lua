@@ -124,28 +124,28 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- close unused buffers
--- local id = vim.api.nvim_create_augroup("startup", {
--- 	clear = false,
--- })
---
--- local persistbuffer = function(bufnr)
--- 	bufnr = bufnr or vim.api.nvim_get_current_buf()
--- 	vim.fn.setbufvar(bufnr, "bufpersist", 1)
--- end
---
--- vim.api.nvim_create_autocmd({ "BufRead" }, {
--- 	group = id,
--- 	pattern = { "*" },
--- 	callback = function()
--- 		vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
--- 			buffer = 0,
--- 			once = true,
--- 			callback = function()
--- 				persistbuffer()
--- 			end,
--- 		})
--- 	end,
--- })
+local id = vim.api.nvim_create_augroup("startup", {
+	clear = false,
+})
+
+local persistbuffer = function(bufnr)
+	bufnr = bufnr or vim.api.nvim_get_current_buf()
+	vim.fn.setbufvar(bufnr, "bufpersist", 1)
+end
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+	group = id,
+	pattern = { "*" },
+	callback = function()
+		vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
+			buffer = 0,
+			once = true,
+			callback = function()
+				persistbuffer()
+			end,
+		})
+	end,
+})
 
 -- vim.keymap.set("n", "<Leader>b", function()
 -- 	local curbufnr = vim.api.nvim_get_current_buf()
