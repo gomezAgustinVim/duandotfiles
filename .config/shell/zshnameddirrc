@@ -16,6 +16,4 @@ hash -d cfa=/home/utane/.config/shell/aliasrc
 hash -d cfp=/home/utane/.config/shell/profile
 hash -d cfmb=/home/utane/.config/ncmpcpp/bindings
 hash -d cfmc=/home/utane/.config/ncmpcpp/config
-hash -d cfl=/home/utane/.config/lf/lfrc
-hash -d cfL=/home/utane/.config/lf/scope
 hash -d cfX=/home/utane/.config/nsxiv/exec/key-handler

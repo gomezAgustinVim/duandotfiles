@@ -44,31 +44,37 @@ local function lsp_on_attach(ev)
 		vim.lsp.buf.format,
 		{ desc = "Format code", noremap = true, silent = true, buffer = bufnr }
 	)
+
 	vim.keymap.set(
 		"n",
 		"<leader>li",
 		":checkhealth vim.lsp<CR>",
 		{ desc = "LSP server info", noremap = true, silent = true, buffer = bufnr }
 	)
+
 	vim.keymap.set(
 		"n",
 		"<leader>ln",
 		vim.lsp.buf.rename,
 		{ desc = "Rename variable", noremap = true, silent = true, buffer = bufnr }
 	)
-	vim.keymap.set(
-		"n",
-		"<leader>la",
-		vim.lsp.buf.code_action,
-		{ desc = "Code actions", noremap = true, silent = true, buffer = bufnr }
-	)
+
+	-- vim.keymap.set(
+	-- 	"n",
+	-- 	"<leader>la",
+	-- 	vim.lsp.buf.code_action,
+	-- 	{ desc = "Code actions", noremap = true, silent = true, buffer = bufnr }
+	-- )
+
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr })
+
 	vim.keymap.set(
 		"n",
 		"<leader>lk",
 		vim.lsp.buf.signature_help,
 		{ desc = "Signature help", noremap = true, silent = true, buffer = bufnr }
 	)
+
 	vim.keymap.set(
 		"n",
 		"<leader>lD",
@@ -77,7 +83,7 @@ local function lsp_on_attach(ev)
 	)
 
 	if client:supports_method("textDocument/codeAction", bufnr) then
-		vim.keymap.set("n", "<leader>oi", function()
+		vim.keymap.set("n", "<leader>la", function()
 			vim.lsp.buf.code_action({
 				context = { only = { "source.organizeImports" }, diagnostics = {} },
 				apply = true,
@@ -86,7 +92,7 @@ local function lsp_on_attach(ev)
 			vim.defer_fn(function()
 				vim.lsp.buf.format({ bufnr = bufnr })
 			end, 50)
-		end, opts)
+		end, { desc = "Code actions", noremap = true, silent = true, buffer = true })
 	end
 end
 
@@ -105,6 +111,7 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
+vim.lsp.config("elf", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("bashls", {})
 vim.lsp.config("tinymist", {})

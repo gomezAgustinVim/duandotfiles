@@ -63,6 +63,7 @@ packadd("mini.nvim")
 packadd("netrw.nvim")
 packadd("render-markdown.nvim")
 packadd("fzf-lua")
+packadd("which-key.nvim")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
@@ -80,10 +81,12 @@ require("netrw").setup({})
 
 require("render-markdown").setup({})
 
--- { "zg", desc = "Añadir palabra a diccionario" },
--- { "zG", desc = "Añadir palabra a diccionario interno" },
--- { "zw", desc = "Marcar palabra como malonga nwn" },
--- { "z=", desc = "Ver sugerencia de palabras" },
+require("which-key").setup({
+	{ "zg", desc = "Añadir palabra a diccionario" },
+	{ "zG", desc = "Añadir palabra a diccionario interno" },
+	{ "zw", desc = "Marcar palabra como malonga nwn" },
+	{ "z=", desc = "Ver sugerencia de palabras" },
+})
 
 require("gitsigns").setup({
 	signs = {
