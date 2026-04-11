@@ -106,6 +106,7 @@ element selected.normal {
 }
 
 element-text, element-icon {
+    size: 30;
     background-color: inherit;
     text-color:       inherit;
 }
@@ -124,3 +125,5 @@ button selected normal {
     border: 2px 0px 2px 2px;
     border-color: @foreground;
 }
+
+
