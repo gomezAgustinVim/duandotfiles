@@ -147,6 +147,43 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+	group = augroup,
+	desc = "Cargar obsidian.nvim si estamos dentro de un vault de Obsidian",
+	callback = function()
+		local vault_root = vim.fs.root(0, ".obsidian")
+
+		if not vault_root then
+			return
+		end
+
+		-- Evita configurar el plugin más de una vez
+		if vim.g.obsidian_loaded then
+			return
+		end
+
+		vim.g.obsidian_loaded = true
+
+		require("obsidian").setup({
+			workspaces = {
+				{
+					name = "Notas",
+					path = "~/.local/share/Obsidian/Notas/",
+				},
+			},
+
+			daily_notes = {
+				folder = "Diarias",
+				date_format = "%d-%m-%Y",
+				alias_format = "%B %-d, %Y",
+				default_tags = { "daily-notes" },
+			},
+		})
+
+		vim.keymap.set("n", "<Leader>nd", "<CMD>ObsidianToday<CR>", { desc = "Crea una nueva nota diaria" })
+	end,
+})
+
 -- vim.keymap.set("n", "<Leader>b", function()
 -- 	local curbufnr = vim.api.nvim_get_current_buf()
 -- 	local buflist = vim.api.nvim_list_bufs()

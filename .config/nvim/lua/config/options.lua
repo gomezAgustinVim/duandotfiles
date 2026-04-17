@@ -5,7 +5,7 @@ vim.opt.maxmempattern = 20000
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 
 vim.opt.winborder = "rounded"
-vim.opt.conceallevel = 0 -- markdown conceal
+vim.opt.conceallevel = 1 -- markdown conceal
 vim.opt.concealcursor = ""
 vim.opt.showmode = false -- Don't show mode since we have a statusline
 vim.opt.ruler = true -- Disable extra numbering

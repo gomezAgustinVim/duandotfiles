@@ -112,6 +112,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("elf", {})
+vim.lsp.config("markdown_oxide", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("bashls", {})
 vim.lsp.config("tinymist", {})
@@ -123,5 +124,6 @@ vim.lsp.enable({
 	"bashls",
 	"prismals",
 	"tinymist",
+	"markdown_oxide",
 	"elf",
 })

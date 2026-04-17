@@ -42,6 +42,7 @@ vim.pack.add({
 	}, -- improved syntax
 	"https://github.com/mason-org/mason.nvim", -- look for lsps and formatters in one place
 	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/creativenull/efmls-configs-nvim", -- linter and formatter
 	{
 		src = "https://github.com/saghen/blink.cmp",
@@ -50,6 +51,7 @@ vim.pack.add({
 	"https://github.com/L3MON4D3/LuaSnip", -- more conventional snippets engine
 	"https://github.com/prichrd/netrw.nvim", -- netrw icons
 	"https://github.com/echasnovski/mini.nvim",
+	"https://github.com/epwalsh/obsidian.nvim",
 	"https://github.com/ibhagwan/fzf-lua", -- manage files, buffers, git and grepper
 	"https://github.com/neovim/nvim-lspconfig",
 })
@@ -57,11 +59,15 @@ vim.pack.add({
 local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
+-- dependencies
+packadd("plenary.nvim")
+-- other
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
 packadd("mini.nvim")
 packadd("netrw.nvim")
 packadd("render-markdown.nvim")
+packadd("obsidian.nvim")
 packadd("fzf-lua")
 packadd("which-key.nvim")
 -- LSP
@@ -165,6 +171,7 @@ require("mason-lspconfig").setup({
 		"ts_ls",
 		"bashls",
 		"tinymist",
+		"markdown_oxide",
 	},
 })
 
