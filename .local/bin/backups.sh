@@ -33,9 +33,8 @@ cd "$HOME" || return
 
 rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
 	--exclude=docker-volumes --exclude=ISO \
-	Descargas Documentos Imagenes Musica Videos Escritorio "$DEST"
+	Descargas Documentos Imagenes Musica Videos Escritorio ~/.local/share/ "$DEST"
 
 HOY=$(date +%c)
 notify-send "Backup completo nwn" "$HOY"
 echo "Último backup completo el $HOY" >"$DEST/backup.log"
-
