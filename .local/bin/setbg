@@ -27,7 +27,7 @@ if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
     xbg "$@"
 fi
 
-walldir="${XDG_PICTURES_DIR:-$HOME/Imagenes/walls}"
+walldir="${XDG_PICTURES_DIR:-$HOME/Imágenes/walls}"
 current_wall=$(hyprctl hyprpaper listactive)
 trueloc="$(readlink -f "$1")"
 

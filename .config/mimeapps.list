@@ -17,6 +17,7 @@ application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 text/plain=nvim.desktop
 audio/x-vorbis+ogg=mpv.desktop
+audio/x-opus+ogg=mpv.desktop
 audio/mpeg=mpv.desktop
 audio/flac=mpv.desktop
 application/x-ms-dos-executable=wine.desktop

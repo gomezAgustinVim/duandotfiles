@@ -33,7 +33,8 @@ cd "$HOME" || return
 
 rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
 	--exclude=docker-volumes --exclude=ISO \
-	Descargas Documentos Imagenes Musica Videos Escritorio ~/.local/share/ "$DEST"
+	Descargas Documentos Imágenes Música Vídeos Escritorio \
+	~/.local/share/Obsidian "$DEST"
 
 HOY=$(date +%c)
 notify-send "Backup completo nwn" "$HOY"
