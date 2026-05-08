@@ -33,7 +33,7 @@ cd "$HOME" || return
 
 rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
 	--exclude=docker-volumes --exclude=ISO \
-	Descargas Documentos Imágenes Música Vídeos Escritorio \
+	Descargas Documentos Imágenes Música Vídeos Escritorio Proyectos \
 	~/.local/share/Obsidian "$DEST"
 
 HOY=$(date +%c)
