@@ -16,11 +16,6 @@ md)
 	[ -f "$(dirname "${file}")/style.css" ] && css="--css=style.css"
 	pandoc "${file}" -f markdown -t pdf $css --pdf-engine=weasyprint -o "${base}.pdf"
 	;;
-# md) [ -x "$(command -v lowdown)" ] &&
-# 	lowdown --parse-no-intraemph "${file}" -Tms | groff -mpdfmark -ms -kept -T pdf >"${base}.pdf" ||
-# 	[ -x "$(command -v groffdown)" ] &&
-# 	groffdown -i "${file}" | groff -T pdf >"${base}.pdf" ||
-# 	pandoc -t ms --highlight-style="kate" -s -o "${base}.pdf" "${file}" ;;
 py) python "${file}" ;;
 [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
 tex) latexmk ;;
