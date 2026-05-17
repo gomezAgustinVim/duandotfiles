@@ -1,0 +1,15 @@
+hl.on("hyprland.start", function()
+	hl.exec_cmd("foot --server")
+	hl.exec_cmd("nm-applet")
+	hl.exec_cmd("blueman-applet")
+	hl.exec_cmd("waybar & hyprpaper & hypridle") -- Execute waybar, hyprpaper, hypridle
+	hl.exec_cmd("dbus-update-activation-environment --systemd all")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("mpd")
+	hl.exec_cmd("fcitx5 -dr")
+	hl.exec_cmd("brillo -I")
+	hl.exec_cmd("sunset-wrapper")
+	hl.exec_cmd("dunst")
+	hl.exec_cmd("udiskie")
+	hl.exec_cmd("xrdb -load ~/.config/x11/xresources") -- used for nsxiv
+end)
