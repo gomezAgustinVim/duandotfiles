@@ -1,7 +1,7 @@
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 10,
+		gaps_in = 3,
+		gaps_out = 5,
 
 		border_size = 2,
 
@@ -9,7 +9,7 @@ hl.config({
 
 		-- Set to true enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = true,
-		layout = "master",
+		layout = "scrolling",
 
 		col = {
 			active_border = { colors = { "rgb(5e81ac)", "rgba(2e3440ff)", "rgba(eceff4aa)" }, angle = 45 },
@@ -26,29 +26,42 @@ hl.config({
 		inactive_opacity = 0.8,
 
 		shadow = {
-			enabled = false,
-			-- range = 2,
-			-- render_power = 3,
-			-- color = { "rgba(1a1a1aee)" },
-			-- offset = { 5, 5 },
-			-- scale = 1.0,
+			enabled = true,
+			range = 20,
+			offset = { 0, 2 },
+			render_power = 10,
+			color = "rgba(00000020)",
 		},
 
 		blur = {
 			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.2,
+			size = 5,
+			passes = 2,
+			vibrancy = 0.5,
+			xray = true,
+			special = false,
+			new_optimizations = true,
+			brightness = 1,
+			noise = 0.05,
+			contrast = 0.89,
+			vibrancy_darkness = 0.5,
+			popups = false,
+			popups_ignorealpha = 0.6,
+			input_methods = true,
+			input_methods_ignorealpha = 0.8,
 		},
 	},
 
 	dwindle = {
-		preserve_split = true, -- You probably want this
+		preserve_split = true,
 	},
 
 	master = {
-		new_status = "master",
+		new_on_active = "after",
+		mfact = 0.60,
 	},
+
+	scrolling = {},
 })
 
 -- col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg

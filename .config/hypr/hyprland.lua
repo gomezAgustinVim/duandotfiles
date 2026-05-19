@@ -5,9 +5,14 @@ hl.monitor({
 	scale = "1",
 })
 
+hl.config({
+	animations = {
+		enabled = true,
+	},
+})
+
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 -- for security reasons
-
 hl.config({
 	ecosystem = {
 		enforce_permissions = false,
@@ -19,7 +24,7 @@ hl.config({
 
 require("modules/autostart")
 require("modules/look")
-require("modules/animations-default")
+require("modules/animations")
 require("modules/input")
 require("modules/binds")
 require("modules/windows")

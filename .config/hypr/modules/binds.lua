@@ -17,7 +17,6 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
--- hl.bind(mainMod .. ALT .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Mount android device
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("aft-mtp-mount ~/Público"))
@@ -51,11 +50,14 @@ hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
--- Move windows
-hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.move({ direction = "down" }))
+-- Move windows use on master/dwindle
+-- hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
+-- hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.move({ direction = "right" }))
+-- hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.move({ direction = "up" }))
+-- hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.move({ direction = "down" }))
+
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.layout("swapcol l"))
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.layout("move +col"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
