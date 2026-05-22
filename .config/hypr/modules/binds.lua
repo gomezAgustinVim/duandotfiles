@@ -23,7 +23,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("aft-mtp-mount ~/Público"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("umount ~/Público"))
 
 -- Reiniciar Waybar
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/waybar/scripts/launch.sh"))
 
 -- Copy emoji
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("rofi -show emoji"))
@@ -51,13 +51,10 @@ hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Move windows use on master/dwindle
--- hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
--- hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.move({ direction = "right" }))
--- hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.move({ direction = "up" }))
--- hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.move({ direction = "down" }))
-
-hl.bind(mainMod .. " + CTRL + h", hl.dsp.layout("swapcol l"))
-hl.bind(mainMod .. " + CTRL + l", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.move({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]

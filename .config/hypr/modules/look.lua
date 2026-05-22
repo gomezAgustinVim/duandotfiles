@@ -9,7 +9,7 @@ hl.config({
 
 		-- Set to true enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = true,
-		layout = "scrolling",
+		layout = "dwindle",
 
 		col = {
 			active_border = { colors = { "rgb(5e81ac)", "rgba(2e3440ff)", "rgba(eceff4aa)" }, angle = 45 },
@@ -60,8 +60,6 @@ hl.config({
 		new_on_active = "after",
 		mfact = 0.60,
 	},
-
-	scrolling = {},
 })
 
 -- col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
