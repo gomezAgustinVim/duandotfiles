@@ -1,49 +1,41 @@
 #!/bin/sh
 
-# This script does the following:
-#	Run by itself, set the wallpaper (at X start).
-#	If given a file, set that as the new wallpaper.
-#	If given a directory, choose random file in it.
-#	If wal is installed, also generates a colorscheme.
-
 xbg() {
-    # Location of link to wallpaper link.
-    bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+	# Location of link to wallpaper link.
+	bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 
-    trueloc="$(readlink -f "$1")" &&
-        case "$(file --mime-type -b "$trueloc")" in
-        image/*) ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..." ;;
-        inode/directory) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen." ;;
-        *)
-            notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
-            exit 1
-            ;;
-        esac
+	trueloc="$(readlink -f "$1")" &&
+		case "$(file --mime-type -b "$trueloc")" in
+		image/*) ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..." ;;
+		inode/directory) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen." ;;
+		*)
+			notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
+			exit 1
+			;;
+		esac
 
-    xwallpaper --stretch "$bgloc"
+	xwallpaper --stretch "$bgloc"
 }
 
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-    xbg "$@"
+	xbg "$@"
 fi
 
-walldir="${XDG_PICTURES_DIR:-$HOME/Imágenes/walls}"
-current_wall=$(hyprctl hyprpaper listactive)
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+current_wall="$(basename "$(readlink -f "$bgloc"/wall.png)")"
 trueloc="$(readlink -f "$1")"
 
 case "$(file --mime-type -b "$trueloc")" in
-image/*) hyprctl hyprpaper wallpaper "eDP-1, $trueloc" && notify-send -i "$walldir" "Cambiando wallpaper nwn..." ;;
+image/*) ln -sf "$trueloc" "$bgloc"/wall.png && notify-send -i "$bgloc" "Cambiando wallpaper nwn..." ;;
 inode/directory)
-    wallpaper="$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f ! -name "$(basename "$current_wall")" | shuf -n 1)"
-    if [ -z "$wallpaper" ]; then
-        notify-send "❌ Error" "No hay ningún tipo de imagen valido en el directorio"
-    else
-        hyprctl hyprpaper wallpaper "eDP-1, $wallpaper" && notify-send -i "$walldir" "Elegiste wallpaper nwn..."
-    fi
-    ;;
+	wallpaper="$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f ! -name "$current_wall" | shuf -n 1)"
+    ln -sf "$wallpaper" "$bgloc"/wall.png && notify-send -i "$bgloc" "Elegiste wallpaper nwn..."
+	;;
 *)
-    notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
-    # Con exit 1 la salida se queja en yazi y me dice que setbg sigue corriendo
-    exit 0
-    ;;
+	notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
+	# Con exit 1 la salida se queja en yazi y me dice que setbg sigue corriendo
+	exit 1
+	;;
 esac
+
+swaybg -m stretch -i "$bgloc"/wall.png
