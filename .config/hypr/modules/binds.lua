@@ -29,7 +29,7 @@ hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/waybar/scripts/launch.s
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("rofi -show emoji"))
 
 -- Change wallpaper at random
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("waypaper"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("swbg.sh"))
 
 hl.bind(mainMod .. " + ALT + A", hl.dsp.exec_cmd("anki"))
 hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd(browser))
@@ -122,5 +122,4 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("chosen_zathura_theme.sh"))
 -- Screenshot keybindings NOTE: You may need to press Fn key as well
 hl.bind("Print", hl.dsp.exec_cmd("screenshot.sh"))
 
--- Call hyprlock
-hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock"))
