@@ -1,0 +1,9 @@
+image=~/.local/share/lockscreen.png
+font=Iosevka Nerd Font Propo
+font-size=30
+daemonize
+ignore-empty-password
+show-failed-attempts
+indicator-radius=60
+indicator-x-position=230
+indicator-y-position=725
