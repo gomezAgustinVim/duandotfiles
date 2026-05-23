@@ -5,7 +5,7 @@ Description="Runs waypaper script"
 User=utane
 Group=utane
 Type=oneshot
-ExecStart=/usr/local/bin/waypaper
+ExecStart=/usr/local/bin/swbg.sh
 
 [Install]
 WantedBy=multi-user.target
