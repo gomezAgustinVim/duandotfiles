@@ -1,12 +1,12 @@
-image=~/.local/share/lockscreen.png
+image=~/.local/share/arch-nordic-lockscreen.png
 font=Iosevka Nerd Font Propo
 font-size=20
 daemonize
 ignore-empty-password
 show-failed-attempts
-indicator-radius=52
-indicator-x-position=230
-indicator-y-position=718
+indicator-radius=77
+indicator-x-position=253
+indicator-y-position=678
 
 indicator-idle-visible
 indicator-caps-lock
