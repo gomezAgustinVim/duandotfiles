@@ -21,6 +21,7 @@ audio/x-opus+ogg=mpv.desktop
 audio/mpeg=mpv.desktop
 audio/flac=mpv.desktop
 application/x-ms-dos-executable=wine.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
 
 [Default Applications]
 video/x-matroska=mpv.desktop
