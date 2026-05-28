@@ -18,6 +18,10 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
+-- Invocación global de tmux sessionizer
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("tmux-sessionizer.sh"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("session-finder.sh"))
+
 -- Mount android device
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("aft-mtp-mount ~/Público"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("umount ~/Público"))
