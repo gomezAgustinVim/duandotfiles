@@ -1,4 +1,4 @@
-[Added Associations]
+[Default Applications]
 inode/directory=pcmanfm.desktop;
 x-scheme-handler/magnet=torrent.desktop
 application/x.bittorrent=torrent.desktop
@@ -8,7 +8,11 @@ x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/ftp=filezilla.desktop
-text/html=firefox.desktop;
+x-scheme-handler/mailto=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=nvim.desktop;
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;nvim.desktop;
 application/x-extension-shtml=firefox.desktop;nvim.desktop;
@@ -22,8 +26,6 @@ audio/mpeg=mpv.desktop
 audio/flac=mpv.desktop
 application/x-ms-dos-executable=wine.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
-
-[Default Applications]
 video/x-matroska=mpv.desktop
 video/mp4=mpv.desktop
 image/gif=nsxiv.desktop
@@ -37,11 +39,8 @@ application/json=nvim.desktop
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
 text/markdown=nvim.desktop
 text/calendar=nvim.desktop
-x-scheme-handler/mailto=firefox.desktop
-x-scheme-handler/about=firefox.desktop
-x-scheme-handler/unknown=firefox.desktop
-x-scheme-handler/chrome=firefox.desktop
-text/plain=nvim.desktop
 application/vnd.comicbook-rar=org.pwmt.zathura-cb.desktop
+
+[Added Associations]
 
 [Removed Associations]
