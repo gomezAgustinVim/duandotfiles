@@ -1,5 +1,4 @@
 hl.on("hyprland.start", function()
-	hl.exec_cmd("foot --server")
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("swaybg -i ~/Imágenes/walls/nord/grey_lain_wallpaper.png")
