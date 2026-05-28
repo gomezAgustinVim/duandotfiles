@@ -188,6 +188,8 @@ do
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local shfmt = require("efmls-configs.formatters.shfmt")
 
+	local nixfmt = require("efmls-configs.formatters.nixfmt")
+
 	vim.lsp.config("efm", {
 		filetypes = {
 			"css",
@@ -199,6 +201,7 @@ do
 			"jsonc",
 			"lua",
 			"markdown",
+			"nix",
 			"sh",
 			"typescript",
 			"typescriptreact",
@@ -217,6 +220,7 @@ do
 				sh = { shellcheck, shfmt },
 				typescript = { eslint_d, prettier_d },
 				typescriptreact = { eslint_d, prettier_d },
+				nix = { nixfmt },
 			},
 		},
 	})
