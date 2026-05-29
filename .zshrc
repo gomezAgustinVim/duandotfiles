@@ -70,17 +70,11 @@ expand-or-complete-with-dots() {
 }
 
 zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots # ^I es tab
 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
-# command not found
-command_not_found_handler() {
-    printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
-    return 127
-}
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
@@ -91,15 +85,27 @@ function zle-keymap-select () {
 }
 
 zle -N zle-keymap-select
-
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-
-zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor on startup.
+
+# ^? y ^H son backspace dependiendo de la terminal
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+
+# ^[[3~ es tecla suprimir
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+bindkey -M vicmd '^?' vi-delete-char
+bindkey -M vicmd '^H' vi-delete-char
+bindkey -M visual '^?' vi-delete
+bindkey -M visual '^H' vi-delete
+
+# command not found
+command_not_found_handler() {
+    printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
+    return 127
+}
 
 bindkey -s '^f' 'con\n'
 
@@ -107,18 +113,11 @@ bindkey -s '^f' 'con\n'
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+# ^[[A es flecha arriba
+# ^[[B es flecha abajo
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-
-bindkey '^[[P' delete-char
-bindkey '^[[3~' delete-char
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-bindkey -M vicmd '^[[P' vi-delete-char
-bindkey -M visual '^[[P' vi-delete
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

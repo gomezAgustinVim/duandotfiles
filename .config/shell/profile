@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# profile file. Runs on login. Environmental variables are set here.
-
-# If you don't plan on reverting to bash, you can remove the link in ~/.profile
-# to clean up.
-
 # Add all directories in `~/.local/bin` to $PATH
 export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 unsetopt PROMPT_SP 2>/dev/null
@@ -13,7 +8,7 @@ unsetopt PROMPT_SP 2>/dev/null
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="foot"
-export TERM="foot"
+# export TERM="foot"
 export BROWSER="firefox"
 export MANPAGER='nvim +Man!'
 
