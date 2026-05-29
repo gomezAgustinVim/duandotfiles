@@ -16,7 +16,7 @@ if [ $# -eq 1 ]; then
 	from_terminal=1
 else
 	selected=$(
-		xargs -I{} find {} -mindepth 1 -maxdepth 1 -type d <"$routes" |
+		xargs -I{} find {} -mindepth 1 -maxdepth 1 \( ! -name '.*' -o -name '.config' -o -name '.local' \) -type d <"$routes" |
 			sed "s|^$HOME/||" |
 			rofi_parse_output
 	)
