@@ -126,4 +126,4 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("chosen_zathura_theme.sh"))
 -- Screenshot keybindings NOTE: You may need to press Fn key as well
 hl.bind("Print", hl.dsp.exec_cmd("screenshot.sh"))
 
-hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock"))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock -f"))
