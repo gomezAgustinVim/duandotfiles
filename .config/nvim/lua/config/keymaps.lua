@@ -90,7 +90,7 @@ map("n", "<Leader>th", "<C-w>t<C-w>H", { desc = "Move split window to horizontal
 map("n", "<Leader>tk", "<C-w>t<C-w>K", { desc = "Move split window to vertical" })
 
 -- Compile document, be it groff/LaTeX/markdown/etc.
-map("n", "<leader>cp", ':w! | !compiler "<c-r>%"<CR>', { desc = "Compile this file" })
+map("n", "<leader>cp", ':w! | !compiler.sh "<c-r>%"<CR>', { desc = "Compile this file" })
 
 -- Perform dot commands over visual blocks:
 map("x", ".", ":normal .<CR>")
