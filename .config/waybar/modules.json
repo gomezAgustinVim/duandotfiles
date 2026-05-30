@@ -80,6 +80,12 @@
         "format-disconnected": "Dekonetado nwnww ",
         "format-stopped": "{consumeIcon} Detenido ",
         "interval": 10,
+        "on-click": "mpc toggle",
+        "on-click-right": "foot -- ncmpcpp",
+        "on-scroll-up": "mpc seek +3",
+        "on-scroll-down": "mpc seek -3",
+        "artist-len": 20,
+        "title-len": 20,
         "consume-icons": {
             "on": " "
         },
@@ -115,11 +121,11 @@
     },
     "cpu": {
         "format": " {usage}%",
-        "on-click": "kitty -- htop",
+        "on-click": "foot -- htop",
         "tooltip": true
     },
     "tray": {
-        "icon-size": 16,
+        "icon-size": 14,
         "rotate": 0,
         "spacing": 5,
         "tooltip": true
