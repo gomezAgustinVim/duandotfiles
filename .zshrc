@@ -85,6 +85,13 @@ function zle-keymap-select () {
 }
 
 zle -N zle-keymap-select
+
+function zle-beam-init () {
+    zle -K viins
+    echo -ne '\e[5 q'
+}
+
+zle -N zle-beam-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor on startup.
 
