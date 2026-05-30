@@ -17,6 +17,7 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + A", hl.dsp.layout("togglesplit"))
 
 -- Invocación global de tmux sessionizer
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("tmux-sessionizer.sh"))
