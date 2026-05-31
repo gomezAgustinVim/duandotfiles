@@ -1,27 +1,22 @@
-# Stop terminal from freezing
-stty stop undef
+stty stop undef # Stop terminal from freezing
 stty start undef
 
 # Duan's config for the Zoomer Shell
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|sudo sdn|sdn|history|cd -|cd ..)"
 export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
 
-# Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
-# Options
 setopt interactive_comments
 setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 setopt LIST_PACKED		   # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 
-# History
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
 
-# setopt inc_append_history
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -35,7 +30,6 @@ setopt hist_find_no_dups
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
-# ------------------ Agregado del otro config ---------------------------
 # Basic auto/tab complete:
 autoload -Uz compinit
 
@@ -107,10 +101,6 @@ command_not_found_handler() {
 
 bindkey -s '^f' 'con\n'
 
-# ZSH autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 # ^[[A es flecha arriba
 # ^[[B es flecha abajo
 bindkey '^[[A' history-substring-search-up # or '\eOA'
@@ -130,28 +120,26 @@ bindkey -s '^o' 'y\n'
 # bindkey -s '^s' 'session-finder.sh\n'
 # bindkey -s '^t' 'tmux-sessionizer.sh\n'
 
-# pnpm
-export PNPM_HOME="/home/utane/.local/share/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Configuración manual de git status
+autoload -Uz vcs_info
+precmd () { vcs_info }
 
-# Hook for reading node version inmediately
-_fnm_autoload_hook () {
-    if [[ -f .node-version || -f .nvmrc || -f package.json ]]; then
-        fnm use --silent-if-unchanged
-    fi
+zstyle ':vcs_info:*'     enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
+zstyle ':vcs_info:git:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:git:*' formats       '%b %u%c'
+zstyle ':vcs_info:git:*' actionformats '%b %u%c %a'
 
-}
+setopt PROMPT_SUBST        # enable command substitution in prompt
 
-add-zsh-hook chpwd _fnm_autoload_hook \
-    && _fnm_autoload_hook
+PROMPT='%F{cyan}󰣇 %B%F{red}%1~%f%b on %F{magenta} ${vcs_info_msg_0_}  %B%F{139}>%b%f '
+RPROMPT='%F{255}%B%*%b%f'
 
-rehash
+source "$ZDOTDIR/pnpm.zsh"
 
-# Load syntax highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-source "${ZDOTDIR:-.config/zsh}/prompt.zsh"
+# eval "$(starship init zsh)"
