@@ -3,11 +3,6 @@
 # Use neovim for vim if present.
 [ -x "$(command -v nvim)" ] && alias v="nvim" vimdiff="nvim -d"
 
-# Use $XINITRC variable if file exists.
-# [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
-
-# so, aliases for some programs are here, as follows:
-
 # youtube-dl
 alias \
     yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
@@ -27,7 +22,6 @@ alias \
     mkd="mkdir -pv" \
     rmd="rmdir -v" \
     du="du -h" \
-    lf="lfrun" \
     rs="rsync -Pa" \
     fm="pcmanfm > /dev/null 2>&1 &" \
     texwatch="latexmk -pdf -pvc" # better latex compiler

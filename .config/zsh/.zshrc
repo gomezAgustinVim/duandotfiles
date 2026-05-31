@@ -5,15 +5,12 @@ stty start undef
 # Duan's config for the Zoomer Shell
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|sudo sdn|sdn|history|cd -|cd ..)"
 export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
-PS1="%K{#2e3440}%B%F{#8fbcbb}%n%f%F{#88c0d0}@%f%F{#5e81ac}%m%f%b%k %K{#434c5e}%F{#eceff4}%1~%f%k "
-RPROMPT="%F{241}%B%T%b%f"
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
 # Options
 setopt interactive_comments
-setopt PROMPT_SUBST        # enable command substitution in prompt
 setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 setopt LIST_PACKED		   # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
@@ -45,8 +42,6 @@ autoload -Uz compinit
 compinit -C -d ~/.cache/zsh/zcompdump
 
 autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-precmd () { vcs_info }
 _comp_options+=(globdots)
 
 zstyle ':completion:*' verbose true
@@ -58,7 +53,6 @@ zstyle ':completion:*' matcher-list \
     '+l:|=*'
 zstyle ':completion:*:warnings' format "%B%F{red}No hay matches para:%f %F{magenta}%d%b"
 zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
 expand-or-complete-with-dots() {
     echo -n "\e[31m…\e[0m"
@@ -160,4 +154,4 @@ rehash
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-eval "$(starship init zsh)"
+source "${ZDOTDIR:-.config/zsh}/prompt.zsh"
