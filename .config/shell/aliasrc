@@ -58,7 +58,7 @@ alias \
     tcopy="wl-copy --trim-newline" \
     pcopy="pwd | wl-copy --trim-newline" \
     dopdf="lowriter --headless --convert-to pdf " \
-    src="source ~/.zshrc && echo 'sourceado nwn!'"
+    src="source ~/.config/zsh/.zshrc && echo 'sourceado nwn!'"
 
 # Pacman
 alias \
@@ -74,10 +74,10 @@ alias \
 # enable color support of ls and also add handy aliases
 alias \
     ls="ls -hN --color=auto --group-directories-first" \
-    cat="bat --theme=base16" \
     dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; \
         then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
     dir="dir --color=auto" \
+    cat="cat --number" \
     vdir="vdir --color=auto" \
     grep="grep --color=auto" \
     fgrep="fgrep --color=auto" \

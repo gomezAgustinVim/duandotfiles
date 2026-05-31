@@ -5,6 +5,8 @@ stty start undef
 # Duan's config for the Zoomer Shell
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|sudo sdn|sdn|history|cd -|cd ..)"
 export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
+PS1="%K{#2e3440}%B%F{#8fbcbb}%n%f%F{#88c0d0}@%f%F{#5e81ac}%m%f%b%k %K{#434c5e}%F{#eceff4}%1~%f%k "
+RPROMPT="%F{241}%B%T%b%f"
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
@@ -32,7 +34,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
@@ -41,11 +42,7 @@ setopt hist_find_no_dups
 # Basic auto/tab complete:
 autoload -Uz compinit
 
-for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-    compinit -d ~/.config/zsh/zcompdump
-done
-
-compinit -C -d ~/.config/zsh/zcompdump
+compinit -C -d ~/.cache/zsh/zcompdump
 
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
@@ -162,7 +159,3 @@ rehash
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

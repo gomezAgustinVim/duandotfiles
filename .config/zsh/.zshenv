@@ -1,29 +1,37 @@
-#!/bin/sh
+# Esto va en /etc/zshenv
+# if [[ -z "$XDG_CONFIG_HOME" ]]
+# then
+#     export XDG_CONFIG_HOME="$HOME/.config"
+# fi
+#
+# if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+# then
+#     export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# fi
 
 # Add all directories in `~/.local/bin` to $PATH
-export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+export PATH="$HOME/.local/bin:$PATH"
 unsetopt PROMPT_SP 2>/dev/null
 
-# Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="foot"
-# export TERM="foot"
 export BROWSER="firefox"
 export MANPAGER='nvim +Man!'
 
-TZ="America/Argentina/Buenos_Aires"
-
-# ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+export GPG_TTY=$(tty)
+
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export XMODIFIERS=@im=fcitx5
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
-# export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
@@ -33,11 +41,11 @@ export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 export UNISON="$XDG_DATA_HOME/unison"
-export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zsh_history"
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+# export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -57,7 +65,6 @@ export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 export AWT_TOOLKIT="MToolkit wmname LG3D" #May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1      # Fix for Java applications in dwm
-export BAT_THEME='gruvbox-dark'
 
 [ ! -f "$XDG_CONFIG_HOME/shell/shortcutrc" ] && setsid shortcuts >/dev/null 2>&1
 
@@ -71,12 +78,3 @@ export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
 export FNM_COREPACK_ENABLED="false"
 export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
-
-# Starting Wayland
-# fix maybe yeah ok no definetly
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    exec dbus-run-session start-hyprland
-fi
-
-# Start graphical server on user's current tty if not already running.
-# [ "$(tty)" = "/dev/tty2" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
