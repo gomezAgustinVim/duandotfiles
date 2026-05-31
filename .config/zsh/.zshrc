@@ -126,14 +126,15 @@ precmd () { vcs_info }
 
 zstyle ':vcs_info:*'     enable git
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:git:*' stagedstr '%F{green}+%f'
-zstyle ':vcs_info:git:*' formats       '%b %u%c'
-zstyle ':vcs_info:git:*' actionformats '%b %u%c %a'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}[✘!]%f'
+zstyle ':vcs_info:git:*' stagedstr '%F{green}[✘+]%f'
+zstyle ':vcs_info:git:*' formats       'on %F{magenta} %b %u%c%f'
+zstyle ':vcs_info:git:*' actionformats 'on %F{magenta} %b %u%c% %af'
 
 setopt PROMPT_SUBST        # enable command substitution in prompt
 
-PROMPT='%F{cyan}󰣇 %B%F{red}%1~%f%b on %F{magenta} ${vcs_info_msg_0_}  %B%F{139}>%b%f '
+NEWLINE=$'\n'
+PROMPT='%F{cyan}󰣇 %B%F{red}%1~%f%b ${vcs_info_msg_0_}${NEWLINE}%B%F{green}>%b%f '
 RPROMPT='%F{255}%B%*%b%f'
 
 source "$ZDOTDIR/pnpm.zsh"
@@ -142,4 +143,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
