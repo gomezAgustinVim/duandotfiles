@@ -30,6 +30,9 @@ setopt hist_find_no_dups
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
+source <(fzf --zsh)
+bindkey '^R' fzf-history-widget
+
 # Basic auto/tab complete:
 autoload -Uz compinit
 
