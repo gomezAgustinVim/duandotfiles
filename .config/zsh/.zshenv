@@ -45,6 +45,7 @@ export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 # export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Other program settings:
@@ -78,3 +79,4 @@ export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
 export FNM_COREPACK_ENABLED="false"
 export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
+
