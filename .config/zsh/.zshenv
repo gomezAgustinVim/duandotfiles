@@ -46,7 +46,6 @@ export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
 export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
-# export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -60,8 +59,6 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export GTK_IM_MODULE=wayland
-export QT_IM_MODULES="wayland;fcitx5"
 export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 export AWT_TOOLKIT="MToolkit wmname LG3D" #May have to install wmname

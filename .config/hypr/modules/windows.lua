@@ -19,8 +19,6 @@ hl.window_rule({ match = { class = "Nsxiv" }, tag = "img" })
 hl.window_rule({ match = { class = "^.*(zathura)$" }, tag = "+pdf" })
 hl.window_rule({ match = { class = "firefox" }, tag = "+browser" })
 hl.window_rule({ match = { class = "librewolf" }, tag = "+browser" })
-hl.window_rule({ match = { class = "footclient" }, tag = "+term" }) -- Add dynamic tag `term*`
-hl.window_rule({ match = { class = "footclient" }, tag = "term" }) -- Toggle dynamic tag `term*`
 
 -- GUI
 hl.window_rule({ match = { class = "^(blue).*$" }, tag = "+gui" })
@@ -39,6 +37,7 @@ hl.window_rule({ match = { class = "^(libreoffice)-*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "electron" }, tag = "+gui" })
 hl.window_rule({ match = { class = "obsidian" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^.*(Nicotine)$" }, tag = "+gui" })
+hl.window_rule({ match = { class = "steam" }, tag = "+gui" })
 hl.window_rule({ match = { class = "xdg-desktop-portal-gtk" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^([Vv]irt.*)" }, tag = "+gui" })
 hl.window_rule({ match = { class = "filezilla" }, tag = "+gui" })

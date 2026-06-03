@@ -37,12 +37,16 @@ hl.env("TZ", "America/Argentina/Buenos_Aires") -- i hate this shi but ah gotta d
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
-hl.env("SDL_VIDEODRIVER", "wayland")
+
+hl.env("SDL_VIDEODRIVER", "wayland,x11")
+hl.env("SDL_IM_MODULE", "fcitx")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
+hl.env("QT_IM_MODULES", "wayland;fcitx")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
+-- hl.env("GTK_IM_MODULE", "wayland,fcitx5")
 hl.env("GDK_SCALE", "1")
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
@@ -54,7 +58,7 @@ local suppressMaximizeRule = hl.window_rule({
 
 	suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
+suppressMaximizeRule:set_enabled(true)
 
 hl.config({
 	xwayland = {
