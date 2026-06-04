@@ -7,7 +7,7 @@ terminal="${TERMINAL:-foot}"
 
 rofi_parse_output() {
 	if command -v rofi >/dev/null 2>&1; then
-		rofi -dmenu -i -p 'Directorios: ' -l 10 -matching fuzzy -no-custom
+		rofi -dmenu -i -p 'Directorios: ' -l 10 -no-custom
 	fi
 }
 
