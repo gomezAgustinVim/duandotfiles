@@ -24,7 +24,7 @@ hl.window_rule({ match = { class = "librewolf" }, tag = "+browser" })
 hl.window_rule({ match = { class = "^(blue).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^(calibre).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "gcr-prompter" }, tag = "+gui" })
-hl.window_rule({ match = { class = "code" }, tag = "+gui" })
+hl.window_rule({ match = { class = "codium" }, tag = "+gui" })
 hl.window_rule({ match = { class = "nwg-look" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^(pcmanfm).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = ".*(fcitx5-config-qt)$" }, tag = "+gui" })
@@ -84,7 +84,7 @@ hl.window_rule({ match = { class = "firefox" }, workspace = "1" })
 hl.window_rule({ match = { class = "librewolf" }, workspace = "3" })
 
 -- Workspace 4
-hl.window_rule({ match = { class = "code" }, workspace = "4" })
+hl.window_rule({ match = { class = "codium" }, workspace = "4" })
 hl.window_rule({ match = { class = "anki" }, workspace = "4" })
 hl.window_rule({ match = { class = "^([Vv]irt.*)" }, workspace = "4" })
 
