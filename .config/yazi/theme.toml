@@ -2,3 +2,16 @@
 dark = "nord"
 # dark = "dracula"
 # dark = "catppuccin-mocha"
+
+[icon]
+prepend_dirs = [
+	{ name = "Escritorio", text = "", fg = "#D8DEE9" },
+	{ name = "Descargas", text = "", fg = "#D8DEE9" },
+	{ name = "Vídeos", text = "", fg = "#D8DEE9" },
+	{ name = "Documentos", text = "", fg = "#D8DEE9" },
+	{ name = "Imágenes", text = "󰋵", fg = "#D8DEE9" },
+	{ name = "Música", text = "", fg = "#D8DEE9" },
+	{ name = "Público", text = "", fg = "#D8DEE9" },
+    { name = "Proyectos", text = "", fg = "#D8DEE9" },
+    { name = "Plantillas", text = "󰧨", fg = "#D8DEE9" },
+]
