@@ -13,12 +13,12 @@ hl.config({
 
 hl.config({
 	ecosystem = {
-		enforce_permissions = false,
+		enforce_permissions = true,
 	},
 })
 
--- hl.permission({ binary = "/usr/bin/grim", type = "screencopy", mode = "ask" })
--- hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/grim", type = "screencopy", mode = "ask" })
+hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
 
 require("modules/autostart")
 require("modules/look")

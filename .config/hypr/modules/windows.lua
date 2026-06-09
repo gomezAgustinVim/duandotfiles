@@ -82,6 +82,7 @@ hl.window_rule({ match = { class = "firefox" }, workspace = "1" })
 
 -- Worspace 3
 hl.window_rule({ match = { class = "librewolf" }, workspace = "3" })
+hl.window_rule({ match = { class = "steam" }, workspace = "3 silent" })
 
 -- Workspace 4
 hl.window_rule({ match = { class = "codium" }, workspace = "4" })
@@ -90,7 +91,7 @@ hl.window_rule({ match = { class = "^([Vv]irt.*)" }, workspace = "4" })
 
 -- Workspace 5
 hl.window_rule({ match = { class = ".*(KeePassXC)$" }, workspace = "5" })
-hl.window_rule({ match = { class = "gcr-prompter" }, workspace = "5" })
+-- hl.window_rule({ match = { class = "gcr-prompter" }, workspace = "5" })
 
 -- Workspace 6
 hl.window_rule({ match = { class = "gimp" }, workspace = "6" })
