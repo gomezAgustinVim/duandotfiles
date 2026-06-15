@@ -98,7 +98,7 @@ hl.window_rule({ match = { class = "gimp" }, workspace = "6" })
 hl.window_rule({ match = { class = "filezilla" }, workspace = "6" })
 
 -- Workspace 7
-hl.window_rule({ match = { class = "^.*(obsproject)" }, workspace = "7" })
+hl.window_rule({ match = { class = "^.*(obsproject).*" }, workspace = "7" })
 
 -- Workspace 8
 hl.window_rule({ match = { class = "^.*(Nicotine)$" }, workspace = "8 silent" })

@@ -1,5 +1,5 @@
 local terminal = "foot"
-local fileManager = "pcmanfm"
+local fileManager = "Thunar"
 local menu = 'rofi -show combi -combi-modes "drun,ssh" -modes combi'
 local mainMod = "SUPER"
 local browser = "firefox"
@@ -28,7 +28,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("aft-mtp-mount ~/Público"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("umount ~/Público"))
 
 -- Reiniciar Waybar
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/hypr/scripts/launch.sh"))
 
 -- Copy emoji
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("rofi -show emoji"))
@@ -128,3 +128,10 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("chosen_zathura_theme.sh"))
 hl.bind("Print", hl.dsp.exec_cmd("screenshot.sh"))
 
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock -f"))
+
+-- con esto logramos que los binds de hyprland pasen a una VM
+-- basicamente se togglea con super + escape
+hl.define_submap("passthru", function()
+	hl.bind(mainMod .. " + Escape", hl.dsp.submap("reset"))
+end)
+hl.bind(mainMod .. " + Escape", hl.dsp.submap("passthru"))
