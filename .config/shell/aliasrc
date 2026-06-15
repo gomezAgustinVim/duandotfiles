@@ -23,7 +23,7 @@ alias \
     rmd="rmdir -v" \
     du="du -h" \
     rs="rsync -Pa" \
-    fm="pcmanfm > /dev/null 2>&1 &" \
+    fm="thunar > /dev/null 2>&1 &" \
     texwatch="latexmk -pdf -pvc" # better latex compiler
 
 # ffmpeg commands
