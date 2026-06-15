@@ -1,7 +1,7 @@
 local terminal = "foot"
 local fileManager = "pcmanfm"
 local menu = 'rofi -show combi -combi-modes "drun,ssh" -modes combi'
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local mainMod = "SUPER"
 local browser = "firefox"
 
 hl.bind(
@@ -44,7 +44,7 @@ hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd("transmission-qt"))
 hl.bind(mainMod .. " + ALT + F", hl.dsp.exec_cmd("filezilla"))
 hl.bind(mainMod .. " + ALT + K", hl.dsp.exec_cmd("keepassxc"))
 hl.bind(mainMod .. " + ALT + V", hl.dsp.exec_cmd("virt-manager"))
-hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("codium"))
+hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("code"))
 hl.bind(mainMod .. " + ALT + O", hl.dsp.exec_cmd("obs"))
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd(terminal .. " ncmpcpp"))
 hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd(terminal .. " htop"))
@@ -100,8 +100,8 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brillo -q -A 3"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brillo -q -U 3"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -q -e set +5%"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -q -e set 5%-"), { locked = true, repeating = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("rofi -show calc -no-show-match -no-sort"))
 
 -- Requires playerctl

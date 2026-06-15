@@ -85,7 +85,7 @@ hl.window_rule({ match = { class = "librewolf" }, workspace = "3" })
 hl.window_rule({ match = { class = "steam" }, workspace = "3 silent" })
 
 -- Workspace 4
-hl.window_rule({ match = { class = "codium" }, workspace = "4" })
+hl.window_rule({ match = { class = "code-oss" }, workspace = "4" })
 hl.window_rule({ match = { class = "anki" }, workspace = "4" })
 hl.window_rule({ match = { class = "^([Vv]irt.*)" }, workspace = "4" })
 
