@@ -71,7 +71,6 @@ alias \
     dt='ls -l | grep "$(if [[ "$(date "+%-d")" -lt 10 ]]; \
         then date "+%b  %-d"; else date "+%b %-d"; fi)"' \
     dir="dir --color=auto" \
-    cat="cat --number" \
     vdir="vdir --color=auto" \
     grep="grep --color=auto" \
     fgrep="fgrep --color=auto" \

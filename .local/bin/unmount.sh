@@ -3,6 +3,7 @@
 RED=$(tput setaf 1)
 BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
 NC=$(tput sgr0)
 
 # Necesita rofi para andar
@@ -70,5 +71,5 @@ if [ "$PUBLIC_MOUNT" -gt 0 ]; then
 		esac
 	done
 else
-	printf "%sERROR:%s No hay carpeta publico montada\n" "$RED" "$NC"
+	printf "%sADVERTENCIA:%s No hay carpeta publico montada\n" "$YELLOW" "$NC" >&2
 fi
