@@ -28,7 +28,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("aft-mtp-mount ~/Público"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("umount ~/Público"))
 
 -- Reiniciar Waybar
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/hypr/scripts/launch.sh"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("sh ~/.config/hypr/scripts/start-waybar.sh"))
 
 -- Copy emoji
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("rofi -show emoji"))

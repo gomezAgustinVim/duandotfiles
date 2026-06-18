@@ -78,24 +78,23 @@ hl.window_rule({
 })
 
 -- Workspace 1
-hl.window_rule({ match = { class = "firefox" }, workspace = "1" })
+hl.window_rule({ match = { class = "firefox" }, workspace = "1 silent" })
 
 -- Worspace 3
-hl.window_rule({ match = { class = "librewolf" }, workspace = "3" })
+hl.window_rule({ match = { class = "librewolf" }, workspace = "3 silent" })
 hl.window_rule({ match = { class = "steam" }, workspace = "3 silent" })
 
 -- Workspace 4
-hl.window_rule({ match = { class = "code-oss" }, workspace = "4" })
+hl.window_rule({ match = { class = "code-oss" }, workspace = "4 silent" })
 hl.window_rule({ match = { class = "anki" }, workspace = "4" })
-hl.window_rule({ match = { class = "^([Vv]irt.*)" }, workspace = "4" })
+hl.window_rule({ match = { class = "^([Vv]irt.*)" }, workspace = "4 silent" })
 
 -- Workspace 5
 hl.window_rule({ match = { class = ".*(KeePassXC)$" }, workspace = "5" })
--- hl.window_rule({ match = { class = "gcr-prompter" }, workspace = "5" })
 
 -- Workspace 6
-hl.window_rule({ match = { class = "gimp" }, workspace = "6" })
-hl.window_rule({ match = { class = "filezilla" }, workspace = "6" })
+hl.window_rule({ match = { class = "gimp" }, workspace = "6 silent" })
+hl.window_rule({ match = { class = "filezilla" }, workspace = "6 silent" })
 
 -- Workspace 7
 hl.window_rule({ match = { class = "^.*(obsproject).*" }, workspace = "7" })
