@@ -9,7 +9,7 @@ ext="${file##*.}"
 base="${file%.*}"
 
 case "${ext}" in
-c) cc "${file}" -o "${base}" && "./${base}" ;;
+c) gcc -Wall -Wextra -o "${base}" "${file}" ;;
 h) sudo make install ;;
 md)
 	css=""
