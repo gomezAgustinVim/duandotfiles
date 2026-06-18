@@ -42,5 +42,6 @@ text/calendar=nvim.desktop
 application/vnd.comicbook-rar=org.pwmt.zathura-cb.desktop
 
 [Added Associations]
+application/zip=engrampa.desktop;org.gnome.FileRoller.desktop;org.kde.ark.desktop;xarchiver.desktop;
 
 [Removed Associations]
