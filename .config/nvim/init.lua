@@ -189,6 +189,7 @@ do
 	local shfmt = require("efmls-configs.formatters.shfmt")
 
 	local nixfmt = require("efmls-configs.formatters.nixfmt")
+	local clangfmt = require("efmls-configs.formatters.clang_format")
 
 	vim.lsp.config("efm", {
 		filetypes = {
@@ -200,6 +201,7 @@ do
 			"json",
 			"jsonc",
 			"lua",
+			"c",
 			"markdown",
 			"nix",
 			"sh",
@@ -221,6 +223,7 @@ do
 				typescript = { eslint_d, prettier_d },
 				typescriptreact = { eslint_d, prettier_d },
 				nix = { nixfmt },
+				c = { clangfmt },
 			},
 		},
 	})

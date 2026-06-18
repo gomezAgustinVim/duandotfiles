@@ -117,12 +117,14 @@ vim.lsp.config("ts_ls", {})
 vim.lsp.config("bashls", {})
 vim.lsp.config("tinymist", {})
 vim.lsp.config("prismals", {})
+vim.lsp.config("clangd", {})
 
 vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
 	"bashls",
 	"prismals",
+	"clangd",
 	"tinymist",
 	"markdown_oxide",
 	"elf",
