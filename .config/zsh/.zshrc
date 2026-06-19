@@ -102,7 +102,17 @@ command_not_found_handler() {
     return 127
 }
 
-bindkey -s '^f' 'con\n'
+con() {
+    cd ~/.config || exit
+    selected_file=$(fzf --color="light") || return # Return if no selection
+    cd "$(dirname "$selected_file")" || exit
+    $EDITOR "$(basename "$selected_file")" # Open the file
+}
+
+se() {
+    cd ~/.local/bin || exit
+    $EDITOR "$(fzf --color="light")"
+}
 
 # ^[[A es flecha arriba
 # ^[[B es flecha abajo
@@ -112,16 +122,15 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
+	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp" > /dev/null 2>&1
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
 }
 
 bindkey -s '^o' 'y\n'
-
-# bindkey -s '^s' 'session-finder.sh\n'
-# bindkey -s '^t' 'tmux-sessionizer.sh\n'
+bindkey -s '^f' 'con\n'
+bindkey -s '^s' 'se\n'
 
 # Configuración manual de git status
 autoload -Uz vcs_info
