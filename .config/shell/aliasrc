@@ -82,15 +82,3 @@ alias \
 # Mpv
 alias podcast="mpv --no-video"
 alias serie="mpv list.m3u8 > /dev/null 2>&1"
-
-con() {
-    cd ~/.config || exit
-    selected_file=$(fzf --color="light") || return # Return if no selection
-    cd "$(dirname "$selected_file")" || exit
-    $EDITOR "$(basename "$selected_file")" # Open the file
-}
-
-se() {
-    cd ~/.local/bin || exit
-    $EDITOR "$(fzf --color="light")"
-}
