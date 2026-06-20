@@ -27,6 +27,7 @@ require("modules/input")
 require("modules/binds")
 require("modules/windows")
 
+hl.env("GTK_THEME", "Adapta-Nokto-Eta")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "18")
