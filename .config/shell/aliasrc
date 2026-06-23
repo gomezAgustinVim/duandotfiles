@@ -6,8 +6,8 @@
 # youtube-dl
 alias \
     yt='yt-dlp --embed-thumbnail --embed-metadata --add-metadata -i' \
-    yta='yt -x -f bestaudio/best -o "~/Musica/dl-music/%(title)s.%(ext)s"' \
-    ytp='yt -x -f bestaudio/best -o "~/Videos/Podcast/%(title)s.%(ext)s"' \
+    yta='yt -x -f bestaudio/best -o "~/Música/dl-music/%(title)s.%(ext)s"' \
+    ytp='yt -x -f bestaudio/best -o "~/Vídeos/Podcast/%(title)s.%(ext)s"' \
     ytn='yt --embed-thumbnail --embed-metadata -o "./%(title)s.%(ext)s"'
 
 # Expand sudo to work with aliases
