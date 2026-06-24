@@ -25,6 +25,8 @@ if [ ! -s "$BACKUP_FILTER" ]; then
 EOF
 fi
 
+trap 'notify-send "\nBackup cancelado por el usuario. nwn" ; exit 130' INT
+
 echo "Procediendo al backup nwn..."
 
 # backup completo del sistema preservando atributos extendidos y ACLs
