@@ -1,13 +1,16 @@
 #!/bin/sh
 
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-    echo "" | xclip -sel clip
-    gpg -d "$1" | xclip -r -sel clip
-    sleep 5
-    echo "" | xclip -sel clip
+	echo "" | xclip -sel clip
+	gpg -d "$1" | xclip -r -sel clip
+	sleep 5
+	echo "" | xclip -sel clip
 fi
 
+PASS_LOC="$HOME/Documentos/keepass.gpg"
+PASS_FILE="$(basename "$PASS_LOC")"
+
 echo "" | wl-copy
-gpg -d "$1" | wl-copy --trim-newline
+gpg -d "$PASS_FILE" | wl-copy --trim-newline
 sleep 5
 echo "" | wl-copy

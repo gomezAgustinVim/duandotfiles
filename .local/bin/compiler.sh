@@ -19,5 +19,6 @@ md)
 py) python "${file}" ;;
 [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
 tex) latexmk ;;
+typ) typst compile "${file}" ;;
 *) sed -n '/^#!/s/^#!//p; q' "${file}" | xargs -r -I % "${file}" ;;
 esac

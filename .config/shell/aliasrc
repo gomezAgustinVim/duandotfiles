@@ -33,16 +33,16 @@ alias \
         -type f -name "*.mkv" -print \
         -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;'
 
-# These common commands are just too long! Abbreviate them.
-# i="imv -u linear" \
 alias \
     z="zathura" \
     ka="killall" \
     g="git status" \
-    gm="git commit -m" \
+    gc="git commit -m" \
     gp="git push" \
     gb="git branch" \
-    gic="git checkout" \
+    gch="git checkout" \
+    dcu="docker compose up -d" \
+    dcd="docker compose down -v" \
     i="nsxiv -q -a -t" \
     sdn="shutdown -h now" \
     df='df -lH ' \
