@@ -128,6 +128,8 @@ hl.bind("Print", hl.dsp.exec_cmd("screenshot.sh"))
 
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock -f"))
 
+hl.bind(mainMod .. " + ALT + D", hl.dsp.exec_cmd("dencript.sh"))
+
 -- con esto logramos que los binds de hyprland pasen a una VM
 -- basicamente se togglea con super + escape
 hl.define_submap("passthru", function()

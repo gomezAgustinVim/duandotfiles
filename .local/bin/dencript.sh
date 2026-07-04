@@ -8,9 +8,8 @@ if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
 fi
 
 PASS_LOC="$HOME/Documentos/keepass.gpg"
-PASS_FILE="$(basename "$PASS_LOC")"
 
 echo "" | wl-copy
-gpg -d "$PASS_FILE" | wl-copy --trim-newline
+gpg -d "$PASS_LOC" | wl-copy --trim-newline
 sleep 5
 echo "" | wl-copy
