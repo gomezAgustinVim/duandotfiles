@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		"*.css",
 		"*.scss",
 		"*.html",
+		"*.astro",
 		"*.sh",
 		"*.bash",
 		"*.zsh",
