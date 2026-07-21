@@ -1,5 +1,4 @@
 hl.window_rule({
-	-- Fix some dragging issues with XWayland
 	name = "fix-xwayland-drags",
 	match = {
 		class = "^$",
@@ -26,7 +25,7 @@ hl.window_rule({ match = { class = "^(calibre).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "gcr-prompter" }, tag = "+gui" })
 hl.window_rule({ match = { class = "codium" }, tag = "+gui" })
 hl.window_rule({ match = { class = "nwg-look" }, tag = "+gui" })
-hl.window_rule({ match = { class = "^(pcmanfm).*$" }, tag = "+gui" })
+hl.window_rule({ match = { class = "^(Thunar).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = ".*(fcitx5-config-qt)$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^.*(pavucontrol)$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "gimp" }, tag = "+gui" })
@@ -59,12 +58,11 @@ hl.window_rule({
 hl.window_rule({ match = { tag = "gui", float = true } })
 
 -- Sizes
--- hl.window_rule({match = {tag = "img"}, max_size = { 849, 477 }})
 hl.window_rule({ match = { tag = "img" }, float = true })
 
 -- Opacity and blur
-hl.window_rule({ match = { tag = "img" }, float = true, opacity = "1.0 override", no_blur = true })
-hl.window_rule({ match = { tag = "browser" }, opacity = "1.0 override", no_blur = true })
+hl.window_rule({ match = { tag = "img" }, float = true, opacity = "1.0 override" })
+hl.window_rule({ match = { tag = "browser" }, opacity = "1.0 override" })
 hl.window_rule({ match = { tag = "gui" }, opacity = "1.0 override" })
 hl.window_rule({ match = { tag = "pdf" }, opacity = "1.0 override" })
 
