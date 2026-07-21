@@ -48,7 +48,6 @@ alias \
     df='df -lH ' \
     f="fastfetch" \
     h="htop" \
-    c="cointop" \
     tcopy="wl-copy --trim-newline" \
     pcopy="pwd | wl-copy --trim-newline" \
     dopdf="lowriter --headless --convert-to pdf " \
