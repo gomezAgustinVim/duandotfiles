@@ -3,7 +3,7 @@
 # Archivo con rutas
 routes="$HOME/Documentos/rutas.txt"
 
-terminal="${TERMINAL:-foot}"
+terminal="${TERMINAL:-footclient}"
 
 rofi_parse_output() {
 	if command -v rofi >/dev/null 2>&1; then

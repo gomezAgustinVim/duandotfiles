@@ -1,6 +1,6 @@
 #!/bin/sh
 
-terminal="${TERMINAL:-foot}"
+terminal="${TERMINAL:-footclient}"
 
 set -eu
 
@@ -48,5 +48,3 @@ else
 	# attach existing
 	exec $terminal "$TMUX_BIN" attach -t "$session"
 fi
-
-# [ "${TMUX-}" ] && tmux switch-client -t "$selection" || foot -e tmux attach -t "$selection"

@@ -1,4 +1,4 @@
-local terminal = "foot"
+local terminal = "footclient"
 local fileManager = "Thunar"
 local menu = 'rofi -show combi -combi-modes "drun,ssh" -modes combi'
 local mainMod = "SUPER"
