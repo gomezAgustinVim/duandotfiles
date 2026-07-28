@@ -191,6 +191,8 @@ do
 	local nixfmt = require("efmls-configs.formatters.nixfmt")
 	local clangfmt = require("efmls-configs.formatters.clang_format")
 
+	local taplo = require("efmls-configs.formatters.taplo")
+
 	vim.lsp.config("efm", {
 		filetypes = {
 			"css",
@@ -201,6 +203,7 @@ do
 			"json",
 			"jsonc",
 			"lua",
+			"toml",
 			"astro",
 			"c",
 			"markdown",
@@ -226,6 +229,7 @@ do
 				typescriptreact = { eslint_d, prettier_d },
 				nix = { nixfmt },
 				c = { clangfmt },
+				toml = { taplo },
 			},
 		},
 	})
