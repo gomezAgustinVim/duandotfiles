@@ -155,4 +155,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
-eval "$(starship init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/zsh/nordtron.omp.json)"

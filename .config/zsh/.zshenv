@@ -15,7 +15,7 @@ unsetopt PROMPT_SP 2>/dev/null
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="foot"
+export TERMINAL="footclient"
 export BROWSER="firefox"
 export MANPAGER='nvim +Man!'
 
