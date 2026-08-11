@@ -27,7 +27,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export GPG_TTY=$(tty)
 
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
-export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export XMODIFIERS=@im=fcitx5
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
@@ -40,15 +39,10 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
-export UNISON="$XDG_DATA_HOME/unison"
-export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
-export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 
 # Other program settings:
-export DICS="/usr/share/stardict/dic/"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS="-R"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
@@ -58,11 +52,8 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
-export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export ELECTRON_OZONE_PLATFORM_HINT=auto
-export AWT_TOOLKIT="MToolkit wmname LG3D" #May have to install wmname
-export _JAVA_AWT_WM_NONREPARENTING=1      # Fix for Java applications in dwm
 
 [ ! -f "$XDG_CONFIG_HOME/shell/shortcutrc" ] && setsid shortcuts >/dev/null 2>&1
 
