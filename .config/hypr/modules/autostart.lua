@@ -7,6 +7,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("swaybg -i ~/Imágenes/walls/nord/grey_lain_wallpaper.png")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("Thunar --daemon")
+	hl.exec_cmd("foot --server")
 	hl.exec_cmd("hypridle & hyprsunset")
 	hl.exec_cmd("fcitx5 -dr")
 	hl.exec_cmd("xrdb -load ~/.config/x11/xresources") -- used for nsxiv
