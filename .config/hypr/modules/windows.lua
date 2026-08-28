@@ -21,6 +21,7 @@ hl.window_rule({ match = { class = "librewolf" }, tag = "+browser" })
 
 -- GUI
 hl.window_rule({ match = { class = "^(blue).*$" }, tag = "+gui" })
+hl.window_rule({ match = { class = "^(discord)$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^(calibre).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "gcr-prompter" }, tag = "+gui" })
 hl.window_rule({ match = { class = "codium" }, tag = "+gui" })
@@ -80,6 +81,7 @@ hl.window_rule({ match = { class = "firefox" }, workspace = "1 silent" })
 
 -- Worspace 3
 hl.window_rule({ match = { class = "librewolf" }, workspace = "3 silent" })
+hl.window_rule({ match = { class = "discord" }, workspace = "3 silent" })
 hl.window_rule({ match = { title = "^[sS]team" }, workspace = "3 silent" })
 
 -- Workspace 4
