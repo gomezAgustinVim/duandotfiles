@@ -16,6 +16,7 @@ hl.window_rule({
 hl.window_rule({ match = { class = "mpv" }, tag = "+video" })
 hl.window_rule({ match = { class = "Nsxiv" }, tag = "img" })
 hl.window_rule({ match = { class = "^.*(zathura)$" }, tag = "+pdf" })
+hl.window_rule({ match = { class = "sioyek" }, tag = "+pdf" })
 hl.window_rule({ match = { class = "firefox" }, tag = "+browser" })
 hl.window_rule({ match = { class = "librewolf" }, tag = "+browser" })
 

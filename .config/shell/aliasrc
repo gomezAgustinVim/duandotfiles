@@ -34,7 +34,7 @@ alias \
         -exec sh -c '\''i="{}"; ffmpeg -i "$i" -c:v libx264 -crf 22 "${i%.mkv}".mp4'\'' \;'
 
 alias \
-    z="zathura" \
+    z="sioyek" \
     ka="killall" \
     g="git status" \
     gc="git commit -m" \
