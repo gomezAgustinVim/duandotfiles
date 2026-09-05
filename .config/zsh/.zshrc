@@ -3,7 +3,7 @@ stty start undef
 
 # Duan's config for the Zoomer Shell
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|sudo sdn|sdn|history|cd -|cd ..)"
-export SUDO_PROMPT="Cual es tu contraseña %u?. Sos duan o que nwn: "
+export SUDO_PROMPT="Cual es tu contraseña %u? nwn: "
 
 autoload -U colors && colors	# Load colors
 
@@ -35,8 +35,20 @@ bindkey '^R' fzf-history-widget
 
 # Basic auto/tab complete:
 autoload -Uz compinit
-
+# autoload -Uz compinit
 compinit -C -d ~/.cache/zsh/zcompdump
+
+# --------- Gentoo ---------
+# Correction
+# setopt correctall
+
+# Prompt
+# autoload -U promptinit
+# promptinit
+# prompt gentoo
+
+# zstyle ':completion::complete:*' use-cache 1
+# -------------------------
 
 autoload -Uz add-zsh-hook
 _comp_options+=(globdots)
@@ -98,7 +110,7 @@ bindkey -M visual '^H' vi-delete
 
 # command not found
 command_not_found_handler() {
-    printf "%s%s? QUE VERGA ES ESTE COMANDO PEDAZO DE DUAN NWN\n" "$acc" "$0" >&2
+    printf "Comando %s%s no encontrado... unu\n" "$acc" "$0" >&2
     return 127
 }
 
@@ -151,9 +163,12 @@ RPROMPT='%F{255}%B%*%b%f'
 
 source "$ZDOTDIR/pnpm.zsh"
 
+# para gentoo
+# source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/site-functions/_zsh-history-substring-search
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 
 eval "$(oh-my-posh init zsh --config ~/.config/zsh/config.toml)"
-# eval "$(oh-my-posh init zsh --config ~/nordcustom.omp.json)"
