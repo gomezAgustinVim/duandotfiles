@@ -22,14 +22,19 @@ if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
 fi
 
 bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+mkdir -p "$bgloc"
 current_wall="$(basename "$(readlink -f "$bgloc"/wall.png)")"
 trueloc="$(readlink -f "$1")"
 
 case "$(file --mime-type -b "$trueloc")" in
-image/*) ln -sf "$trueloc" "$bgloc"/wall.png && notify-send -i "$bgloc" "Cambiando wallpaper nwn..." ;;
+image/*)
+	ln -sf "$trueloc" "$bgloc"/wall.png
+	notify-send -i "$bgloc/wall.png" "Cambiando wallpaper nwn..."
+	;;
 inode/directory)
-	wallpaper="$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f ! -name "$current_wall" | shuf -n 1)"
-    ln -sf "$wallpaper" "$bgloc"/wall.png && notify-send -i "$bgloc" "Elegiste wallpaper nwn..."
+	wallpaper="$(find "$trueloc" -iregex '.*\.\(jpg\|jpeg\|png\|gif\)$' -type f ! -name "$current_wall" | shuf -n 1)"
+	ln -sf "$wallpaper" "$bgloc"/wall.png
+	notify-send -i "$bgloc/wall.png" "Elegiste wallpaper nwn..."
 	;;
 *)
 	notify-send "❌ Error" "No es directorio ni tipo de imagen validos"
@@ -38,4 +43,5 @@ inode/directory)
 	;;
 esac
 
-swaybg -m stretch -i "$bgloc"/wall.png
+pkill -x swaybg
+swaybg -m stretch -i "$bgloc/wall.png" &
