@@ -13,3 +13,7 @@ run = "epub-preview"
 [[plugin.prepend_previewers]]
 mime = "video/*"
 run = "video"
+
+[[plugin.prepend_previewers]]
+mime = "image/{avif,heic,jxl,svg+xml}"
+run = "magick"
