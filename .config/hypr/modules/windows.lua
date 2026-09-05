@@ -23,6 +23,7 @@ hl.window_rule({ match = { class = "librewolf" }, tag = "+browser" })
 -- GUI
 hl.window_rule({ match = { class = "^(blue).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^(discord)$" }, tag = "+gui" })
+hl.window_rule({ match = { class = "^(code)-.*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "^(calibre).*$" }, tag = "+gui" })
 hl.window_rule({ match = { class = "gcr-prompter" }, tag = "+gui" })
 hl.window_rule({ match = { class = "codium" }, tag = "+gui" })
