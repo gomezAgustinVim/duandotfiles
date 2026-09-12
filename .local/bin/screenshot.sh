@@ -29,9 +29,9 @@ output="$(date '+%y%d%m-%H%M-%S').png"
 
 case "$(printf "area seleccionada\\nventana actual\\npantalla completa\\ncopiar area seleccionada\\ncopiar ventana actual\\ncopiar pantalla completa" | rofi -dmenu -l 6 -i -p "Tipo de selección")" in
 "area seleccionada") grim -g "$(slurp -w 0)" "$(xdg-user-dir PICTURES)"/pic-sel-"${output}" ;;
-"ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - "$(xdg-user-dir PICTURES)"/pic-win-"${output}" ;;
+"ventana actual") sleep 0.3 && mmsg get focusing-client | jq -r '"\(.x),\(.y) \(.width)x\(.height)"' | grim -g - "$(xdg-user-dir PICTURES)"/pic-win-"${output}" ;;
 "pantalla completa") sleep 0.3 && grim "$(xdg-user-dir PICTURES)"/pic-full-"${output}" ;;
 "copiar area seleccionada") grim -g "$(slurp -w 0)" - | wl-copy ;;
-"copiar ventana actual") sleep 0.3 && hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - - | wl-copy ;;
+"copiar ventana actual") sleep 0.3 && mmsg get focusing-client | jq -r '"\(.x),\(.y) \(.width)x\(.height)"' | grim -g - - | wl-copy ;;
 "copiar pantalla completa") sleep 0.3 && grim - | wl-copy ;;
 esac
