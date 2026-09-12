@@ -166,6 +166,8 @@ source "$ZDOTDIR/pnpm.zsh"
 # para gentoo
 # source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 # source /usr/share/zsh/site-functions/_zsh-history-substring-search
+# source /usr/share/zsh/site-functions/zsh-autocomplete
+# source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
