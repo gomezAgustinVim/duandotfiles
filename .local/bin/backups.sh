@@ -33,11 +33,20 @@ echo "Procediendo al backup nwn..."
 echo "Sincronizando archivos desde $HOME... nwn"
 cd "$HOME" || return
 
-rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
+mkdir -p "$DEST"
+
+if [ ! -d "${DEST%/backup/}" ]; then
+	notify-send "Error en Backup nwn" "El disco $DISPOSITIVO no está conectado o montado."
+	exit 1
+fi
+
+if rsync -aAXHv --delete --filter="merge $BACKUP_FILTER" \
 	--exclude=docker-volumes --exclude=ISO \
 	Descargas Documentos Imágenes Música Vídeos Escritorio Proyectos \
-	~/.local/share/Obsidian "$DEST"
+	~/.local/share/Obsidian "$DEST"; then
 
-HOY=$(date +%c)
-notify-send "Backup completo nwn" "$HOY"
-echo "Último backup completo el $HOY" >"$DEST/backup.log"
+	HOY=$(date +%c)
+	notify-send "Backup completo nwn" "$HOY"
+else
+	notify-send "Error en Backup nwn" "Hubo un problema durante la sincronización. rsync finalizó con errores el $(date +%b_%d_%H:%M)"
+fi
